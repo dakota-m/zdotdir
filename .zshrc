@@ -3,11 +3,18 @@
 # .zshrc - Run on interactive Zsh session.
 #
 
-# Load all the kickstart.zsh libs.
-for _zrc in ~/.zsh/lib/*.zsh; source $_zrc; unset _zrc
+# Load everything in lib
+ZSH_CUSTOM=$ZDOTDIR
+for _zrcfile in $ZDOTDIR/lib/*.zsh; do
+  source $_zrcfile
+done
+unset _zrcfile
 
 # Add stuff here...
 # ...
 
 # Run post zshrc at the very end.
 zshrc-post
+
+# Always succeed.
+true
