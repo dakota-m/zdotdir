@@ -3,8 +3,8 @@
 #
 
 # Set common variables if they have not already been set.
-export EDITOR=${EDITOR:-nano}
-export VISUAL=${VISUAL:-nano}
+export EDITOR=${EDITOR:-vim}
+export VISUAL=${VISUAL:-vim}
 export PAGER=${PAGER:-less}
 export LANG=${LANG:-en_US.UTF-8}
 

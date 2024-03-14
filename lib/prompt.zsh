@@ -66,7 +66,7 @@ function promptinit {
     zstyle -a ':kickstart.zsh:feature:prompt' 'theme' 'prompt_argv'
     if (( $#prompt_argv == 0 )); then
       if (( $+commands[starship] )); then
-        prompt_argv=(starship zephyr)
+        prompt_argv=(starship starship)
       else
         prompt_argv=(off)
       fi
