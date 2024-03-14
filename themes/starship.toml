@@ -1,0 +1,264 @@
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[ ](bold red)"
+vimcmd_symbol = "[ ](bold green)"
+format = "$symbol "
+
+[aws]
+style = "#FF9900"
+symbol = "󰸏  "
+expiration_symbol = ' '
+format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+
+[bun]
+symbol = "bun "
+
+[c]
+symbol = " "
+
+[cmd_duration]
+style = "#4CD5ED"
+format = "[󰔟 $duration]($style)[ ](#CC5500)"
+
+[cobol]
+symbol = "cobol "
+
+[conda]
+symbol = "conda  "
+
+[crystal]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[daml]
+symbol = "daml "
+
+[dart]
+symbol = " "
+
+[deno]
+symbol = "deno "
+
+[dotnet]
+symbol = " 󰪮 "
+
+[directory]
+home_symbol = " "
+style = "#EC5800"
+read_only = " 󱗑 "
+read_only_style = "#FFFF00"
+format = '[$path]($style)[$read_only]($read_only_style) '
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[direnv]
+symbol = " "
+disabled = false
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+style = "#2DBA4E"
+format = ' [$symbol$branch(:$remote_branch)]($style) '
+
+[git_commit]
+tag_symbol = "  󰜢 "
+format = '[\($hash$tag\)]($style) '
+only_detached = true
+tag_disabled = true
+
+[git_metrics]
+disabled = false
+format = '[  $added]($added_style)[](fg:#FFFFFF)[ $deleted]($deleted_style) '
+
+[git_status]
+# ahead = " "
+# behind = " "
+# conflicted = ""
+diverged = "󰵉 "
+# renamed = " "
+deleted = "󰗨 "
+format = '( [\[$all_status$ahead_behind\]]($style) )'
+conflicted = '󰦍 '
+ahead = '⇡'
+behind = '⇣'
+# diverged = '⇕'
+up_to_date = ' '
+untracked = ' '
+stashed = '$'
+modified = ' '
+staged = ''
+renamed = ' '
+# deleted = '✘'
+typechanged = ""
+style = '#2DBA4E'
+ignore_submodules = false
+disabled = false
+windows_starship = ""
+
+[golang]
+symbol = " "
+style = "fg:#FFFFFF bg:#29BEB0"
+# style = "#1E90FF" --default
+format = '[$symbol($version )]($style)'
+disabled = false
+
+[guix_shell]
+symbol = "guix "
+
+[hg_branch]
+symbol = "hg "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = "󰢱 "
+
+[nodejs]
+symbol = "󰎙 "
+
+[memory_usage]
+symbol = " "
+format = '$symbol[${ram}( 󰪍 󰍛 ${swap})]($style) '
+threshold = 75
+style = "#FF3131"
+disabled = false
+
+[meson]
+symbol = "meson "
+
+[nim]
+symbol = "nim "
+
+[nix_shell]
+symbol = "nix "
+
+[ocaml]
+symbol = " "
+
+[opa]
+symbol = "opa "
+
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = "󰣇 "
+CentOS = " "
+Debian = " "
+DragonFly = "dfbsd "
+Emscripten = "emsc "
+EndeavourOS = "ndev "
+Fedora = " "
+FreeBSD = " "
+Garuda = "garu "
+Gentoo = " "
+HardenedBSD = "hbsd "
+Illumos = "lum "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mariner = "mrn "
+MidnightBSD = "mid "
+Mint = "mint "
+NetBSD = "nbsd "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = "orac "
+Pop = ""
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "redox "
+Solus = " "
+SUSE = " "
+Ubuntu = " "
+Unknown = "unk "
+Windows = " "
+
+[os]
+disabled = false
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pulumi]
+symbol = "pulumi "
+
+[purescript]
+symbol = " "
+
+[python]
+symbol = " "
+
+[raku]
+symbol = "raku "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+
+[scala]
+symbol = "scala  "
+
+[shell]
+disabled = true
+
+[shlvl]
+symbol = " "
+disabled = false
+
+[spack]
+symbol = "spack "
+
+[status]
+disabled = false
+
+[sudo]
+symbol = ' '
+style = '#FF3131'
+format = '[$symbol]($style) '
+disabled = false
+
+[swift]
+symbol = " "
+
+[terraform]
+symbol = "󱁢 "
+format = '[$symbol\[$version\]]($style) '
+#TODO: Figure out a conditional workspace for non-default
+# format = '[$symbol $version $workspace]($style) '
+
+[zig]
+symbol = " "

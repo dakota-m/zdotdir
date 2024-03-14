@@ -25,15 +25,15 @@ else
 fi
 
 # Set GNU LS_COLORS
-if [[ -z "$LS_COLORS" ]]; then
-  if (( $+commands[dircolors] )); then
-    cached-eval 'dircolors' dircolors -b
-  elif (( $+commands[gdircolors] )); then
-    cached-eval 'gdircolors' gdircolors -b
-  else
-    export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43"
-  fi
-fi
+# if [[ -z "$LS_COLORS" ]]; then
+#   if (( $+commands[dircolors] )); then
+#     cached-eval 'dircolors' dircolors -b
+#   elif (( $+commands[gdircolors] )); then
+#     cached-eval 'gdircolors' gdircolors -b
+#   else
+#     export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+#   fi
+# fi
 
 # Missing dircolors is a good indicator of a BSD system. Set LSCOLORS for macOS/BSD.
 if (( ! $+commands[dircolors] )); then

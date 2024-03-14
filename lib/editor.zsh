@@ -18,5 +18,5 @@ setopt NO_beep          # Beep on error in line editor.
 # Use human-friendly identifiers.
 zmodload zsh/terminfo
 
-# Emacs keybindings
-bindkey -e
+# vim keybindings
+bindkey -v

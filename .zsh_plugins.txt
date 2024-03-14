@@ -12,14 +12,19 @@ mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 # Custom
 $ZSH_CUSTOM path:plugins/abbreviations
+$ZSH_CUSTOM path:plugins/asdf
 $ZSH_CUSTOM path:plugins/git
 $ZSH_CUSTOM path:plugins/golang
+# $ZSH_CUSTOM path:plugins/fzf
 $ZSH_CUSTOM path:plugins/otp
 $ZSH_CUSTOM path:plugins/python
+$ZSH_CUSTOM path:plugins/wezterm
+$ZSH_CUSTOM path:plugins/xdg
 
 # Utils
 romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
+# unixorn/fzf-zsh-plugin kind:fpath path:bin
 
 # Editor
 ohmyzsh/ohmyzsh path:plugins/magic-enter
@@ -31,10 +36,17 @@ romkatv/powerlevel10k kind:fpath
 
 # Regular plugins
 mattmc3/zman
+# unixorn/fzf-zsh-plugin kind:fpath path:completions
+unixorn/fzf-zsh-plugin path:/
+ohmyzsh/ohmyzsh path:plugins/fzf
+# ohmyzsh/ohmyzsh path:plugins/git
 
+# unixorn/fzf-zsh-plugin kind:fpath path:completions
 zsh-users/zsh-completions kind:fpath path:src
 zsh-users/zsh-syntax-highlighting
+# zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
+jeffreytse/zsh-vi-mode
 
 # vi: ft=config
