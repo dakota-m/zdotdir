@@ -23,7 +23,7 @@ zstyle ':antidote:plugin:*' defer-options '-p'
 #
 
 zstyle ':myzsh:feature:prompt:p10k-instant-prompt' enabled yes
-zstyle ':myzsh:feature:prompt' theme 'p10k' 'mmc'
+zstyle ':myzsh:feature:prompt' theme 'starship' 'starship'
 
 #
 # Custom
@@ -37,3 +37,5 @@ noexpand=(
   z
 )
 zstyle ':myzsh:feature:abbreviations' noexpand $noexpand
+
+# vim: ft=zsh sw=2 ts=2 et

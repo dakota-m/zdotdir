@@ -92,6 +92,8 @@ path=(
   $HOME/{,s}bin(N)
   $HOME/brew/{,s}bin(N)
   /opt/homebrew/{,s}bin(N)
+  /opt/*(N)
+  /opt/*/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
 )
