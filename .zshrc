@@ -16,6 +16,7 @@ for _zrc in $ZDOTDIR/lib/*.zsh; source $_zrc; unset _zrc
 
 # Add more zsh config here, or in conf.d...
 # ...
+source $ZDOTDIR/functions/ghsrc
 
 # Uncomment to manually initialize completion system if you want, or let kickstart.zsh
 # do it automatically.

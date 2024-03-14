@@ -9,8 +9,11 @@
 # - https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 #
 
-#NOTE: Reload Zsh
+# NOTE: Reload Zsh
 alias rl='exec zsh'
+
+# NOTE: ZLE
+alias zleal='zle -al' # list all zle widgets available
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
@@ -365,7 +368,7 @@ alias reload='exec zsh'
 
 # NOTE: Fuzzy Aliases
 # Antidote alias
-alias alcf='$EDITOR ~/.config/zsh/.aliases'
+alias alcf='$EDITOR ~/.config/zsh/.zaliases'
 alias antc='cd ~/.cache/antidote'
 alias zcach='cd ~/.cache/zsh'
 #NOTE: Oh My Zsh custom alias

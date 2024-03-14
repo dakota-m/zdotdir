@@ -7,6 +7,7 @@ export EDITOR=${EDITOR:-vim}
 export VISUAL=${VISUAL:-vim}
 export PAGER=${PAGER:-less}
 export LANG=${LANG:-en_US.UTF-8}
+export LC_ALL=${LC_ALL:-en_US.UTF-8}
 
 # Set the Less input preprocessor.
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
