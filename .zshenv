@@ -6,8 +6,8 @@
 export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 
 # TODO: figuer out where to put these
-# fpath=(/home/dakota/.granted/zsh_autocomplete/assume/ $fpath)
-# fpath=(/home/dakota/.granted/zsh_autocomplete/granted/ $fpath)
+fpath=(/home/dakota/.granted/zsh_autocomplete/assume/ $fpath)
+fpath=(/home/dakota/.granted/zsh_autocomplete/granted/ $fpath)
 
 # XDG
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
@@ -22,6 +22,8 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
 : ${__zsh_user_data_dir:=${XDG_DATA_HOME:-$HOME/.local/share}/zsh}
 : ${__zsh_cache_dir:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh}
+
+export FZF_PATH=${XDG_CACHE_HOME:-$HOME/.cache}/repos/unixorn/fzf-zsh-plugin
 
 # Ensure Zsh directories exist.
 () {
