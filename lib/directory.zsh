@@ -3,6 +3,7 @@
 #
 
 # 16.2.1 Changing Directories
+setopt autocd             # cd to directory without typing cd.
 setopt auto_pushd         # Make cd push the old directory onto the dirstack.
 setopt pushd_minus        # Exchanges meanings of +/- when navigating the dirstack.
 setopt pushd_silent       # Do not print the directory stack after pushd or popd.

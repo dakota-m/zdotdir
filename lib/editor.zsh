@@ -19,4 +19,5 @@ setopt NO_beep          # Beep on error in line editor.
 zmodload zsh/terminfo
 
 # vim keybindings
+# setopt vi
 bindkey -v
