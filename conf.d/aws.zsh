@@ -1,8 +1,8 @@
 #!/bin/zsh
 #
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-complete -C '/usr/bin/aws_completer' aws
+# autoload bashcompinit && bashcompinit
+# autoload -Uz compinit && compinit
+# complete -C '/usr/bin/aws_completer' aws
 
 # source /usr/bin/aws_zsh_completer.sh
 

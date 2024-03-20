@@ -24,7 +24,7 @@ setopt multios        # Write to multiple descriptors.
 # Set directory aliases.
 alias dirh='dirs -v'
 alias -- -='cd -'
-alias -g '..'='../'
+# alias -g '..'='../'
 alias -g '..2'='../..'
 alias -g '..3'='../../..'
 alias -g '..4'='../../../..'

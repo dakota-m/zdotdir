@@ -16,8 +16,10 @@ setopt NO_beep          # Beep on error in line editor.
 [[ -n "$WORDCHARS" ]] || WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 # Use human-friendly identifiers.
-zmodload zsh/terminfo
+# zmodload zsh/terminfo
 
 # vim keybindings
 # setopt vi
-bindkey -v
+# bindkey -v
+
+# zvm_config=

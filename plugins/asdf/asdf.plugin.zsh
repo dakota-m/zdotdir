@@ -5,9 +5,11 @@
 # INFO: source: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/asdf/asdf.plugin.zsh
 
 # Find where asdf should be installed
-ASDF_DIR="${ASDF_DIR:-/opt/asdf-vm:-$XDG_CONFIG_HOME/asdf:-$HOME/.asdf}"
+. /opt/asdf-vm/asdf.sh
+export ASDF_DIR=/home/dakota/.config/asdf
+# ASDF_DIR=${ASDF_DIR:-/opt/asdf-vm:-$XDG_CONFIG_HOME/asdf:-$HOME/.asdf}
 # ASDF_DIR="${ASDF_DIR:-/opt/asdf-vm}"
-ASDF_COMPLETIONS="$ASDF_DIR/completions"
+export ASDF_COMPLETIONS="$ASDF_DIR/completions"
 ARCH_ASDF_DIR="/opt/asdf-vm"
 ASDF_SHIM_DIR="${ASDF_DATA_DIR:-$XDG_DATA_HOME/asdf:-$HOME/.local/share/asdf}/shims"
 
@@ -48,3 +50,5 @@ if [[ -f "$ASDF_DIR/asdf.sh" ]]; then
     compdef _asdf asdf # compdef is already loaded before loading plugins
   fi
 fi
+
+alias asdftv='$EDITOR ~/.config/asdf/.tool-versions'

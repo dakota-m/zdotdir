@@ -18,7 +18,7 @@ setopt extended_glob
 } __zsh_{config,cache,user_data}_dir
 
 # Define critical functions
-##? Cache the results of an eval command
+#? Cache the results of an eval command
 function cached-eval {
   emulate -L zsh; setopt local_options extended_glob
   (( $# >= 2 )) || return 1
