@@ -11,7 +11,8 @@ export XDG_STATE_HOME=~/.local/state
 # export XDG_RUNTIME_DIR=~/.xdg
 export XDG_PROJECTS_DIR=~/Projects
 
-for _xdgdir in XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_RUNTIME_DIR; do
+# for _xdgdir in XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_RUNTIME_DIR; do
+for _xdgdir in XDG_{CONFIG,CACHE,DATA,STATE}_HOME; do
   [[ -e ${(P)_xdgdir} ]] || mkdir -p ${(P)_xdgdir}
 done
 unset _xdgdir
@@ -29,18 +30,18 @@ export LESSKEY="${LESSKEY:-$XDG_CONFIG_HOME/less/lesskey}"
 export LESSHISTFILE="${LESSHISTFILE:-$XDG_CACHE_HOME/less/history}"
 
 # readline
-export INPUTRC="${INPUTRC:-$XDG_CONFIG_HOME/readline/inputrc}"
+# export INPUTRC="${INPUTRC:-$XDG_CONFIG_HOME/readline/inputrc}"
 
 # screen
-export SCREENRC="${SCREENRC:-$XDG_CONFIG_HOME/screen/screenrc}"
+# export SCREENRC="${SCREENRC:-$XDG_CONFIG_HOME/screen/screenrc}"
 
 # tmux
 # export TMUX_CONFIG="${TMUX_CONFIG:-$XDG_CONFIG_HOME/tmux/tmux.conf}"
 # alias tmux="${aliases[tmux]:-tmux} -f \"\$TMUX_CONFIG\""
 
 # wget
-export WGETRC="${WGETRC:-$XDG_CONFIG_HOME/wget/wgetrc}"
-alias wget="${aliases[wget]:-wget} --hsts-file=\$XDG_CACHE_HOME/wget/wget-hsts"
+# export WGETRC="${WGETRC:-$XDG_CONFIG_HOME/wget/wgetrc}"
+# alias wget="${aliases[wget]:-wget} --hsts-file=\$XDG_CACHE_HOME/wget/wget-hsts"
 
 #
 # Dev tools

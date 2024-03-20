@@ -7,9 +7,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # Load all the kickstart.zsh libs.
 for _zrc in $ZDOTDIR/lib/*.zsh; source $_zrc; unset _zrc
@@ -17,6 +17,7 @@ for _zrc in $ZDOTDIR/lib/*.zsh; source $_zrc; unset _zrc
 # Add more zsh config here, or in conf.d...
 # ...
 source $ZDOTDIR/functions/ghsrc
+source /home/dakota/scripts/rsync.zsh
 
 # Uncomment to manually initialize completion system if you want, or let kickstart.zsh
 # do it automatically.

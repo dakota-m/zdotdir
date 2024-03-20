@@ -15,6 +15,10 @@ alias rl='exec zsh'
 # NOTE: ZLE
 alias zleal='zle -al' # list all zle widgets available
 
+# better defaults
+alias mkdir='mkdir -p'
+alias colors='nvim ~/scripts/colors.zsh'
+
 # mask built-ins with better defaults
 alias ping='ping -c 5'
 alias grep="command grep --exclude-dir={.git,.vscode}"
@@ -285,12 +289,15 @@ alias pacs='sudo pacman -S'
 alias pacf="pacman -Qu --color=always | sed -e 's/ .*$//' | sk --ansi -m --color=always --preview 'pacman -Qu --color=always {}' | xargs -ro sudo pacman -S"
 alias pacfz='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | sk --multi --ansi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
 alias pacr="pacman --color always -Q | cut -f 1 -d ' ' | sk --multi --ansi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
+alias mkpkg='makepkg'
+alias mkpkgi='makepkg -si'
 
 #NOTE: PARU AUR Aliases
 # alias pars='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /installed/d" | fzf --multi --ansi --preview "paru -Si {1}" | xargs -ro paru -S'
 alias pars='paru -S'
 alias parf="paru -Qu --color=always | sed -e 's/ .*$//' | sk --ansi -m --color=always --preview 'paru -Qu --color=always {}' | xargs -r paru -S"
-alias parfz='paru --color always -Slaq | sed -e "/installed/d" | sk --color=always --multi --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
+# alias parfz='paru --color always -Slaq | sed -e "/installed/d" | sk --color=always --multi --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
+alias parfz='paru --color always -Slaq | sed -e "/installed/d" | fzf -m --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
 alias pargp='paru --color always -Slaq | sed -e "/installed/d" | sk --color=always -m --ansi --preview "paru --color always -Gp {}" | xargs -r paru -Gp {}'
 # alias parfs='sk -m -c "paru -Slaq | sed -e "/installed/d"" --preview "paru -Si {}"'
 # alias parfs='sk --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Si {1}"'
@@ -304,8 +311,12 @@ alias aurup='paru -Sua'
 alias parc='cd ~/.cache/paru/clone'
 
 #NOTE: YAY AUR Aliases
-alias yays='yay --color always -Slq | fzf --multi --ansi --preview "yay -Si {1}" --preview-window "right,75" | xargs -ro yay -S'
-alias yayi="yay --color always -Qe | cut -f 1 -d ' ' | fzf --multi --ansi --preview 'yay -Qi {1}'"
+alias yayh='yay --help'
+alias yays='yay -Slq | fzf --multi --ansi --preview "yay -Si {1}" --preview-window "right,75" | xargs -ro yay -S'
+alias yayi="yay -Qe | cut -f 1 -d ' ' | fzf --multi --ansi --preview 'yay -Qi {1}'"
+alias yayfz='yay -Slaq | sed -e "/installed/d" | fzf --color=dark -m --ansi --preview "bat << EOL
+   | paru -Si {}" --preview-window "top,50%" | xargs -ro paru -S
+EOL'
 
 #NOTE: Systemctl Aliases
 alias sc='systemctl'
@@ -395,7 +406,7 @@ alias nvsk="sk --ansi -i -c 'fd --type f --color=always' --preview='bat "{}"' -m
 alias nvrg="sk --ansi -i -c 'rg --color=always --line-number "{}"' -b 'enter:become(nvim {+})'"
 alias nvt="sk --ansi -i -c 'fd --type f --color=always' --preview 'bat --color=always --style=full "{}"'"
 alias nvlz='cd ~/.local/share/nvim/lazy'
-alias zdbs='zsh -xvic exit &> ~/omz-debug.log'
+alias zdbs='zsh -xvic exit &> ~/.cache/zsh/startup_logs/zsh-debug.log'
 # alias nvfz='fzf --print0 | xargs -0 -o nvim'
 #NOTE: Terraform
 alias tffz="terraform state list | sk --ansi --preview='terraform state show {}'"
@@ -450,7 +461,7 @@ alias dkb='docker build'
 
 # NOTE: Config Aliases
 if [ -e $ZDOTDIR/.zshrc ]; then
-  alias zrc='$EDITOR $ZDOTDIR/.zshrc $ZDOTDIR/.zshenv $ZDOTDIR/.zsh_plugins.txt $ZDOTDIR/.zprofile'
+  alias zrc='$EDITOR $ZDOTDIR/.zshrc $ZDOTDIR/.zshenv $ZDOTDIR/.zplugins $ZDOTDIR/.zprofile'
 else
   alias zrc='$EDITOR $HOME/.zshrc'
 fi

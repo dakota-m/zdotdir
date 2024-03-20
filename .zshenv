@@ -15,7 +15,7 @@ export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 # export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
-export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg:-/run/user/1000}
+# export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg:-/run/user/1000}
 export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 
 # Fish-like dirs
@@ -23,7 +23,7 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 : ${__zsh_user_data_dir:=${XDG_DATA_HOME:-$HOME/.local/share}/zsh}
 : ${__zsh_cache_dir:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh}
 
-export FZF_PATH=${XDG_CACHE_HOME:-$HOME/.cache}/repos/unixorn/fzf-zsh-plugin
+# export FZF_PATH=${XDG_CACHE_HOME:-$HOME/.cache}/repos/unixorn/fzf-zsh-plugin
 
 # Ensure Zsh directories exist.
 () {
@@ -31,4 +31,4 @@ export FZF_PATH=${XDG_CACHE_HOME:-$HOME/.cache}/repos/unixorn/fzf-zsh-plugin
   for zdir in $@; do
     [[ -d "${(P)zdir}" ]] || mkdir -p -- "${(P)zdir}"
   done
-} __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_{RUNTIME,PROJECTS}_DIR
+} __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_PROJECTS_DIR

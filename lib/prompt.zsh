@@ -4,7 +4,7 @@
 
 # 16.2.8 Prompting
 setopt prompt_subst       # Expand parameters in prompt variables.
-setopt transient_rprompt  # Remove right prompt artifacts from prior commands.
+# setopt transient_rprompt  # Remove right prompt artifacts from prior commands.
 
 function prompt_p10k_setup {
   if [[ -n "$1" ]]; then
@@ -56,21 +56,4 @@ function promptinit {
 
   # Keep prompt array sorted.
   prompt_themes=( "${(@on)prompt_themes}" )
-
-  # Set prompt
-  if [[ $TERM == dumb ]]; then
-    prompt 'off'
-  else
-    # Set prompt.
-    local -a prompt_argv
-    zstyle -a ':kickstart.zsh:feature:prompt' 'theme' 'prompt_argv'
-    if (( $#prompt_argv == 0 )); then
-      if (( $+commands[starship] )); then
-        prompt_argv=(starship starship)
-      else
-        prompt_argv=(off)
-      fi
-    fi
-    prompt "$prompt_argv[@]"
-  fi
 }
