@@ -8,6 +8,7 @@ alias zprofrc="ZPROFRC=1 zsh"
 
 # Set critical options
 setopt extended_glob
+setopt ALIASES
 
 # Set critical vars
 : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
@@ -44,11 +45,10 @@ typeset -gU cdpath fpath mailpath path
 
 # Setup homebrew if it exists on the system.
 typeset -aU _brewcmd=(
-  $HOME/brew/bin/brew(N)
-  $commands[brew]
+  $HOME/.homebrew/bin/brew(N)
+  $HOME/.linuxbrew/bin/brew(N)
   /opt/homebrew/bin/brew(N)
   /usr/local/bin/brew(N)
-  $HOME/.linuxbrew/bin/brew(N)
   /home/linuxbrew/.linuxbrew/bin/brew(N)
 )
 if (( $#_brewcmd )); then
@@ -63,10 +63,9 @@ unset _brewcmd
 # Build remaining path.
 path=(
   $HOME/{,s}bin(N)
-  $HOME/brew/{,s}bin(N)
-  /opt/homebrew/{,s}bin(N)
+  $HOMEBREW_PREFIX/{,s}bin(N)
   /opt/*(N)
   /opt/*/{,s}bin(N)
-  /usr/local/{,s}bin(N)
+  /usr/{*,local}/{,s}bin(N)
   $path
 )

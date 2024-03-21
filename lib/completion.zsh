@@ -12,6 +12,7 @@ setopt auto_menu         # Show completion menu on a successive tab press.
 setopt auto_param_slash  # If completed parameter is a directory, add a trailing slash.
 setopt complete_in_word  # Complete from both ends of a word.
 setopt NO_menu_complete  # Do not autoselect the first completion entry.
+setopt LIST_TYPES        # Show the type of file in the completion list.
 
 # Initialize completions.
 function mycompinit {

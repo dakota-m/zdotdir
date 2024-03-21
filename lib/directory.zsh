@@ -8,6 +8,9 @@ setopt auto_pushd         # Make cd push the old directory onto the dirstack.
 setopt pushd_minus        # Exchanges meanings of +/- when navigating the dirstack.
 setopt pushd_silent       # Do not print the directory stack after pushd or popd.
 setopt pushd_to_home      # Push to home directory when no argument is given.
+setopt PUSHD_IGNORE_DUPS  # Do not push multiple copies of the same directory onto the dirstack.
+setopt CDABLE_VARS        # Treat variables as directory names.
+setopt CHASE_DOTS         # Follow symbolic links when changing directories.
 
 # 16.2.3 Expansion and Globbing
 setopt extended_glob      # Use more awesome globbing features.

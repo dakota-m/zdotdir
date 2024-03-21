@@ -13,7 +13,7 @@ export ASDF_COMPLETIONS="$ASDF_DIR/completions"
 ARCH_ASDF_DIR="/opt/asdf-vm"
 ASDF_SHIM_DIR="${ASDF_DATA_DIR:-$XDG_DATA_HOME/asdf:-$HOME/.local/share/asdf}/shims"
 
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=".config/asdf/.tool-versions"
+export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=".config/asdf/tool-versions"
 
 if [[ ! -f "$ASDF_DIR/asdf.sh" || ! -f "$ASDF_COMPLETIONS/_asdf" ]]; then
   # If not found, check for archlinux/AUR package (/opt/asdf-vm/)
@@ -51,4 +51,4 @@ if [[ -f "$ASDF_DIR/asdf.sh" ]]; then
   fi
 fi
 
-alias asdftv='$EDITOR ~/.config/asdf/.tool-versions'
+alias asdftv='$EDITOR ~/.config/asdf/tool-versions'
