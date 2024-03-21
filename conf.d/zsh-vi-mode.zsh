@@ -4,10 +4,10 @@
 
 # Change to Zsh's default readkey engine
 # export ZVM_READKEY_ENGINE=$ZVM_READKEY_ENGINE_ZLE
-# export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 # export ZVM_VI_HIGHLIGHT_BACKGROUND=#DF730D
-# export ZVM_VI_HIGHLIGHT_BACKGROUND=#56DB3A
+export ZVM_VI_HIGHLIGHT_BACKGROUND=#56DB3A
 
 # Do the initialization when the script is sourced (i.e. Initialize instantly)
 # export ZVM_INIT_MODE=sourcing

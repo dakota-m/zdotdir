@@ -8,10 +8,12 @@
 #$ZSH_CUSTOM path:plugins/xdg
 
 # Zephyr
-# mattmc3/zephyr path:plugins/macos conditional:is-macos
+mattmc3/zephyr path:plugins/completion
+mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 # Custom
 $ZSH_CUSTOM path:plugins/asdf
+# $ZSH_CUSTOM path:plugins/gh
 $ZSH_CUSTOM path:plugins/git
 # $ZSH_CUSTOM path:plugins/golang
 # $ZSH_CUSTOM path:plugins/fzf
@@ -20,7 +22,7 @@ $ZSH_CUSTOM path:plugins/git
 # $ZSH_CUSTOM path:plugins/python
 $ZSH_CUSTOM path:plugins/wezterm
 # $ZSH_CUSTOM path:plugins/aur
-# $ZSH_CUSTOM path:plugins/xdg
+$ZSH_CUSTOM path:plugins/xdg
 
 # Utils
 romkatv/zsh-bench kind:path
@@ -29,7 +31,7 @@ ohmyzsh/ohmyzsh path:plugins/extract
 
 # Editor
 ohmyzsh/ohmyzsh path:plugins/magic-enter
-# ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 # ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 
 # macOS
@@ -37,8 +39,8 @@ ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 zshzoo/macos conditional:is-macos
 
 # Prompt
-# sindresorhus/pure kind:fpath
-# romkatv/powerlevel10k kind:fpath
+sindresorhus/pure kind:fpath
+romkatv/powerlevel10k kind:fpath
 
 # Regular plugins
 mattmc3/zman
@@ -46,15 +48,16 @@ mattmc3/zman
 ohmyzsh/ohmyzsh path:plugins/terraform
 # unixorn/fzf-zsh-plugin kind:fpath path:completions
 # unixorn/fzf-zsh-plugin path:/
-# unixorn/fzf-zsh-plugin
+unixorn/fzf-zsh-plugin kind:defer
+unixorn/git-extra-commands
 # ohmyzsh/ohmyzsh path:plugins/fzf
 
 # unixorn/fzf-zsh-plugin kind:fpath path:completions
 zsh-users/zsh-completions kind:fpath path:src
-zsh-users/zsh-syntax-highlighting
-# zdharma-continuum/fast-syntax-highlighting
-zsh-users/zsh-autosuggestions
-# zsh-users/zsh-history-substring-search
-# jeffreytse/zsh-vi-mode
+# zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search kind:defer
+jeffreytse/zsh-vi-mode
 
 # vi: ft=config
