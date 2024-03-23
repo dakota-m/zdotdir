@@ -9,6 +9,8 @@
 # - https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 #
 
+FZF_TOOL='fzf'
+
 # NOTE: Reload Zsh
 alias rl='exec zsh'
 
@@ -93,6 +95,11 @@ alias wzssh='wezterm ssh'
 alias wzc='wezterm connect'
 alias wzcl='wezterm cli'
 
+# NOTE: Kitty Aliases
+alias kt='kitty'
+alias kit='kitten'
+alias kits='kitten ssh'
+
 # more ways to ls
 alias ll='ls -lh'
 alias la='ls -lAh'
@@ -166,7 +173,7 @@ alias dothy='cd ~/.config/hypr'
 alias dotz='cd ~/.config/zsh'
 alias dfz='fd -Ha -tf -tl -c always --base-directory "/home/dakota" "(conf|config|toml|rc)" -E ".ca*/*" \
   -E "*go/*" -E "*\.svg*" -E "*\.[cpph]" -E "*\.[html]" -E "*\.[json]" -E "*\.[oi]*" -S "-1ki" | sk --multi --ansi | xargs -ro $EDITOR'
-# alias dotfz='fd -H -tf -tl -c always -e "[^/]*\.(conf|config|ini|toml|rc)$" | sk --multi --ansi | xargs -ro $EDITOR {}'
+# alias dotfz='fd -H -tf -tl -c always -e "[^/]*\.(conf|config|ini|toml|rc)$" | $FZF_TOOL  --ansi | xargs -ro $EDITOR {}'
 
 #NOTE: Common Dir Aliases
 alias doc='cd ~/Documents'
@@ -286,24 +293,24 @@ alias upmirror='sudo reflector -l 30 -n 15 -f 15 -a 12 --threads 24 -p https --s
 # alias upmirror='reflector --verbose -l 30 -n 15 --threads 24 -p https --sort rate --country "United States" --save /etc/pacman.d/mirrorlist'
 alias pacup='sudo pacman -Syu'
 alias pacs='sudo pacman -S'
-alias pacf="pacman -Qu --color=always | sed -e 's/ .*$//' | sk --ansi -m --color=always --preview 'pacman -Qu --color=always {}' | xargs -ro sudo pacman -S"
-alias pacfz='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | sk --multi --ansi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
-alias pacr="pacman --color always -Q | cut -f 1 -d ' ' | sk --multi --ansi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
+alias pacf="pacman -Qu --color=always | sed -e 's/ .*$//' | $FZF_TOOL --ansi -m --color=always --preview 'pacman -Qu --color=always {}' | xargs -ro sudo pacman -S"
+alias pacfz='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | $FZF_TOOL --ansi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
+alias pacr="pacman --color always -Q | cut -f 1 -d ' ' | $FZF_TOOL  --ansi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 alias mkpkg='makepkg'
 alias mkpkgi='makepkg -si'
 
 #NOTE: PARU AUR Aliases
-# alias pars='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /installed/d" | fzf --multi --ansi --preview "paru -Si {1}" | xargs -ro paru -S'
+# alias pars='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /installed/d" | $FZF_TOOL  --ansi --preview "paru -Si {1}" | xargs -ro paru -S'
 alias pars='paru -S'
-alias parf="paru -Qu --color=always | sed -e 's/ .*$//' | sk --ansi -m --color=always --preview 'paru -Qu --color=always {}' | xargs -r paru -S"
-# alias parfz='paru --color always -Slaq | sed -e "/installed/d" | sk --color=always --multi --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
-alias parfz='paru --color always -Slaq | sed -e "/installed/d" | fzf -m --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
-alias pargp='paru --color always -Slaq | sed -e "/installed/d" | sk --color=always -m --ansi --preview "paru --color always -Gp {}" | xargs -r paru -Gp {}'
-# alias parfs='sk -m -c "paru -Slaq | sed -e "/installed/d"" --preview "paru -Si {}"'
-# alias parfs='sk --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Si {1}"'
-alias parpkg='sk --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Gp {1}"'
-alias pari="paru --color always -Qe | fzf --multi --ansi --preview 'paru -Qi {1}'"
-alias parg="paru --color always -Sla | fzf --multi --ansi --preview 'paru -Sia {1}'"
+alias parf="paru -Qu --color=always | sed -e 's/ .*$//' | $FZF_TOOL --ansi -m --color=always --preview 'paru -Qu --color=always {}' | xargs -r paru -S"
+# alias parfz='paru --color always -Slaq | sed -e "/installed/d" | $FZF_TOOL --color=always  --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
+alias parfz='paru --color always -Slaq | sed -e "/installed/d" | $FZF_TOOL -m --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
+alias pargp='paru --color always -Slaq | sed -e "/installed/d" | $FZF_TOOL --color=always -m --ansi --preview "paru --color always -Gp {}" | xargs -r paru -Gp {}'
+# alias parfs='$FZF_TOOL -m -c "paru -Slaq | sed -e "/installed/d"" --preview "paru -Si {}"'
+# alias parfs='$FZF_TOOL --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Si {1}"'
+alias parpkg='$FZF_TOOL --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Gp {1}"'
+alias pari="paru --color always -Qe | $FZF_TOOL  --ansi --preview 'paru -Qi {1}'"
+alias parg="paru --color always -Sla | $FZF_TOOL  --ansi --preview 'paru -Sia {1}'"
 alias parupdb='paru -Sy'
 alias parup='paru -Syyu'
 alias pardb='paru --gendb'
@@ -312,15 +319,15 @@ alias parc='cd ~/.cache/paru/clone'
 
 #NOTE: YAY AUR Aliases
 alias yayh='yay --help'
-alias yays='yay -Slq | fzf --multi --ansi --preview "yay -Si {1}" --preview-window "right,75" | xargs -ro yay -S'
-alias yayi="yay -Qe | cut -f 1 -d ' ' | fzf --multi --ansi --preview 'yay -Qi {1}'"
-alias yayfz='yay -Slaq | sed -e "/installed/d" | fzf --color=dark -m --ansi --preview "bat << EOL
+alias yays='yay -Slq | $FZF_TOOL  --ansi --preview "yay -Si {1}" --preview-window "right,75" | xargs -ro yay -S'
+alias yayi="yay -Qe | cut -f 1 -d ' ' | $FZF_TOOL  --ansi --preview 'yay -Qi {1}'"
+alias yayfz='yay -Slaq | sed -e "/installed/d" | $FZF_TOOL --color=dark -m --ansi --preview "bat << EOL
    | paru -Si {}" --preview-window "top,50%" | xargs -ro paru -S
 EOL'
 
 #NOTE: Systemctl Aliases
 alias sc='systemctl'
-alias sctl='systemctl list-unit-files | sk --multi --ansi --preview "systemctl status {1}" | xargs -ro sudo systemctl show'
+alias sctl='systemctl list-unit-files | $FZF_TOOL --ansi --preview "systemctl status {1}" | xargs -ro sudo systemctl show'
 #INFO: Netowrk Aliases
 alias netst='systemctl status systemd-networkd.service'
 alias netrs='sudo systemctl restart systemd-networkd.service'
@@ -329,7 +336,7 @@ alias nmstp='sudo systemctl stop NetworkManager'
 alias nmrst='sudo systemctl restart NetworkManager'
 alias nmst='sudo systemctl status NetworkManager'
 alias nmdis='sudo systemctl disable NetworkManager'
-alias nmmsk='sudo systemctl mask NetworkManager'
+alias nmm$FZF_TOOL='sudo systemctl ma$FZF_TOOL NetworkManager'
 
 #NOTE: Eza ls replacement Aliases
 if command -v eza &> /dev/null; then
@@ -384,32 +391,32 @@ alias antc='cd ~/.cache/antidote'
 alias zcach='cd ~/.cache/zsh'
 #NOTE: Oh My Zsh custom alias
 # alias alcf='nvim ~/.oh-my-zsh/custom/alias.zsh'
-alias sapps="fd -tx -tl . '/usr/bin' | sk"
-alias uapps="fd -tx -tl . '/home/dakota' | sk"
-# alias apps='fd -tx -tl -p "/usr/bin" | sk'
+alias sapps="fd -tx -tl . '/usr/bin' | $FZF_TOOL"
+alias uapps="fd -tx -tl . '/home/dakota' | $FZF_TOOL"
+# alias apps='fd -tx -tl -p "/usr/bin" | $FZF_TOOL'
 alias bkcf='nvim ~/.oh-my-zsh/custom/keybinds.zsh'
-alias alfz='alias | sk --ansi --preview "echo {2..}" --query="$BUFFER" | awk -F"=" "{ print $1 }"'
-alias rmfz='fd -tf . | sk --multi --preview "bat {}" | xargs rm'
-alias rmdfz='fd -td . | sk --multi --preview "tre {}" | xargs rm -rf'
-# alias alfz='alias | sed "s/=//" | sk --ansi --preview "echo {2..}" --query="$BUFFER" | awk -F"=" "{ print $1 }"'
-# alias alfz='alias | sed "s/=[^=]*$//" | awk -F"=" "{ print $1 }" | sk --ansi --preview "alias | grep {1}" --query="$BUFFER"'
-alias alfzt="alias | sed 's/=[^=]*$//' | sk --preview 'echo {2}'"
-# alias alfzt='alias | sk --ansi --color=always --cmd="alias | sed \"s/=.*//\""'
+alias alfz='alias | $FZF_TOOL --ansi --preview "echo {2..}" --query="$BUFFER" | awk -F"=" "{ print $1 }"'
+alias rmfz='fd -tf . | $FZF_TOOL  --preview "bat {}" | xargs rm'
+alias rmdfz='fd -td . | $FZF_TOOL  --preview "tre {}" | xargs rm -rf'
+# alias alfz='alias | sed "s/=//" | $FZF_TOOL --ansi --preview "echo {2..}" --query="$BUFFER" | awk -F"=" "{ print $1 }"'
+# alias alfz='alias | sed "s/=[^=]*$//" | awk -F"=" "{ print $1 }" | $FZF_TOOL --ansi --preview "alias | grep {1}" --query="$BUFFER"'
+alias alfzt="alias | sed 's/=[^=]*$//' | $FZF_TOOL --preview 'echo {2}'"
+# alias alfzt='alias | $FZF_TOOL --ansi --color=always --cmd="alias | sed \"s/=.*//\""'
 alias alrg='alias | rg'
 # cut -d "=" -f 1
 alias nv='nvim'
 alias snv='sudo -E -s nvim'
-alias nvfz="sk --multi --bind 'enter:become(nvim {+})'"
-# alias nvfz="fzf --multi --bind 'enter:become(nvim {+})'"
-# alias nvsk="fd --type f | sk --ansi --preview='preview.sh {}' -m -b 'enter:become(nvim {+})'"
-alias nvsk="sk --ansi -i -c 'fd --type f --color=always' --preview='bat "{}"' -m -b 'enter:become(nvim {+})'"
-alias nvrg="sk --ansi -i -c 'rg --color=always --line-number "{}"' -b 'enter:become(nvim {+})'"
-alias nvt="sk --ansi -i -c 'fd --type f --color=always' --preview 'bat --color=always --style=full "{}"'"
+alias nvfz="$FZF_TOOL  --bind 'enter:become(nvim {+})'"
+# alias nvfz="$FZF_TOOL  --bind 'enter:become(nvim {+})'"
+# alias nv$FZF_TOOL="fd --type f | $FZF_TOOL --ansi --preview='preview.sh {}' -m -b 'enter:become(nvim {+})'"
+alias nv$FZF_TOOL="$FZF_TOOL --ansi -i -c 'fd --type f --color=always' --preview='bat "{}"' -m -b 'enter:become(nvim {+})'"
+alias nvrg="$FZF_TOOL --ansi -i -c 'rg --color=always --line-number "{}"' -b 'enter:become(nvim {+})'"
+alias nvt="$FZF_TOOL --ansi -i -c 'fd --type f --color=always' --preview 'bat --color=always --style=full "{}"'"
 alias nvlz='cd ~/.local/share/nvim/lazy'
 alias zdbs='zsh -xvic exit &> ~/.cache/zsh/startup_logs/zsh-debug.log'
-# alias nvfz='fzf --print0 | xargs -0 -o nvim'
+# alias nvfz='$FZF_TOOL --print0 | xargs -0 -o nvim'
 #NOTE: Terraform
-alias tffz="terraform state list | sk --ansi --preview='terraform state show {}'"
+alias tffz="terraform state list | $FZF_TOOL --ansi --preview='terraform state show {}'"
 alias tfvs="terraform -version"
 alias tfh="terraform -help"
 alias tfrf="terraform refresh"
@@ -485,8 +492,8 @@ alias npmp='zip -qr'
 
 #NOTE: AWS Alias
 awsup='$EDITOR ~/linux_tools/aws_install.sh'
-afs='sk --ansi -i -c "aws s3 ls" --color=always'
-# awsfs3='sk --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Si {1}"'
+afs='$FZF_TOOL --ansi -i -c "aws s3 ls" --color=always'
+# awsfs3='$FZF_TOOL --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Si {1}"'
 
 #NOTE: Common-fate Granted
 # alias assume=". assume"
@@ -537,7 +544,7 @@ alias zeph='cd $HOME/personal/zmk/zephyr'
 
 #HACK: Workaround for wayland bug on fcad, running with xwayland for now
 alias fcad='env -u WAYLAND_DISPLAY -u QT_QPA_PLATFORM /usr/bin/freecad'
-alias fcaddesktop='snv /usr/share/applications/org.freecadweb.FreeCAD.desktop'
+alias fcadde$FZF_TOOLtop='snv /usr/share/applications/org.freecadweb.FreeCAD.de$FZF_TOOLtop'
 alias fcadd='env -u WAYLAND_DISPLAY -u QT_QPA_PLATFORM /home/dakota/linux_tools/FreeCAD/build/bin/FreeCAD'
 
 alias smkgcf='snv /etc/makepkg.conf'

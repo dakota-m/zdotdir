@@ -46,6 +46,8 @@ romkatv/powerlevel10k kind:fpath
 mattmc3/zman
 # ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/terraform
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+zdharma-continuum/zsh-diff-so-fancy
 # unixorn/fzf-zsh-plugin kind:fpath path:completions
 # unixorn/fzf-zsh-plugin path:/
 unixorn/fzf-zsh-plugin kind:defer
@@ -55,9 +57,10 @@ unixorn/git-extra-commands
 # unixorn/fzf-zsh-plugin kind:fpath path:completions
 zsh-users/zsh-completions kind:fpath path:src
 # zsh-users/zsh-syntax-highlighting
+jeffreytse/zsh-vi-mode
 zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions kind:defer
-zsh-users/zsh-history-substring-search kind:defer
-jeffreytse/zsh-vi-mode
+# zsh-users/zsh-history-substring-search
+zdharma-continuum/history-search-multi-word kind:defer
 
 # vi: ft=config

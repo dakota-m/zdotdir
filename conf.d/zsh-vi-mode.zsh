@@ -8,6 +8,7 @@ export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 # export ZVM_VI_HIGHLIGHT_BACKGROUND=#DF730D
 export ZVM_VI_HIGHLIGHT_BACKGROUND=#56DB3A
+export ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
 # Do the initialization when the script is sourced (i.e. Initialize instantly)
 # export ZVM_INIT_MODE=sourcing
@@ -25,3 +26,5 @@ function zvm_after_lazy_keybindings() {
   # bindkey -M vicmd 's' your_normal_widget
   # bindkey -M visual 'n' your_visual_widget
 }
+
+bindkey -M viins '^R' fzf-history-widget
