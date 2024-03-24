@@ -20,6 +20,7 @@ unset _xdgdir
 # xdg aliases
 alias data='cd $XDG_DATA_HOME'
 alias cache='cd $XDG_CACHE_HOME'
+alias proj='cd $XDG_PROJECTS_DIR'
 
 #
 # Shell utils
