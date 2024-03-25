@@ -51,6 +51,8 @@ zdharma-continuum/zsh-diff-so-fancy
 # unixorn/fzf-zsh-plugin path:/
 unixorn/fzf-zsh-plugin kind:defer
 unixorn/git-extra-commands
+# z-shell/F-Sy-H
+
 # ohmyzsh/ohmyzsh path:plugins/fzf
 
 # unixorn/fzf-zsh-plugin kind:fpath path:completions
