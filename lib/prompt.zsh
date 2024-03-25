@@ -5,7 +5,6 @@
 # 16.2.8 Prompting
 setopt prompt_subst       # Expand parameters in prompt variables.
 setopt transient_rprompt  # Remove right prompt artifacts from prior commands.
-# setopt prompt_sp         # Allow prompt to be split on multiple lines.
 
 function prompt_p10k_setup {
   if [[ -n "$1" ]]; then
@@ -18,13 +17,13 @@ function prompt_p10k_setup {
 function prompt_starship_setup {
   # When loaded through the prompt command, these prompt_* options will be enabled
   # HACK: prompt_cr gives error with p10k theme
-  prompt_opts=(cr percent sp subst)
   # prompt_opts=(percent sp subst)
+  prompt_opts=(cr percent sp subst)
 
   if [[ -n "$1" ]]; then
     local -a configs=(
       $__zsh_config_dir/themes/$1.toml(N)
-      # ${XDG_CONFIG_HOME:-$HOME/.config}/starship/$1.toml(N)
+      ${XDG_CONFIG_HOME:-$HOME/.config}/starship/$1.toml(N)
     )
     (( $#configs )) && export STARSHIP_CONFIG=$configs[1]
   fi
