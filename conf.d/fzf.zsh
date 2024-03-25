@@ -8,23 +8,23 @@ if [[ -f /usr/share/fzf/completion.zsh && -f /usr/share/fzf/key-bindings.zsh ]];
 fi
 
 # TODO: using defer overwrites this setting
-export FZF_DEFAULT_OPTS=<< EOL
---layout=reverse
---info=inline
---height=80%
---multi
---preview='([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tre -c=always {} | less)) || echo {} 2>/dev/null | head -n 200'
---preview-window=':hidden'
---color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
---prompt='∼ '
---pointer='▶'
---marker='✓'
---bind '?:toggle-preview'
---bind 'ctrl-a:select-all'
---bind 'ctrl-e:execute(vim {+} >/dev/tty)'
---bind 'ctrl-v:execute(code {+})'
---bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
-EOL
+# export FZF_DEFAULT_OPTS=<< EOL
+# --layout=reverse
+# --info=inline
+# --height=80%
+# --multi
+# --preview='([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tre -c=always {} | less)) || echo {} 2>/dev/null | head -n 200'
+# --preview-window=':hidden'
+# --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+# --prompt='∼ '
+# --pointer='▶'
+# --marker='✓'
+# --bind '?:toggle-preview'
+# --bind 'ctrl-a:select-all'
+# --bind 'ctrl-e:execute(vim {+} >/dev/tty)'
+# --bind 'ctrl-v:execute(code {+})'
+# --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+# EOL
 
 # export FZF_BASE="$(which fzf)"
 # export FZF_PATH="/home/dakota/tools/fzf"

@@ -9,7 +9,8 @@
 # - https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 #
 
-FZF_TOOL='fzf'
+FZF_TOOL='fzf' # NOTE: {fzf, sk, fzy}
+# FZF_TOOL='sk' # NOTE: {fzf, sk, fzy}
 
 # NOTE: Reload Zsh
 alias rl='exec zsh'
@@ -319,11 +320,11 @@ alias parc='cd ~/.cache/paru/clone'
 
 #NOTE: YAY AUR Aliases
 alias yayh='yay --help'
-alias yays='yay -Slq | $FZF_TOOL  --ansi --preview "yay -Si {1}" --preview-window "right,75" | xargs -ro yay -S'
+alias yays='yay -S'
+alias yaysr='yay -Slq | $FZF_TOOL --ansi --preview "yay -Si {1}" --preview-window "right,75" | xargs -ro yay -S'
 alias yayi="yay -Qe | cut -f 1 -d ' ' | $FZF_TOOL  --ansi --preview 'yay -Qi {1}'"
-alias yayfz='yay -Slaq | sed -e "/installed/d" | $FZF_TOOL --color=dark -m --ansi --preview "bat << EOL
-   | paru -Si {}" --preview-window "top,50%" | xargs -ro paru -S
-EOL'
+alias yayfz='yay -Slaq | sed -e "/installed/d" | $FZF_TOOL --ansi --preview "bat \
+   | paru -Si {}" --preview-window "top,50%" | xargs -ro paru -S'
 
 #NOTE: Systemctl Aliases
 alias sc='systemctl'
