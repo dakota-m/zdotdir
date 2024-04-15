@@ -5,7 +5,7 @@
 
 export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 
-# TODO: figuer out where to put these
+# TODO: figure out where to put these
 fpath=(/home/dakota/.granted/zsh_autocomplete/assume/ $fpath)
 fpath=(/home/dakota/.granted/zsh_autocomplete/granted/ $fpath)
 
@@ -17,6 +17,9 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 # export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
 # export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg:-/run/user/1000}
 export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
+
+export CC="aocc-clang"
+export CXX="aocc-clang++"
 
 # Fish-like dirs
 : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}

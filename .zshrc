@@ -18,12 +18,16 @@ for _zrc in $ZDOTDIR/lib/*.zsh; source $_zrc; unset _zrc
 # ...
 source $ZDOTDIR/functions/ghsrc
 source /home/dakota/scripts/rsync.zsh
+source /opt/aocc/setenv_AOCC.sh
+source /usr/bin/aws_zsh_completer.sh
+source /usr/share/clang/bash-autocomplete.sh
+source /home/dakota/.config/broot/launcher/bash/br
 
 # Uncomment to manually initialize completion system if you want, or let kickstart.zsh
 # do it automatically.
-ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
-[[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
-autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
+# ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
+# [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
+# autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
 
 # Uncomment to manually set your prompt, or let kickstart.zsh do it automatically.
 autoload -Uz promptinit && promptinit
