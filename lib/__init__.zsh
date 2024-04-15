@@ -65,8 +65,11 @@ unset _brewcmd
 path=(
   $HOME/{,s}bin(N)
   $HOMEBREW_PREFIX/{,s}bin(N)
+  /bin(N)
   /opt/*(N)
   /opt/*/{,s}bin(N)
   /usr/{*,local}/{,s}bin(N)
+  $HOME/.local/share/gem/ruby/3.0.0/bin/neovim-ruby-host(N)
+  $HOME/.local/share/gem/bin(N)
   $path
 )
