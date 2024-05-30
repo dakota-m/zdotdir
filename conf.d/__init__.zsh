@@ -23,6 +23,7 @@ path=(
   $path
 
   # apps
+  /bin(N)
   /{usr/local,opt}/opt/ruby/bin(N)
   /{usr/local,opt}/lib/ruby/gems/*/bin(N)
   /{usr/local,opt}/bin(N)
