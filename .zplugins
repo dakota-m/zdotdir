@@ -1,14 +1,11 @@
 #
-# .zsh_plugins.txt - antidote plugins file
+# .zplugins.txt - antidote plugins file
 #
 
 # Load near the top so you get p10k's instaprompt if you need it.
 #$ZSH_CUSTOM path:plugins/p10k-instaprompt
 #mattmc3/zfunctions
 #$ZSH_CUSTOM path:plugins/xdg
-
-# Zephyr
-mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 # Custom
 #$ZSH_CUSTOM path:plugins/abbreviations
@@ -24,6 +21,10 @@ ohmyzsh/ohmyzsh path:plugins/extract
 # Editor
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+
+# macOS
+ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
+zshzoo/macos conditional:is-macos
 
 # Prompt
 sindresorhus/pure kind:fpath
