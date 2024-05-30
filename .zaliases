@@ -444,6 +444,8 @@ alias tfgr="terraform graph"
 alias tfsp='terraform state pull'
 alias tfg='terraform get' #NOTE: Download modules but not initalize
 alias tfgu='terraform get -update' #NOTE: Check for modules updates
+alias tfwl='terraform workspace list'
+alias tfws='terraform workspace select'
 
 #NOTE: Terraform Switch
 alias tfsw='tfswitch'
