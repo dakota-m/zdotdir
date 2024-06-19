@@ -49,5 +49,5 @@ function mycompinit {
   else
     compinit "$compinit_flags" && bashcompinit
   fi
-  compete -C '/bin/aws_completer' aws
+  complete -C '/bin/aws_completer' aws
 }
