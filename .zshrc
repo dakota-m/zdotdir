@@ -16,12 +16,12 @@ for _zrc in $ZDOTDIR/lib/*.zsh; source $_zrc; unset _zrc
 
 # Add more zsh config here, or in conf.d...
 # ...
-source $ZDOTDIR/functions/ghsrc
-source /home/dakota/scripts/rsync.zsh
-source /opt/aocc/setenv_AOCC.sh
-source /usr/bin/aws_zsh_completer.sh
-source /usr/share/clang/bash-autocomplete.sh
-source /home/dakota/.config/broot/launcher/bash/br
+# source $ZDOTDIR/functions/ghsrc
+# source /home/dakota/scripts/rsync.zsh
+# source /opt/aocc/setenv_AOCC.sh
+# source /usr/bin/aws_zsh_completer.sh
+# source /usr/share/clang/bash-autocomplete.sh
+# source /home/dakota/.config/broot/launcher/bash/br
 
 # Uncomment to manually initialize completion system if you want, or let kickstart.zsh
 # do it automatically.
@@ -32,7 +32,7 @@ source /home/dakota/.config/broot/launcher/bash/br
 # Uncomment to manually set your prompt, or let kickstart.zsh do it automatically.
 autoload -Uz promptinit && promptinit
 # prompt p10k mmc
-prompt starship starship
+# prompt starship starship
 
 # IMPORTANT: Run zshrc-post at the very end of your .zshrc. If you don't, kickstart.zsh
 # will try to run it for you via a precmd hook, which might work fine, but might

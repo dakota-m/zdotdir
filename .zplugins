@@ -10,7 +10,7 @@
 mattmc3/zephyr path:plugins/completion
 
 # Custom
-$ZSH_CUSTOM path:plugins/asdf
+# $ZSH_CUSTOM path:plugins/asdf
 # $ZSH_CUSTOM path:plugins/gh
 $ZSH_CUSTOM path:plugins/git
 # $ZSH_CUSTOM path:plugins/golang
@@ -19,9 +19,9 @@ $ZSH_CUSTOM path:plugins/fzf
 # $ZSH_CUSTOM path:plugins/otp
 # $ZSH_CUSTOM path:plugins/python
 # $ZSH_CUSTOM path:plugins/skim
-$ZSH_CUSTOM path:plugins/wezterm
+# $ZSH_CUSTOM path:plugins/wezterm
 # $ZSH_CUSTOM path:plugins/aur
-$ZSH_CUSTOM path:plugins/xdg
+# $ZSH_CUSTOM path:plugins/xdg
 
 # Utils
 romkatv/zsh-bench kind:path
@@ -34,8 +34,8 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 # ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 
 # macOS
-ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
-zshzoo/macos conditional:is-macos
+# ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
+# zshzoo/macos conditional:is-macos
 
 # Prompt
 sindresorhus/pure kind:fpath
