@@ -21,7 +21,7 @@ function zvm_config() {
 
 # The plugin will auto execute this zvm_after_lazy_keybindings function
 function zvm_after_lazy_keybindings() {
-  zvm_binkkey -M visual 'y' zvm_vi_yank
+  zvm_bindkey -M visual 'y' zvm_vi_yank
   # zvm_bindkey viins '^R' fzf-history-widget
   # zvm_bindkey vicmd '^R' fzf-history-widget
   # bindkey -M vicmd 's' your_normal_widget
