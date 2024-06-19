@@ -18,6 +18,8 @@ alias rl='exec zsh'
 # NOTE: ZLE
 alias zleal='zle -al' # list all zle widgets available
 
+alias exterm='export TERM=xterm-256color'
+
 # better defaults
 alias mkdir='mkdir -p'
 alias colors='nvim ~/scripts/colors.zsh'
