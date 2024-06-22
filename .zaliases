@@ -276,7 +276,9 @@ alias nasems='export NASMS="/mnt/NAS/Media/Music"'
 #NOTE: MPV alias
 alias mpvcf='nvim ~/.config/mpv/mpv.conf'
 
-alias cat='bat --style full'
+if command -v bat &> /dev/null; then
+  alias cat='bat --style full'
+fi
 # alias wget='aria2c'
 #alias vim='nvim'
 alias du='gdu -x -g'
