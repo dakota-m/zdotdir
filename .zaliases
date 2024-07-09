@@ -88,6 +88,8 @@ alias rmrf='rm -rf'
 alias envrg='env | rg'
 alias chmx='chmod +x'
 
+alias sshb='ssh -i ~/.ssh/brocade root@10.12.32.50'
+
 # NOTE: Wezterm Aliases
 alias wz='wezterm'
 alias wzimg='wezterm imgcat'
