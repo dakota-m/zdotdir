@@ -21,17 +21,20 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 export CC="aocc-clang"
 export CXX="aocc-clang++"
 
+# export CC="gcc"
+# export CXX="gcc++"
+
 # export RUSTFLAGS="-C target-cpu=znver3"
 
 export OMP_NUM_THREADS=22
-# export GOMP_CPU_AFFINITY="0-{24-2}"
+export GOMP_CPU_AFFINITY="0-23"
 
 # AOCC Compiler Libraries
-export AOCL_ROOT=/opt/aocl/4.2.0/aocc;
-export C_INCLUDE_PATH=/opt/aocl/4.2.0/aocc/include:$C_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=/opt/aocl/4.2.0/aocc/include:$CPLUS_INCLUDE_PATH
-export LD_LIBRARY_PATH=/opt/aocl/4.2.0/aocc/lib:$LD_LIBRARY_PATH
-export LIBRARY_PATH=/opt/aocl/4.2.0/aocc/lib:$LIBRARY_PATH
+export AOCL_ROOT=/opt/aocl/aocc;
+export C_INCLUDE_PATH=/opt/aocl/aocc/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=/opt/aocl/aocc/include:$CPLUS_INCLUDE_PATH
+export LD_LIBRARY_PATH=/opt/aocl/aocc/lib:$LD_LIBRARY_PATH
+export LIBRARY_PATH=/opt/aocl/aocc/lib:$LIBRARY_PATH
 
 # Fish-like dirs
 : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
