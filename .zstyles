@@ -17,6 +17,12 @@ zstyle ':antidote:repo' path $antidote_repo
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':antidote:plugin:*' defer-options '-p'
 
+#
+# Kickstart
+#
+
+zstyle ':kickstart.zsh:feature:*' 'use-cache' yes
+
 # From compinit docs:
 # To avoid these tests and make all files found be used without asking, use the
 # option -u, and to make compinit silently ignore all insecure files and directories
