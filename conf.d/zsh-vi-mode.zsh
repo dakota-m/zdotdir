@@ -35,3 +35,10 @@ function zvm_after_lazy_keybindings() {
 }
 
 # bindkey -M viins '^R' fzf-history-widget
+
+# Yank function with wayland support
+function zvm_vi_yank() {
+  zvm_yank
+  printf %s "$CUTBUFFER" | wl-copy
+  zvm_exit_visual_mode
+}
