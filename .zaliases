@@ -373,6 +373,7 @@ if command -v eza &> /dev/null; then
   alias lt='eza -T -L 4'
   # alias ls='eza -alF — color=always — sort=size | grep -v /'
   alias lrg='eza -a | rg'
+  alias lr='eza --long --sort=modified'
 fi
 
 #NOTE: tldr aliases
