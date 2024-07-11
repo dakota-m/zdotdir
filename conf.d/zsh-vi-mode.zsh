@@ -39,6 +39,12 @@ function zvm_after_lazy_keybindings() {
 # Yank function with wayland support
 function zvm_vi_yank() {
   zvm_yank
-  printf %s "$CUTBUFFER" | wl-copy
+  if command -v wl-copy >/dev/null 2>&1; then
+    printf %s "$CUTBUFFER" | wl-copy
+  elif command -v pbcopy >/dev/null 2>&1; then
+    printf %s "$CUTBUFFER" | pbcopy
+  else
+    continue
+  fi
   zvm_exit_visual_mode
 }
