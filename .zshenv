@@ -18,23 +18,25 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 # export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg:-/run/user/1000}
 export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 
-export CC="aocc-clang"
-export CXX="aocc-clang++"
+if command -v aocc-clang > /dev/null 2>&1; then
+  export CC="aocc-clang"
+  export CXX="aocc-clang++"
+  export OMP_NUM_THREADS=22
+  export GOMP_CPU_AFFINITY="0-23"
+  # AOCC Compiler Libraries
+  export AOCL_ROOT=/opt/aocl/aocc;
+  export C_INCLUDE_PATH=/opt/aocl/aocc/include:$C_INCLUDE_PATH
+  export CPLUS_INCLUDE_PATH=/opt/aocl/aocc/include:$CPLUS_INCLUDE_PATH
+  export LD_LIBRARY_PATH=/opt/aocl/aocc/lib:$LD_LIBRARY_PATH
+  export LIBRARY_PATH=/opt/aocl/aocc/lib:$LIBRARY_PATH
+fi
+
+export LC_ALL=en_US.UTF-8
 
 # export CC="gcc"
 # export CXX="gcc++"
 
 # export RUSTFLAGS="-C target-cpu=znver3"
-
-export OMP_NUM_THREADS=22
-export GOMP_CPU_AFFINITY="0-23"
-
-# AOCC Compiler Libraries
-export AOCL_ROOT=/opt/aocl/aocc;
-export C_INCLUDE_PATH=/opt/aocl/aocc/include:$C_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=/opt/aocl/aocc/include:$CPLUS_INCLUDE_PATH
-export LD_LIBRARY_PATH=/opt/aocl/aocc/lib:$LD_LIBRARY_PATH
-export LIBRARY_PATH=/opt/aocl/aocc/lib:$LIBRARY_PATH
 
 # Fish-like dirs
 : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
