@@ -27,6 +27,7 @@ alias colors='nvim ~/scripts/colors.zsh'
 # mask built-ins with better defaults
 alias ping='ping -c 5'
 alias grep="command grep --exclude-dir={.git,.vscode}"
+alias visudo='sudo EDITOR=nvim visudo'
 
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"
@@ -427,6 +428,7 @@ alias alrg='alias | rg'
 # cut -d "=" -f 1
 alias nv='nvim'
 alias snv='sudo -E -s nvim'
+alias scd='sudo -E -s cd'
 alias nvfz="$FZF_TOOL  --bind 'enter:become(nvim {+})'"
 # alias nvfz="$FZF_TOOL  --bind 'enter:become(nvim {+})'"
 # alias nv$FZF_TOOL="fd --type f | $FZF_TOOL --ansi --preview='preview.sh {}' -m -b 'enter:become(nvim {+})'"
