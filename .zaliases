@@ -187,6 +187,7 @@ alias doc='cd ~/Documents'
 alias pic='cd ~/Pictures'
 alias desk='cd ~/Desktop'
 alias dl='cd ~/Downloads'
+alias notes='cd ~/Documents/obsidian/notes'
 
 #NOTE: Hypr Alias's
 # alias hycf='chezmoi edit ~/.config/hypr/hypr.conf'
