@@ -47,3 +47,23 @@ function zshrc-post {
 # Add hook so that zshrc-post is run in case the user forgot to.
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd zshrc-post  # precmd is the only hook I know to use for this.
+
+
+# Run this at the very end.
+# function zshrc-post {
+#   # Init prompt.
+#   if [[ $TERM == dumb ]]; then
+#     prompt 'off'
+#   else
+#     # Set prompt.
+#     local -a prompt_argv
+#     zstyle -a ':kickstart.zsh:feature:prompt' 'theme' 'prompt_argv'
+#     if (( $#prompt_argv == 0 )); then
+#       if (( $+commands[starship] )); then
+#         prompt_argv=(starship starship)
+#       else
+#         prompt_argv=(off)
+#       fi
+#     fi
+#     prompt "$prompt_argv[@]"
+#   fi

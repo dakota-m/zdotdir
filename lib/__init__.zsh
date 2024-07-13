@@ -8,6 +8,7 @@ alias zprofrc="ZPROFRC=1 zsh"
 
 # Set critical options
 setopt extended_glob
+setopt ALIASES
 
 # Set critical vars
 : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
@@ -18,7 +19,7 @@ setopt extended_glob
 } __zsh_{config,cache,user_data}_dir
 
 # Define critical functions
-##? Cache the results of an eval command
+#? Cache the results of an eval command
 function cached-eval {
   emulate -L zsh; setopt local_options extended_glob
   (( $# >= 2 )) || return 1
@@ -63,8 +64,13 @@ unset _brewcmd
 # Build remaining path.
 path=(
   $HOME/{,s}bin(N)
-  $HOME/.local/bin(N)
   $HOMEBREW_PREFIX/{,s}bin(N)
-  /usr/local/{,s}bin(N)
+  $HOME/.local/bin(N)
+  /bin(N)
+  /opt/*(N)
+  /opt/*/{,s}bin(N)
+  /usr/{*,local}/{,s}bin(N)
+  $HOME/.local/share/gem/ruby/3.0.0/bin/neovim-ruby-host(N)
+  $HOME/.local/share/gem/bin(N)
   $path
 )
