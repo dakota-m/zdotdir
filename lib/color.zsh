@@ -57,7 +57,7 @@ if (( $+commands[gls] )); then
 fi
 
 # Set colors for ls.
-if (( ! $+commands[dircolors] )) || is-macos; then
+if (( ! $+commands[dircolors] ));then # || is-macos; then
   alias ls="${aliases[ls]:-ls} -G"
 else
   alias ls="${aliases[ls]:-ls} --color=auto"
