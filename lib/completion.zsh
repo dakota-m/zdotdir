@@ -12,6 +12,7 @@ setopt auto_menu         # Show completion menu on a successive tab press.
 setopt auto_param_slash  # If completed parameter is a directory, add a trailing slash.
 setopt complete_in_word  # Complete from both ends of a word.
 setopt NO_menu_complete  # Do not autoselect the first completion entry.
+setopt LIST_TYPES        # Show the type of file in the completion list.
 
 # Initialize completions.
 function mycompinit {
@@ -32,20 +33,21 @@ function mycompinit {
   fi
 
   # Initialize completions
-  autoload -Uz compinit
+  autoload -Uz compinit && autoload bashcompinit
   if zstyle -t ':kickstart.zsh:feature:completion' 'use-cache'; then
     # Load and initialize the completion system ignoring insecure directories with a
     # cache time of 20 hours, so it should almost always regenerate the first time a
     # shell is opened each day.
     local compdump_cache=($compdump(Nmh-20))
     if (( $#compdump_cache )); then
-      compinit -C $compinit_flags
+      compinit -C $compinit_flags && bashcompinit
     else
-      compinit $compinit_flags
+      compinit "$compinit_flags" && bashcompinit
       # Ensure $compdump is younger than the cache time even if it isn't regenerated.
       touch "$compdump"
     fi
   else
-    compinit $compinit_flags
+    compinit "$compinit_flags" && bashcompinit
   fi
+  complete -C '/bin/aws_completer' aws
 }

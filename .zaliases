@@ -9,25 +9,28 @@
 # - https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 #
 
-# single character shortcuts - be sparing!
-alias _=sudo
-alias l=ls
-alias g=git
+FZF_TOOL='fzf' # NOTE: {fzf, sk, fzy}
+# FZF_TOOL='sk' # NOTE: {fzf, sk, fzy}
+
+# NOTE: Reload Zsh
+alias rl='exec zsh'
+
+# NOTE: ZLE
+alias zleal='zle -al' # list all zle widgets available
+
+alias exterm='export TERM=xterm-256color'
+
+# better defaults
+alias mkdir='mkdir -p'
+alias colors='nvim ~/scripts/colors.zsh'
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
-alias vi=vim
-alias nv=nvim
 alias grep="command grep --exclude-dir={.git,.vscode}"
+alias visudo='sudo EDITOR=nvim visudo'
 
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"
-
-# more ways to ls
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias lsa="ls -aG"
-alias ldot='ls -ld .*'
 
 # fix typos
 alias get=git
@@ -45,10 +48,6 @@ alias datestamp="date '+%Y-%m-%d'"
 alias isodate="date +%Y-%m-%dT%H:%M:%S%z"
 alias utc="date -u +%Y-%m-%dT%H:%M:%SZ"
 alias unixepoch="date +%s"
-
-# find
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
 
 # homebrew
 alias brewup="brew update && brew upgrade && brew cleanup"
@@ -71,28 +70,544 @@ alias please=sudo
 alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 alias cls="clear && printf '\e[3J'"
+alias zet='$HOME/scripts/zet.sh'
+alias obp='$HOME/scripts/obp.zsh'
 
 # print things
 alias print-fpath='for fp in $fpath; do echo $fp; done; unset fp'
 alias print-path='echo $PATH | tr ":" "\n"'
 alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 
-# auto-orient images based on exif tags
-alias autorotate="jhead -autorot"
+# mask built-ins with better defaults
+#NOTE: prefer neovim over vim
+if command -v nvim &> /dev/null ;then
+    # alias vi='nvim'
+    alias vim='nvim'
+    alias nv='nvim'
+fi
+alias vi=vim
+alias tch='touch'
+alias rmrf='rm -rf'
+alias envrg='env | rg'
+alias chmx='chmod +x'
 
-# dotfiles
-alias dotf='cd "$DOTFILES"'
-alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
-alias dotfl="cd \$DOTFILES/local"
-alias fdot='cd ${XDG_CONFIG_HOME:-~/.config}/fish'
-alias fconf=fdot
-alias zdot='cd $ZDOTDIR'
+alias sshb='ssh -i ~/.ssh/brocade root@10.12.32.50'
 
-# java
-alias setjavahome="export JAVA_HOME=\`/usr/libexec/java_home\`"
+# NOTE: Wezterm Aliases
+alias wz='wezterm'
+alias wzimg='wezterm imgcat'
+alias wzh='wezterm help'
+alias wzk='wezterm show-keys'
+alias bk='bindkey'
+alias wzssh='wezterm ssh'
+alias wzc='wezterm connect'
+alias wzcl='wezterm cli'
+alias wzsd='wezterm ssh SSHMUX:10.12.32.17'
+alias wzcd='wezterm cli spawn --domain-name SSHMUX:10.12.32.17'
 
-# todo-txt
-alias t="todo.sh"
-alias todos="$VISUAL $HOME/Desktop/todo.txt"
+# NOTE: Kitty Aliases
+alias kt='kitty'
+alias kit='kitten'
+alias kits='kitten ssh'
+
+# more ways to ls
+alias ll='ls -lh'
+alias la='ls -lAh'
+alias ldot='ls -ld .*'
+
+# fix common typos
+alias quit='exit'
+alias cd..='cd ..'
+
+# Cache
+alias cach='cd ~/.cache'
+alias nvcach='cd ~/.cache/nvim'
+
+# tar
+alias tarls="tar -tvf"
+alias untar="tar -xf"
+alias untard="tar -xf --directory="
+
+# find
+# alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+# url encode/decode
+alias urldecode='python3 -c "import sys, urllib.parse as ul; \
+    print(ul.unquote_plus(sys.argv[1]))"'
+alias urlencode='python3 -c "import sys, urllib.parse as ul; \
+    print (ul.quote_plus(sys.argv[1]))"'
+
+# misc
+alias please=sudo
+alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
+alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
+alias zdot='cd ${ZDOTDIR:-~}'
+
+#NOTE: Rust alaises
+alias ru='rustup'
+alias ruh='rustup help'
+alias rup='rustup update'
+alias rucu='rustup check'
+alias rutc='rustup toolchain'
+alias rut='rustup target'
+alias rus='rustup show'
+
+#NOTE: Cargo aliases
+alias cg='cargo'
+alias cgh='cargo help'
+alias cgu='cargo update'
+alias cgn='cargo new'
+alias cgin='cargo init'
+alias cgi='cargo install'
+alias cgil='cargo install --list'
+alias cgui='cargo uninstall'
+alias cgb='cargo build --jobs 22'
+alias cgcl='cargo clean'
+alias cgc='cargo check'
+alias cga='cargo add'
+alias cgrm='cargo remove'
+alias cgs='cargo search'
+alias cgt='cargo test'
+alias cgut='cargo update --target'
+
+#NOTE: dotfile dirs
+alias dot='cd ~/.config'
+alias dote='cd ~/.config/dotfile_examples'
+alias dotehy='cd ~/.config/dotfile_examples/hyprland-examples'
+alias dotecz='cd ~/.config/dotfile_examples/chezmoi_examples'
+alias dotnv='cd ~/.config/nvim'
+alias dotlz='cd ~/.local/share/nvim/lazy/LazyVim/lua/lazyvim'
+alias dotlc='cd ~/.local'
+alias dothy='cd ~/.config/hypr'
+alias dotz='cd ~/.config/zsh'
+alias dfz='fd -Ha -tf -tl -c always --base-directory "/home/dakota" "(conf|config|toml|rc)" -E ".ca*/*" \
+  -E "*go/*" -E "*\.svg*" -E "*\.[cpph]" -E "*\.[html]" -E "*\.[json]" -E "*\.[oi]*" -S "-1ki" | sk --multi --ansi | xargs -ro $EDITOR'
+# alias dotfz='fd -H -tf -tl -c always -e "[^/]*\.(conf|config|ini|toml|rc)$" | $FZF_TOOL  --ansi | xargs -ro $EDITOR {}'
+
+#NOTE: Common Dir Aliases
+alias doc='cd ~/Documents'
+alias pic='cd ~/Pictures'
+alias desk='cd ~/Desktop'
+alias dl='cd ~/Downloads'
+alias notes='cd ~/Documents/obsidian/notes'
+
+#NOTE: Hypr Alias's
+# alias hycf='chezmoi edit ~/.config/hypr/hypr.conf'
+# alias hylcf='chezmoi edit ~/.config/hypr/hyprland.conf'
+# alias wbcf='chezmoi edit ~/.config/waybar/config'
+alias hycf='nvim ~/.config/hypr/hypr.conf'
+alias hylcf='nvim ~/.config/hypr/hyprland.conf'
+alias wbcf='nvim ~/.config/waybar/config'
+alias hycl='hyprctl clients'
+alias hctl='hyprctl'
+alias hycm='hyprctl monitors'
+
+#NOTE: Chezmoi Alias's
+alias chzh='chezmoi help'
+alias chzcf='nvim ~/.config/chezmoi/chezmoi.toml'
+alias chzd='cd ~/.local/share/chezmoi/'
+alias chz='chezmoi'
+alias chzcd='chezmoi cd'
+alias chza='chezmoi add'
+alias chzap='chezmoi apply'
+alias chzapd='chezmoi apply -n'
+alias chzat='chezmoi add --template'
+alias chzra='chezmoi re-add'
+alias chzdr='chezmoi doctor'
+alias chzdf='chezmoi diff'
+alias chzst='chezmoi status'
+alias chzup='chezmoi update'
+alias chzrm='chezmoi remove'
+alias chzsr='chezmoi secret'
+alias chzdc='chezmoi decrypt'
+alias chzec='chezmoi encrypt'
+alias chzc='chezmoi cat'
+alias chzcc='chezmoi cat-config'
+alias chze='chezmoi edit'
+alias chzew='chezmoi edit --watch'
+alias chzmg='chezmoi managed'
+alias chzumg='chezmoi unmanaged'
+alias chzf='chezmoi forget'
+alias chzd='chezmoi data'
+alias chzm='chezmoi merge'
+alias chzma='chezmoi merge-all'
+alias chzp='chezmoi purge'
+alias chzg='chezmoi git'
+alias chzgn='chezmoi generate'
+alias chzup='chezmoi update'
+alias chzv='chezmoi verify'
+alias chzsm='chezmoi secret'
+alias chzig='chezmoi ignored'
+alias chzim='chezmoi import'
+alias chzi='chezmoi init'
+alias chzdu='chezmoi dump'
+alias chzduc='chezmoi dump-config'
+alias chzect='chezmoi edit-config-template'
+alias chzecf='chezmoi edit-config'
+
+#NOTE: Tridactyl Alias's
+alias tdcf='nvim ~/.config/tridactyl/tridactylrc'
+
+#NOTE: Quick Dir cd
+alias personal='cd ~/personal'
+alias work='cd ~/work'
+alias scripts='cd ~/scripts'
+alias tools='cd ~/tools'
+alias dl='~/Downloads'
+alias cdl='cd ~/Downloads'
+alias deskf='cd /usr/share/applications'
+alias pic='cd ~/Pictures'
+alias servers='cd ~/servers'
+alias proxmox='cd ~/servers/proxmox'
+
+alias sfspx='sudo sshfs -o allow_other,default_permissions dakota@10.12.32.9:/ /home/dakota/servers/proxmox'
+alias sshcf='$EDITOR ~/.ssh/config'
+
+#NOTE: NAS dirs
+alias nasd='cd /mnt/NAS/Downloads/Transmission/'
+alias nasdc='cd /mnt/NAS/Downloads/Transmission/completed/'
+alias nasm='cd /mnt/NAS/Media/'
+alias nasmv='cd /mnt/NAS/Media/Movies/'
+alias nastv='cd /mnt/NAS/Media/TV/'
+alias nasms='cd /mnt/NAS/Media/Music/'
+alias nasf='cd /mnt/NAS/Files/'
+alias nasad='cd /mnt/NAS/AppData/'
+alias nass='cd /mnt/NAS/shared/'
+alias nasp='cd /mnt/NAS/Media/New\ folder/Porn/'
+alias nasep='export NASP="/mnt/NAS/Media/New folder/Porn/"'
+alias nasem='export NASMV="/mnt/NAS/Media/Movies/"'
+alias nasems='export NASMS="/mnt/NAS/Media/Music"'
+
+#NOTE: MPV alias
+alias mpvcf='nvim ~/.config/mpv/mpv.conf'
+
+alias cat='bat --style full'
+# alias wget='aria2c'
+#alias vim='nvim'
+alias du='gdu -x -g'
+# alias du='ncdu -x'
+# alias mdcd='mkdir -p $1 && cd $1'
+# if [ "$USE_ALT_ALIAS" = true ]; then
+#   alias cat='bat -f --theme ansi --style full'
+#   alias wget='aria2c'
+#   alias vim='nvim'
+# fi
+
+#NOTE: Update Neovim from Github
+alias nvup='/home/dakota/scripts/zsh/update_neovim.zsh'
+
+#NOTE: Packages script
+alias pack='nvim ~/linux_tools/packages.zsh'
+
+#NOTE: Pacman Aliases
+alias upmirror='sudo reflector -l 30 -n 15 -f 15 -a 12 --threads 24 -p https --sort rate -c US --save /etc/pacman.d/mirrorlist --verbose'
+# alias upmirror='reflector --verbose -l 30 -n 15 --threads 24 -p https --sort rate --country "United States" --save /etc/pacman.d/mirrorlist'
+alias pacup='sudo pacman -Syu'
+alias pacs='sudo pacman -S'
+alias pacf="pacman -Qu --color=always | sed -e 's/ .*$//' | $FZF_TOOL --ansi -m --color=always --preview 'pacman -Qu --color=always {}' | xargs -ro sudo pacman -S"
+alias pacfz='pacman --color always -Slq | $FZF_TOOL --ansi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
+# alias pacfz='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | $FZF_TOOL --ansi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
+alias pacr="pacman --color always -Qq | cut -f 1 -d ' ' | $FZF_TOOL  --ansi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
+# alias pacr="pacman -Qei | sed '/^[^NO ]/d;/None$/d' | awk 'BEGIN{RS=ORS='\n\n';FS=OFS='\n\\S'} /Optional Deps/ {print $1'\nO'$2}'"
+# alias pacr="pacman -Qei | awk '/^Name/{name=\$3} /^Optional Deps/{print name, \$3}'"
+alias paci="pacman -Qq | $FZF_TOOL --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+alias mkpkg='makepkg'
+alias mkpkgi='makepkg -si'
+
+#NOTE: PARU AUR Aliases
+# alias pars='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /installed/d" | $FZF_TOOL  --ansi --preview "paru -Si {1}" | xargs -ro paru -S'
+alias pars='paru -S'
+alias parf="paru -Qu --color=always | sed -e 's/ .*$//' | $FZF_TOOL --ansi -m --color=always --preview 'paru -Qu --color=always {}' | xargs -r paru -S"
+# alias parfz='paru --color always -Slaq | sed -e "/installed/d" | $FZF_TOOL --color=always  --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
+alias parfz='paru --color always -Slaq | sed -e "/installed/d" | $FZF_TOOL -m --ansi --preview "bat | paru -Si {}" | xargs -ro paru -S'
+alias pargp='paru --color always -Slaq | sed -e "/installed/d" | $FZF_TOOL --color=always -m --ansi --preview "paru --color always -Gp {}" | xargs -r paru -Gp {}'
+# alias parfs='$FZF_TOOL -m -c "paru -Slaq | sed -e "/installed/d"" --preview "paru -Si {}"'
+# alias parfs='$FZF_TOOL --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Si {1}"'
+alias parpkg='$FZF_TOOL --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Gp {1}"'
+alias pari="paru --color always -Qe | $FZF_TOOL  --ansi --preview 'paru -Qi {1}'"
+alias parg="paru --color always -Sla | $FZF_TOOL  --ansi --preview 'paru -Sia {1}'"
+alias parupdb='paru -Sy'
+alias parup='paru -Syyu'
+alias pardb='paru --gendb'
+alias aurup='paru -Sua'
+alias parc='cd ~/.cache/paru/clone'
+
+#NOTE: YAY AUR Aliases
+alias yayh='yay --help'
+alias yays='yay -S'
+alias yaysr='yay -Slq | $FZF_TOOL --ansi --preview "yay -Si {1}" --preview-window "right,75" | xargs -ro yay -S'
+alias yayi="yay -Qe | cut -f 1 -d ' ' | $FZF_TOOL  --ansi --preview 'yay -Qi {1}'"
+alias yayfz='yay -Slaq | sed -e "/installed/d" | $FZF_TOOL --ansi --preview "bat \
+   | paru -Si {}" --preview-window "top,50%" | xargs -ro paru -S'
+
+#NOTE: Systemctl Aliases
+alias sc='sudo systemctl'
+alias scfz='sudo systemctl list-unit-files | $FZF_TOOL --ansi --preview "systemctl status {1}" | xargs -ro sudo systemctl show'
+alias scrs='sudo systemctl restart'
+alias scst='sudo systemctl status'
+alias scs='sudo systemctl start'
+alias scls='sudo systemctl list-unit-files'
+alias scen='sudo systemctl enable'
+#INFO: Netowrk Aliases
+alias netst='systemctl status systemd-networkd.service'
+alias netrs='sudo systemctl restart systemd-networkd.service'
+alias nmsta='sudo systemctl start NetworkManager'
+alias nmstp='sudo systemctl stop NetworkManager'
+alias nmrst='sudo systemctl restart NetworkManager'
+alias nmst='sudo systemctl status NetworkManager'
+alias nmdis='sudo systemctl disable NetworkManager'
+alias nmm$FZF_TOOL='sudo systemctl ma$FZF_TOOL NetworkManager'
+
+#NOTE: Eza ls replacement Aliases
+if command -v eza &> /dev/null; then
+  alias eza='eza --color=always --icons=always -F -H --group-directories-first --git'
+  alias l='eza -ga --no-permissions --group-directories-first'
+  alias la='eza -lah --no-permissions --group-directories-first'
+  alias ll='eza -lh --no-permissions --group-directories-first'
+  alias ls='eza --no-permissions --group-directories-first'
+  alias lsa='eza -lah --no-permissions --group-directories-first'
+  alias ld='eza -D --no-permissions'
+  alias ldh='eza -Dh --no-permissions'
+  alias lm='eza -ls modified --no-permissions --group-directories-first'
+  alias lp='eza -algn@ --group-directories-first'
+  alias lmnt='eza -M --no-permissions'
+  alias lf='eza -fa'
+  alias lh='eza -dx .* --group-directories-first'
+  alias lt='eza -T -L 4'
+  # alias ls='eza -alF — color=always — sort=size | grep -v /'
+  alias lrg='eza -a | rg'
+  alias lr='eza --long --sort=modified'
+fi
+
+#NOTE: tldr aliases
+tldru='tldr -u'
+# alias .../='cd ../../'
+
+#NOTE: Git Aliases
+alias gi='git init'
+alias lg='lazygit'
+alias gdnv='git difftool'
+alias ghbw='gh browse'
+alias ghrc='gh repo clone'
+alias gsur='git submodule update --init --recursive'
+alias gheb='gh extensions browse'
+alias ghdh='gh dash'
+alias ghec='gh eco'
+alias ghs='gh s'
+# alias ghscl='gh s | echo "gh repo clone {}"'
+alias ghb='gh branch'
+alias ghmp='gh markdown-preview'
+alias ghfz='gh f'
+alias ghis='gh i'
+alias ghsc='gh s | gh repo clone'
+alias ghq='gh q'
+
+# source ~/.zshrc is WRONG: variables, hooks, functions are not removed and possiblity of causing infinite processes to start
+alias reload='exec zsh'
+
+# NOTE: Fuzzy Aliases
+# Antidote alias
+alias alcf='$EDITOR ~/.config/zsh/.zaliases'
+alias antc='cd ~/.cache/antidote'
+alias zcach='cd ~/.cache/zsh'
+#NOTE: Oh My Zsh custom alias
+# alias alcf='nvim ~/.oh-my-zsh/custom/alias.zsh'
+alias sapps="fd -tx -tl . '/usr/bin' | $FZF_TOOL"
+alias bapps="fd -tx -tl . '/bin' | $FZF_TOOL"
+alias uapps="fd -tx -tl . '/home/dakota' | $FZF_TOOL"
+alias oapps="fd -tx -tl . '/opt' | $FZF_TOOL"
+# alias apps='fd -tx -tl -p "/usr/bin" | $FZF_TOOL'
+alias bkcf='nvim ~/.oh-my-zsh/custom/keybinds.zsh'
+alias alfz='alias | $FZF_TOOL --ansi --preview "echo {2..}" --query="$BUFFER" | awk -F"=" "{ print $1 }"'
+alias rmfz='fd -tf . | $FZF_TOOL  --preview "bat {}" | xargs rm'
+alias rmdfz='fd -td . | $FZF_TOOL  --preview "tre {}" | xargs rm -rf'
+# alias alfz='alias | sed "s/=//" | $FZF_TOOL --ansi --preview "echo {2..}" --query="$BUFFER" | awk -F"=" "{ print $1 }"'
+# alias alfz='alias | sed "s/=[^=]*$//" | awk -F"=" "{ print $1 }" | $FZF_TOOL --ansi --preview "alias | grep {1}" --query="$BUFFER"'
+alias alfzt="alias | sed 's/=[^=]*$//' | $FZF_TOOL --preview 'echo {2}'"
+# alias alfzt='alias | $FZF_TOOL --ansi --color=always --cmd="alias | sed \"s/=.*//\""'
+alias alrg='alias | rg'
+# cut -d "=" -f 1
+alias nv='nvim'
+alias snv='sudo -E -s nvim'
+alias scd='sudo -E -s cd'
+alias nvfz="$FZF_TOOL  --bind 'enter:become(nvim {+})'"
+# alias nvfz="$FZF_TOOL  --bind 'enter:become(nvim {+})'"
+# alias nv$FZF_TOOL="fd --type f | $FZF_TOOL --ansi --preview='preview.sh {}' -m -b 'enter:become(nvim {+})'"
+alias nv$FZF_TOOL="$FZF_TOOL --ansi -i -c 'fd --type f --color=always' --preview='bat "{}"' -m -b 'enter:become(nvim {+})'"
+alias nvrg="$FZF_TOOL --ansi -i -c 'rg --color=always --line-number "{}"' -b 'enter:become(nvim {+})'"
+alias nvt="$FZF_TOOL --ansi -i -c 'fd --type f --color=always' --preview 'bat --color=always --style=full "{}"'"
+alias nvlz='cd ~/.local/share/nvim/lazy'
+alias zdbs='zsh -xvic exit &> ~/.cache/zsh/startup_logs/zsh-debug.log'
+# alias nvfz='$FZF_TOOL --print0 | xargs -0 -o nvim'
+#NOTE: Terraform
+alias tffz="terraform state list | $FZF_TOOL --ansi --preview='terraform state show {}'"
+alias tfvs="terraform -version"
+alias tfh="terraform -help"
+alias tfrf="terraform refresh"
+alias tfpro="terraform plan -refresh-only"
+alias tfprf="terraform plan -refresh=false"
+alias tfpv="terraform providers"
+alias tfim="terraform import"
+alias tfinb="terraform init -backend=false"
+alias tfgr="terraform graph"
+alias tfsp='terraform state pull'
+alias tfg='terraform get' #NOTE: Download modules but not initalize
+alias tfgu='terraform get -update' #NOTE: Check for modules updates
+alias tfwl='terraform workspace list'
+alias tfws='terraform workspace select'
+
+#NOTE: Terraform Switch
+alias tfsw='tfswitch'
+alias tfswh='tfswitch -h'
+alias tfswl='tfswitch -l'
+alias tfswu='tfswitch -u'
+alias tfswU='tfswitch -U'
+alias tfswv='tfswitch -v'
+alias tfsws='tfswitch -s'
+alias tfswS='tfswitch -S'
+alias tfswp='tfswitch -p'
+alias tfswP='tfswitch -P'
+alias tfswd='tfswitch -d'
+alias tfswc='tfswitch -c'
+alias tfswb='tfswitch -b'
+
+#NOTE: Packer
+alias pkr='packer'
+alias pkri='packer init'
+alias pkrf='packer fmt'
+alias pkrv='packer validate'
+alias pkrb='packer build'
+alias pkris='packer inspect'
+alias pkrh2j='packer hcl2json'
+alias pkrh2p='packer hcl2plan'
+
+#INFO: Electron
+alias ecf='$EDITOR ~/.config/*electron*.conf*'
+
+#NOTE: Docker Aliases
+alias dk='docker'
+alias dkc='docker compose'
+alias dkui='docker compose up -d --build'
+alias dkud='docker compose up -d'
+alias dkb='docker build'
+
+
+# NOTE: Config Aliases
+if [ -e $ZDOTDIR/.zshrc ]; then
+  alias zrc='$EDITOR $ZDOTDIR/.zshrc $ZDOTDIR/.zshenv $ZDOTDIR/.zplugins $ZDOTDIR/.zprofile'
+else
+  alias zrc='$EDITOR $HOME/.zshrc'
+fi
+alias zenv='$EDITOR ~/.zshenv $ZDOTDIR/.zshenv'
+alias zpf='$EDITOR ~/.zprofile'
+if [ -e $ZDOTDIR/.zsh_plugins.txt ]; then
+  alias zpl='$EDITOR $ZDOTDIR/.zsh_plugins.txt'
+fi
+alias brc='$EDITOR ~/.bashrc'
+alias nvcf='$EDITOR $HOME/.config/nvim/'
+alias zfunc='cd ~/.zfunc'
+alias wzcf='$EDITOR $HOME/.config/wezterm/wezterm.lua'
+alias ktcf='$EDITOR ~/.config/kitty/kitty.conf'
+alias ftcf='$EDITOR ~/.config/foot/foot.ini'
+alias tfrc='$EDITOR ~/.terraformrc'
+alias sscf='$EDITOR ${STARSHIP_CONFIG:-XDG_CONFIG_HOME/starship.toml}'
+
+alias npmip='npm install --omit=dev && zip -qr lambda-coupons-manager.zip node_modules app'
+alias npmi='npm install -f --omit=dev'
+alias npmp='zip -qr'
+
+#NOTE: AWS Alias
+awsup='$EDITOR ~/linux_tools/aws_install.sh'
+afs='$FZF_TOOL --ansi -i -c "aws s3 ls" --color=always'
+# awsfs3='$FZF_TOOL --ansi -m -i -c "paru -Slaq {}" --color=always --preview "paru -Si {1}"'
+
+#NOTE: Common-fate Granted
+# alias assume=". assume"
+alias assume="source assume"
+alias as="assume"
+alias asr='assume -r'
+alias asc='assume -c --container-name="$AWS_PROFILE"'
+alias gr='granted'
+alias grh='granted -h'
+alias grs='granted settings'
+alias grss='granted settings set'
+alias grc='granted console --container-name="$AWS_PROFILE"'
+alias grcs='granted console --container-name="$AWS_PROFILE" --service'
+
+#NOTE: Terraform
+alias tfaa='terraform apply --auto-approve'
+alias tfmd='cd ~/work/terraform_modules'
+alias tfl='terraform state list'
+alias tfs='terraform state show'
+
+# alias minicom='minicom -con'
+
+#NOTE: Python Alias
+alias py='python'
+# alias pyact='source /home/dakota/personal/python/nrf52/bin/activate'
+alias pyact='pyenv activate python3.12'
+alias pye='pyenv'
+alias pyee='pyenv exec'
+alias pyei='pyenv install'
+alias pyeg='pyenv global'
+alias pyve='pyenv virtualenv'
+alias pyves='pyenv virtualenvs'
+alias pyvea='pyenv activate'
+alias pyveda='pyenv deactivate'
+alias pyved='pyenv virtualenv-delete'
+
+#NOTE: pip Alias
+alias pipi='python -m pip install'
+alias pipvi='pyenv exec pip install'
+alias pipu='python -m pip uninstall'
+alias pipl='python -m pip list'
+alias pipr='pyenv exec pip install -r requirements.txt'
+
+#NOTE: ZMK Alias
+alias zmcf='nvim $HOME/personal/zmk-config/config/'
+alias zmk='cd $HOME/personal/zmk/app/'
+alias zeph='cd $HOME/personal/zmk/zephyr'
+
+#HACK: Workaround for wayland bug on fcad, running with xwayland for now
+alias fcad='env -u WAYLAND_DISPLAY -u QT_QPA_PLATFORM /usr/bin/freecad'
+alias fcadde$FZF_TOOLtop='snv /usr/share/applications/org.freecadweb.FreeCAD.de$FZF_TOOLtop'
+alias fcadd='env -u WAYLAND_DISPLAY -u QT_QPA_PLATFORM /home/dakota/linux_tools/FreeCAD/build/bin/FreeCAD'
+
+alias smkgcf='snv /etc/makepkg.conf'
+# alias mkgcf='nvim ~/.config/makepkg.conf'
+
+#NOTE: Cmake Alias
+alias cmfo='cmake -LAH >options.txt 2>&1'
+alias fcadcm="cmake -Wno-dev -G Ninja -B build -S . \
+    -D BUILD_ENABLE_CXX_STD=C++17 \
+    -D BUILD_FEM=ON \
+    -D BUILD_MESH=ON \
+    -D BUILD_FLAT_MESH=ON \
+    -D BUILD_MESH_PART=ON \
+    -D BUILD_SHIP=ON \
+    -D BUILD_DESIGNER_PLUGIN=ON \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
+    -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC -w" \
+    -D FREECAD_USE_EXTERNAL_PIVY=ON \
+    -D FREECAD_USE_QT_FILEDIALOG=ON \
+    -D FREECAD_USE_CCACHE=ON \
+    -D USE_CUDA=ON \
+    -D INSTALL_TO_SITEPACKAGES=ON \
+    -D CMAKE_INSTALL_PREFIX='/usr/lib/freecad' \
+    -D CMAKE_INSTALL_DATADIR='../../share/freecad' \
+    -D CMAKE_INSTALL_DATAROOTDIR='/usr/share' \
+    -D CMAKE_INSTALL_DOCDIR='/usr/share/doc/freecad'"
+alias fcadt='cd /home/dakota/linux_tools/FreeCAD/build && LD_LIBRARY_PATH=lib bin/FreeCADCmd --console --run-test 0'
+alias fcadb='cmake --build build'
+alias fcadi=''
+
+#NOTE: Keeper Aliases
+alias ksh='keeper shell'
+
+#NOTE: Source Aliases
+alias sraws='source ~/.config/zsh/completions/aws_zsh_completer.sh'
+alias srclang='source ~/.config/zsh/completions/bash-autocomplete.sh'
 
 # vim: ft=zsh sw=2 ts=2 et

@@ -4,13 +4,16 @@
 
 # Apps
 export EDITOR=nvim
-export VISUAL=code
-export PAGER=less
+export VISUAL=nvim
+export PAGER=nvimpager
+
+export MAKEFLAGS="-j$(nproc --ignore=2)"
 
 # Set the list of directories that cd searches.
 cdpath=(
   $XDG_PROJECTS_DIR(N/)
-  $XDG_PROJECTS_DIR/mattmc3(N/)
+  $XDG_PROJECTS_DIR/dakota-m(N/)
+  # $XDG_PROJECTS_DIR/mattmc3(N/)
   $cdpath
 )
 
@@ -19,9 +22,13 @@ path=(
   # core
   $path
 
-  # emacs
-  $HOME/.emacs.d/bin(N)
-  $XDG_CONFIG_HOME/emacs/bin(N)
+  # apps
+  /bin(N)
+  /{usr/local,opt}/opt/ruby/bin(N)
+  /{usr/local,opt}/lib/ruby/gems/*/bin(N)
+  /{usr/local,opt}/bin(N)
+  /opt/*(N)
+  /opt/*/bin(N)
 
   # keg only brew apps
   $HOMEBREW_PREFIX/opt/curl/bin(N)
@@ -45,7 +52,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # Enable less wait time between key presses.
-export KEYTIMEOUT=1
+# export KEYTIMEOUT=1
 
 # Use `< file` to quickly view the contents of any file.
 [[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER

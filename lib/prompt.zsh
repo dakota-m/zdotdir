@@ -16,6 +16,8 @@ function prompt_p10k_setup {
 
 function prompt_starship_setup {
   # When loaded through the prompt command, these prompt_* options will be enabled
+  # HACK: prompt_cr gives error with p10k theme
+  # prompt_opts=(percent sp subst)
   prompt_opts=(cr percent sp subst)
 
   if [[ -n "$1" ]]; then
