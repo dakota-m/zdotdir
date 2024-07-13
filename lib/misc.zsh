@@ -1,39 +1,24 @@
 #
-# misc: Setup misc Zsh utils, common aliases, and other miscellany.
+# misc: Set misc Zsh options and settings that don't fit elsewhere.
 #
 
-# Use built-in paste magic.
-autoload -Uz bracketed-paste-url-magic
-zle -N bracketed-paste bracketed-paste-url-magic
-autoload -Uz url-quote-magic
-zle -N self-insert url-quote-magic
+# 16.2.6 Input/Output
+setopt interactive_comments    # Enable comments in interactive shell.
+setopt rc_quotes               # Allow 'Hitchhikers''s Guide' instead of 'Hitchhikers'\''s Guide'.
+setopt NO_flow_control         # Disable start/stop characters (usually ^Q/^S) in shell editor.
+setopt NO_mail_warning         # Don't print a warning message if a mail file has been accessed.
 
-# Load more specific 'run-help' function from $fpath.
-(( $+aliases[run-help] )) && unalias run-help && autoload -Uz run-help
-alias help=run-help
+# 16.2.7 Job Control
+setopt auto_resume             # Attempt to resume existing job before creating a new process.
+setopt long_list_jobs          # List jobs in the long format by default.
+setopt notify                  # Report status of background jobs immediately.
+setopt NO_bg_nice              # Don't run all background jobs at a lower priority.
+setopt NO_check_jobs           # Don't report on jobs when shell exit.
+setopt NO_hup                  # Don't kill jobs on shell exit.
 
-# It's time. Python2 is dead.
-if (( $+commands[python3] )) && ! (( $+commands[python] )); then
-  alias python=python3
-fi
+# 16.2.12 Zle
+setopt combining_chars         # Combine 0-len chars with the base character (eg: accents).
+setopt NO_beep                 # Beep on error in line editor.
 
-# Ensure envsubst command exists.
-if ! (( $+commands[envsubst] )) && (( $+commands[python] )); then
-  alias envsubst="python -c 'import os,sys;[sys.stdout.write(os.path.expandvars(l)) for l in sys.stdin]'"
-fi
-
-# Ensure hd (hex dump) command exists.
-if ! (( $+commands[hd] )) && (( $+commands[hexdump] )); then
-  alias hd="hexdump -C"
-fi
-
-# Ensure open command exists.
-if ! (( $+commands[open] )); then
-  if [[ "$OSTYPE" == cygwin* ]]; then
-    alias open='cygstart'
-  elif [[ "$OSTYPE" == linux-android ]]; then
-    alias open='termux-open'
-  elif (( $+commands[xdg-open] )); then
-    alias open='xdg-open'
-  fi
-fi
+# Allow mapping Ctrl+S and Ctrl+Q shortcuts
+[[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
