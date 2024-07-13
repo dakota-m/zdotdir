@@ -2,15 +2,19 @@
 
 zdebug () {
   local DEBUG_LOG_DIR=${1:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh/startup_logs}
-  local DEBUG_LOG_FILE=zsh_startup.log
+  local DEBUG_LOG_FILE=$(date +"%b_%d_%H:%M:%S")_zsh_startup.log
+  local DEBUG_SORTED_LOG_FILE=$(date +"%b_%d_%H:%M:%S")_sorted_zsh_startup.log
+  echo $DEBUG_LOG_DIR
+  echo $DEBUG_LOG_FILE
+  echo $DEBUG_SORTED_LOG_FILE
 
   if [[ ! -d $DEBUG_LOG_DIR ]]; then
     mkdir -p $DEBUG_LOG_DIR
   fi
 
   zsh -xv 2>&1 | ts -i "%.s" > "$DEBUG_LOG_DIR/$DEBUG_LOG_FILE"
-  sort --field-separator=' ' -r -k1 "$DEBUG_LOG_DIR/$DEBUG_LOG_FILE" > "$DEBUG_LOG_DIR/sorted.log"
-  exit 0
+  # sort --field-separator=' ' -r -k1 "$DEBUG_LOG_DIR/$DEBUG_LOG_FILE" > "$DEBUG_LOG_DIR/$DEBUG_SORTED_LOG_FILE" &
+  # exit 0
 
-  nvim $DEBUG_LOG_DIR/$DEBUG_LOG_FILE
+  # nvim $DEBUG_LOG_DIR/$DEBUG_LOG_FILE
 }

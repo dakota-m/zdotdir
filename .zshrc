@@ -22,6 +22,7 @@ source /opt/aocc/setenv_AOCC.sh
 source /usr/bin/aws_zsh_completer.sh
 source /usr/share/clang/bash-autocomplete.sh
 source /home/dakota/.config/broot/launcher/bash/br
+# source $ZDOTDIR/functions/zet
 
 # Uncomment to manually initialize completion system if you want, or let kickstart.zsh
 # do it automatically.

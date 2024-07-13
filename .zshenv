@@ -32,6 +32,8 @@ if command -v aocc-clang > /dev/null 2>&1; then
 fi
 
 export LC_ALL=en_US.UTF-8
+export SECOND_BRAIN=$HOME/Documents/obsidian/notes
+export OBSIDIAN_REST_API_KEY=***REMOVED***
 
 # export CC="gcc"
 # export CXX="gcc++"
