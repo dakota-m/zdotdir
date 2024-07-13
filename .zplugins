@@ -43,17 +43,7 @@ romkatv/powerlevel10k kind:fpath
 
 # Regular plugins
 mattmc3/zman
-# ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/terraform
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages
-zdharma-continuum/zsh-diff-so-fancy
-# unixorn/fzf-zsh-plugin kind:fpath path:completions
-# unixorn/fzf-zsh-plugin path:/
-unixorn/fzf-zsh-plugin kind:defer
-unixorn/git-extra-commands
-rupa/z
-changyuheng/fz kind:defer
-# z-shell/F-Sy-H
+romkatv/zsh-no-ps2
 
 # ohmyzsh/ohmyzsh path:plugins/fzf
 
