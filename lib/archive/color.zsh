@@ -21,7 +21,7 @@ autoload -Uz colors && colors
 if [[ -z "$LS_COLORS" ]]; then
   for dircolors_cmd in dircolors gdircolors; do
     if (( $+commands[$dircolors_cmd] )); then
-      if zstyle -t ':zdotdir:feature:color' 'use-cache'; then
+      if zstyle -t ':zephyr:plugin:color' 'use-cache'; then
         cached-eval "$dircolors_cmd" $dircolors_cmd --sh
       else
         source <($dircolors_cmd --sh)
@@ -52,15 +52,9 @@ function colormap {
 alias grep="${aliases[grep]:-grep} --color=auto"
 
 # Set colors for coreutils ls.
+alias ls="${aliases[ls]:-ls} --color=auto"
 if (( $+commands[gls] )); then
   alias gls="${aliases[gls]:-gls} --color=auto"
-fi
-
-# Set colors for ls.
-if (( ! $+commands[dircolors] ));then # || is-macos; then
-  alias ls="${aliases[ls]:-ls} -G"
-else
-  alias ls="${aliases[ls]:-ls} --color=auto"
 fi
 
 # Set colors for diff
