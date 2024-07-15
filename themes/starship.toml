@@ -1,7 +1,13 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
 [character]
-success_symbol = "[](bold green)"
+success_symbol = "[󰄾 ](#2EFF2E)"
+# success_symbol = "[](bold green)[󰧛 ](cyan)" "󰅂 " "󰬪 " "󰄾 " "󰶻 " " " "󰧚 " "󰬫 " "󰧛 "
 error_symbol = "[ ](bold red)"
-vimcmd_symbol = "[ ](bold green)"
+vimcmd_symbol = "[ ](#2EFF2E)" # " " " " " "
 format = "$symbol "
 
 [aws]
@@ -30,7 +36,7 @@ symbol = "conda  "
 symbol = " "
 
 [cmake]
-symbol = " "
+symbol = "󰙲 " # "󰙲 " " "
 
 [daml]
 symbol = "daml "
@@ -164,7 +170,7 @@ symbol = "opa "
 Alpine = " "
 Amazon = " "
 Android = " "
-Arch = "󰣇 "
+Arch = "[󰣇 ](#1793D1)[ ](#00DACA)"
 CentOS = " "
 Debian = " "
 DragonFly = "dfbsd "
@@ -236,7 +242,8 @@ symbol = "scala  "
 disabled = true
 
 [shlvl]
-symbol = " "
+symbol = " "     # "󰆍 " " "
+style = "#E7E803" # "#E5E703" "#E7E803"
 disabled = false
 
 [spack]
