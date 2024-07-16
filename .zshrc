@@ -3,18 +3,12 @@
 # .zshrc - Run on interactive Zsh session.
 #
 
+# Initialize profiling.
+[[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
+alias zprofrc="ZPROFRC=1 zsh"
+
 # Load .zstyles file first.
 [[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
-
-# Instant prompt
-if zstyle -t ':zephyr:plugin:prompt:powerlevel10k' instant-prompt; then
-  # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-  # Initialization code that may require console input (password prompts, [y/n]
-  # confirmations, etc.) must go above this block; everything else may go below.
-  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-  fi
-fi
 
 # Load everything from lib.
 for _zrc in $ZDOTDIR/lib/*.zsh; source $_zrc; unset _zrc
@@ -29,6 +23,9 @@ source /usr/share/clang/bash-autocomplete.sh
 source /home/dakota/.config/broot/launcher/bash/br
 # source $ZDOTDIR/functions/zet
 
+# Add aliases.
+[[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
+
 # Uncomment to manually initialize completion system if you want, or let zshrc-post
 # do it automatically.
 # ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
@@ -40,33 +37,7 @@ autoload -Uz promptinit && promptinit
 # prompt p10k mmc
 prompt starship starship
 
-# IMPORTANT: Run zshrc-post at the very end of your .zshrc. If you don't, lib/zzz.zsh
-# will try to run it for you via a precmd hook, which might work fine, but might
-# cause problems with certain plugins/prompts (eg: Powerlevel10k).
-zshrc-post
-
-# HACK: - Recommended: call p10k finalize at the end of ~/.config/zsh/.zshrc.
-    # You can do this by running the following command:
-    #
-    #   echo '(( ! ${+functions[p10k]} )) || p10k finalize' >>! ~/.config/zsh/.zshrc
-    #
-    # * You will not see this error message again.
-    # * Zsh will start quickly and without prompt flickering.
-# (( ! ${+functions[p10k]} )) || p10k finalize
-
-# TODO: not overriding fzf plugin defaults
-# export FZF_DEFAULT_OPTS="--layout=reverse \
-# --info=inline \
-# --height=80% \
-# --multi \
-# --preview='([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tre -c {} | less)) || echo {} 2>/dev/null | head -n 200' \
-# --preview-window=':hidden' \
-# --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008' \
-# --prompt='∼ ' \
-# --pointer='▶' \
-# --marker='✓' \
-# --bind '?:toggle-preview' \
-# --bind 'ctrl-a:select-all' \
-# --bind 'ctrl-e:execute(nvim {+} >/dev/tty)' \
-# --bind 'ctrl-v:execute(code {+})' \
-# --bind 'ctrl-y:execute-silent(echo {+} | pbcopy')"
+# Finish profiling by calling zprof.
+[[ "$ZPROFRC" -eq 1 ]] && zprof
+[[ -v ZPROFRC ]] && unset ZPROFRC
+true
