@@ -3,36 +3,42 @@
 # .zshrc - Run on interactive Zsh session.
 #
 
+# Initialize profiling.
+[[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
+alias zprofrc="ZPROFRC=1 zsh"
+
 # Load .zstyles file first.
 [[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
 
-# Instant prompt
-if zstyle -t ':zephyr:plugin:prompt:powerlevel10k' instant-prompt; then
-  # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-  # Initialization code that may require console input (password prompts, [y/n]
-  # confirmations, etc.) must go above this block; everything else may go below.
-  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-  fi
-fi
-
-# Load everything from lib.
-for _zrc in $ZDOTDIR/lib/*.zsh; source $_zrc; unset _zrc
+# Load things from lib.
+for zlib in antidote; do
+  source $ZDOTDIR/lib/${zlib}.zsh
+done
+unset zlib
 
 # Add more zsh config here, or in conf.d...
 # ...
 
-# Uncomment to manually initialize completion system if you want, or let zshrc-post
-# do it automatically.
+# Add aliases.
+[[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
+
+# Uncomment to manually initialize completion system if you want, or let Zephyr
+# do it automatically in the zshrc-post hook.
 # ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
 # [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
 # autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
 
-# Uncomment to manually set your prompt, or let zshrc-post do it automatically.
-autoload -Uz promptinit && promptinit
-prompt p10k mmc
+# Uncomment to manually set your prompt, or let Zephyr do it automatically in the
+# zshrc-post hook. Note that some prompts like powerlevel10k may not work well
+# with post_zshrc.
+() {
+  autoload -Uz promptinit && promptinit
+  local -a prompt_argv
+  zstyle -a ':zephyr:plugin:prompt' theme 'prompt_argv' || return 1
+  prompt $prompt_argv
+}
 
-# IMPORTANT: Run zshrc-post at the very end of your .zshrc. If you don't, lib/zzz.zsh
-# will try to run it for you via a precmd hook, which might work fine, but might
-# cause problems with certain plugins/prompts (eg: Powerlevel10k).
-zshrc-post
+# Finish profiling by calling zprof.
+[[ "$ZPROFRC" -eq 1 ]] && zprof
+[[ -v ZPROFRC ]] && unset ZPROFRC
+true
