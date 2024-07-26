@@ -7,8 +7,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=nvimpager
 
-export MAKEFLAGS="-j$(nproc --ignore=2)"
-
 # Set the list of directories that cd searches.
 cdpath=(
   $XDG_PROJECTS_DIR(N/)

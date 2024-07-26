@@ -16,5 +16,5 @@ zdebug () {
   # sort --field-separator=' ' -r -k1 "$DEBUG_LOG_DIR/$DEBUG_LOG_FILE" > "$DEBUG_LOG_DIR/$DEBUG_SORTED_LOG_FILE" &
   # exit 0
 
-  # nvim $DEBUG_LOG_DIR/$DEBUG_LOG_FILE
+  nvim $DEBUG_LOG_DIR/$DEBUG_LOG_FILE
 }
