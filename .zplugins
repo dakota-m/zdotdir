@@ -50,6 +50,7 @@ romkatv/zsh-no-ps2
 # ohmyzsh/ohmyzsh path:plugins/fzf
 
 # unixorn/fzf-zsh-plugin kind:fpath path:completions
+unixorn/fzf-zsh-plugin conditional:is-macos
 zsh-users/zsh-completions kind:fpath path:src
 # zsh-users/zsh-syntax-highlighting kind:defer
 jeffreytse/zsh-vi-mode
