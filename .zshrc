@@ -18,13 +18,16 @@ unset zlib
 
 # Add more zsh config here, or in conf.d...
 # ...
-source $ZDOTDIR/functions/ghsrc
-source /home/dakota/scripts/rsync.zsh
-source /opt/aocc/setenv_AOCC.sh
-source /usr/bin/aws_zsh_completer.sh
-source /usr/share/clang/bash-autocomplete.sh
-source /home/dakota/.config/broot/launcher/bash/br
-# source $ZDOTDIR/functions/zet
+if [[ "$(uname)" == "Darwin" ]]; then
+elif [[ "$(uname)" == "Linux" ]]; then
+  source $ZDOTDIR/functions/ghsrc
+  source /home/dakota/scripts/rsync.zsh
+  source /opt/aocc/setenv_AOCC.sh
+  source /usr/bin/aws_zsh_completer.sh
+  source /usr/share/clang/bash-autocomplete.sh
+  source /home/dakota/.config/broot/launcher/bash/br
+  # source $ZDOTDIR/functions/zet
+fi
 
 # Add aliases.
 [[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
