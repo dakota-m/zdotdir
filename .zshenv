@@ -18,6 +18,8 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 # export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg:-/run/user/1000}
 export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 
+export ZEPHYR_HOME=${ZEPHYR_HOME:-$HOME/Projects/dakota-m/zsh-zephyr}
+
 if command -v aocc-clang > /dev/null 2>&1; then
   export CC="aocc-clang"
   export CXX="aocc-clang++"
@@ -34,6 +36,7 @@ fi
 export LC_ALL=en_US.UTF-8
 export SECOND_BRAIN=$HOME/Documents/obsidian/notes
 export OBSIDIAN_REST_API_KEY=f66f902ac15d8773ff8f8fde96ac2fb983216a1d6fc9ee35d84732393d83b993
+export MAKEFLAGS="-j$(nproc --ignore=2)"
 
 # export CC="gcc"
 # export CXX="gcc++"
