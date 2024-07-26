@@ -1,5 +1,5 @@
 if [[ "$(uname)" == "Darwin" ]]; then
-  export FZF_PATH=$XDG_PROJECTS_DIR/fzf
+  # export FZF_PATH=$XDG_PROJECTS_DIR/fzf
 elif [[ "$(uname)" == "Linux" ]]; then
   export FZF_PATH=$HOME/tools/fzf
 fi
