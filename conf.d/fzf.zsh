@@ -2,10 +2,10 @@
 # zsh-vi-mode: Snippet to config jeffreytse/zsh-vi-mode
 #
 
-if [[ -f /usr/share/fzf/completion.zsh && -f /usr/share/fzf/key-bindings.zsh ]]; then
-  source /usr/share/fzf/completion.zsh
-  source /usr/share/fzf/key-bindings.zsh
-fi
+# if [[ -f /usr/share/fzf/completion.zsh && -f /usr/share/fzf/key-bindings.zsh ]]; then
+#   source /usr/share/fzf/completion.zsh
+#   source /usr/share/fzf/key-bindings.zsh
+# fi
 
 # TODO: using defer overwrites this setting
 # export FZF_DEFAULT_OPTS=<< EOL
