@@ -448,6 +448,11 @@ alias nvlz='cd ~/.local/share/nvim/lazy'
 alias zdbs='zsh -xvic exit &> ~/.cache/zsh/startup_logs/zsh-debug.log'
 # alias nvfz='$FZF_TOOL --print0 | xargs -0 -o nvim'
 #NOTE: Terraform
+alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfaa='terraform apply --auto-approve'
+alias tfd='terraform destroy'
 alias tffz="terraform state list | $FZF_TOOL --ansi --preview='terraform state show {}'"
 alias tfvs="terraform -version"
 alias tfh="terraform -help"
