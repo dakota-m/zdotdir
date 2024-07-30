@@ -30,7 +30,7 @@ path=(
   /usr/sbin(N)
   /opt/*(N)
   /opt/*/bin(N)
-  /home/dakota/.asdf/shims/*(N)
+  /home/dakota/.asdf/shims(N)
 
   # keg only brew apps
   $HOMEBREW_PREFIX/opt/curl/bin(N)
