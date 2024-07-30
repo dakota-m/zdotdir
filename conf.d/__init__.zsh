@@ -26,8 +26,11 @@ path=(
   /{usr/local,opt}/opt/ruby/bin(N)
   /{usr/local,opt}/lib/ruby/gems/*/bin(N)
   /{usr/local,opt}/bin(N)
+  /{usr/local,opt}/sbin(N)
+  /usr/sbin(N)
   /opt/*(N)
   /opt/*/bin(N)
+  /home/dakota/.asdf/shims/*(N)
 
   # keg only brew apps
   $HOMEBREW_PREFIX/opt/curl/bin(N)
