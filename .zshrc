@@ -19,6 +19,9 @@ unset zlib
 # Add more zsh config here, or in conf.d...
 # ...
 if [[ "$(uname)" == "Darwin" ]]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 elif [[ "$(uname)" == "Linux" ]]; then
   source $ZDOTDIR/functions/ghsrc
   source /home/dakota/scripts/rsync.zsh
