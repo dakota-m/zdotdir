@@ -29,7 +29,7 @@ function prompt_starship_setup {
   fi
 
   # Initialize starship.
-  if zstyle -t ':kickstart.zsh:feature:prompt' 'use-cache'; then
+  if zstyle -t ':zephyr:plugin:prompt' 'use-cache'; then
     cached-eval 'starship-init-zsh' starship init zsh
   else
     source <(starship init zsh)

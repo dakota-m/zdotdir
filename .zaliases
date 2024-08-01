@@ -27,6 +27,7 @@ alias colors='nvim ~/scripts/colors.zsh'
 # mask built-ins with better defaults
 alias ping='ping -c 5'
 alias grep="command grep --exclude-dir={.git,.vscode}"
+alias visudo='sudo EDITOR=nvim visudo'
 
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"
@@ -69,6 +70,8 @@ alias please=sudo
 alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 alias cls="clear && printf '\e[3J'"
+alias zet='$HOME/scripts/zet.sh'
+alias obp='$HOME/scripts/obp.zsh'
 
 # print things
 alias print-fpath='for fp in $fpath; do echo $fp; done; unset fp'
@@ -87,6 +90,15 @@ alias tch='touch'
 alias rmrf='rm -rf'
 alias envrg='env | rg'
 alias chmx='chmod +x'
+
+# dotfiles
+: ${DOTFILES:=$HOME/.dotfiles}
+alias dotf='cd "$DOTFILES"'
+alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
+alias dotfl="cd \$DOTFILES/local"
+alias fdot='cd ${XDG_CONFIG_HOME:-~/.config}/fish'
+alias fconf=fdot
+alias zdot='cd $ZDOTDIR'
 
 # NOTE: Wezterm Aliases
 alias wz='wezterm'
@@ -185,6 +197,7 @@ alias doc='cd ~/Documents'
 alias pic='cd ~/Pictures'
 alias desk='cd ~/Desktop'
 alias dl='cd ~/Downloads'
+alias notes='cd ~/Documents/obsidian/notes'
 
 #NOTE: Hypr Alias's
 # alias hycf='chezmoi edit ~/.config/hypr/hypr.conf'
@@ -373,6 +386,7 @@ if command -v eza &> /dev/null; then
   alias lt='eza -T -L 4'
   # alias ls='eza -alF — color=always — sort=size | grep -v /'
   alias lrg='eza -a | rg'
+  alias lr='eza --long --sort=modified'
 fi
 
 #NOTE: tldr aliases
@@ -425,6 +439,7 @@ alias alrg='alias | rg'
 # cut -d "=" -f 1
 alias nv='nvim'
 alias snv='sudo -E -s nvim'
+alias scd='sudo -E -s cd'
 alias nvfz="$FZF_TOOL  --bind 'enter:become(nvim {+})'"
 # alias nvfz="$FZF_TOOL  --bind 'enter:become(nvim {+})'"
 # alias nv$FZF_TOOL="fd --type f | $FZF_TOOL --ansi --preview='preview.sh {}' -m -b 'enter:become(nvim {+})'"
@@ -435,6 +450,11 @@ alias nvlz='cd ~/.local/share/nvim/lazy'
 alias zdbs='zsh -xvic exit &> ~/.cache/zsh/startup_logs/zsh-debug.log'
 # alias nvfz='$FZF_TOOL --print0 | xargs -0 -o nvim'
 #NOTE: Terraform
+alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfaa='terraform apply --auto-approve'
+alias tfd='terraform destroy'
 alias tffz="terraform state list | $FZF_TOOL --ansi --preview='terraform state show {}'"
 alias tfvs="terraform -version"
 alias tfh="terraform -help"
@@ -528,6 +548,16 @@ alias grs='granted settings'
 alias grss='granted settings set'
 alias grc='granted console --container-name="$AWS_PROFILE"'
 alias grcs='granted console --container-name="$AWS_PROFILE" --service'
+alias grcsso='granted console --container-name="$AWS_PROFILE" --service singlesignon'
+alias grcl='granted console --container-name="$AWS_PROFILE" --service lambda'
+alias grcs3='granted console --container-name="$AWS_PROFILE" --service s3'
+alias grciam='granted console --container-name="$AWS_PROFILE" --service iam'
+alias grcsm='granted console --container-name="$AWS_PROFILE" --service secretsmanager'
+alias grcps='granted console --container-name="$AWS_PROFILE" --service systems-manager'
+alias grccw='granted console --container-name="$AWS_PROFILE" --service cloudwatch'
+alias grcctr='granted console --container-name="$AWS_PROFILE" --service cloudtrail'
+alias grce2='granted console --container-name="$AWS_PROFILE" --service ec2'
+alias grcecs='granted console --container-name="$AWS_PROFILE" --service ecs'
 
 #NOTE: Terraform
 alias tfaa='terraform apply --auto-approve'

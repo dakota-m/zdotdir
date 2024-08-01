@@ -1,0 +1,45 @@
+#!/bin/zsh
+
+if [[ $(uname) == "Darwin" ]]; then
+  if ! command -v brew &> /dev/null; then
+    echo "brew is not installed"
+    exit 1
+  elif ! command -v wezterm &> /dev/null; then
+    echo "wezterm is not installed!"
+    echo "installing wezterm..."
+    brew install --cask wezterm@nightly
+    exit 1
+  else
+    brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
+  fi
+elif [[ $(uname) == "Linux" ]]; then
+  if ! command -v wezterm &> /dev/null; then
+    echo "wezterm is not installed!"
+  else
+    if [[ -d ${XDG_PROJECTS_DIR}/wezterm && $(command -v cargo) ]]; then
+      cd ${XDG_PROJECTS_DIR}/wezterm
+      if [[ -d target ]]; then
+        rm -rf target
+      fi
+      git pull && cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+      cargo build --jobs $(nproc) --release
+      tic -x -o target/release/terminfo termwiz/data/wezterm.terminfo
+      sudo install -Dm755 target/release/wezterm "/bin/wezterm"
+      sudo install -Dm755 target/release/wezterm-gui "/bin/wezter-gui"
+      sudo install -Dm755 target/release/wezterm-mux-server "/bin/wezterm-mux-server"
+      sudo install -Dm755 target/release/strip-ansi-escapes "/bin/strip-ansi-escapes"
+      sudo install -Dm644 target/release/terminfo/w/wezterm "/usr/share/terminfo/w/wezterm"
+      sudo install -Dm644 assets/shell-completion/zsh "/usr/share/zsh/site-functions/_wezterm"
+      sudo install -Dm644 assets/shell-completion/fish "/usr/share/fish/completions/wezterm.fish"
+      sudo install -Dm644 assets/shell-completion/bash "/usr/share/bash-completion/completions/wezterm"
+      sudo install -Dm644 assets/wezterm-nautilus.py "/usr/share/nautilus-python/extensions/wezterm-nautilus.py"
+      sudo install -Dm644 assets/wezterm.appdata.xml "/usr/share/metainfo/org.wezfurlong.wezterm.appdata.xml"
+      sudo install -Dm644 assets/icon/terminal.png "/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png"
+      sudo install -Dm644 assets/shell-integration/wezterm.sh "/etc/profile.d/wezterm.sh"
+      sudo install -Dm644 LICENSE.md -t "/usr/share/licenses/wezterm"
+      # if [[ $(command -v xdotool) ]]; then
+      #   xdotool 1 Return
+      # fi
+    fi
+  fi
+fi

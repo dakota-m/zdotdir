@@ -18,28 +18,35 @@ setopt ALIASES
   local _zdir; for _zdir in $@; [ -d ${(P)_zdir} ] || mkdir -p ${(P)_zdir}
 } __zsh_{config,cache,user_data}_dir
 
-# Define critical functions
-#? Cache the results of an eval command
+# Load .zstyles file.
+[[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
+
+# Instant prompt
+if zstyle -t ':zdotdir:feature:prompt:powerlevel10k' instant-prompt; then
+  # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
+  # Initialization code that may require console input (password prompts, [y/n]
+  # confirmations, etc.) must go above this block; everything else may go below.
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+fi
+
+# Define functions
+##? Cache the results of an eval command
 function cached-eval {
   emulate -L zsh; setopt local_options extended_glob
   (( $# >= 2 )) || return 1
 
   local cmdname=$1; shift
-  local memofile=$__zsh_cache_dir/memoized/${cmdname}.zsh
-  local -a cached=($memofile(Nmh-20))
+  local cachefile=$__zsh_cache_dir/cached/${cmdname}.zsh
+  local -a cached=($cachefile(Nmh-20))
   # If the file has no size (is empty), or is older than 20 hours re-gen the cache.
-  if [[ ! -s $memofile ]] || (( ! ${#cached} )); then
-    mkdir -p ${memofile:h}
-    "$@" >| $memofile
+  if [[ ! -s $cachefile ]] || (( ! ${#cached} )); then
+    mkdir -p ${cachefile:h}
+    "$@" >| $cachefile
   fi
-  source $memofile
+  source $cachefile
 }
-
-# Load .zstyles file.
-[[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
-
-# Load .zshrc.pre file.
-[[ -r ${ZDOTDIR:-$HOME}/.zshrc.pre ]] && source ${ZDOTDIR:-$HOME}/.zshrc.pre
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -53,7 +60,7 @@ typeset -aU _brewcmd=(
   /home/linuxbrew/.linuxbrew/bin/brew(N)
 )
 if (( $#_brewcmd )); then
-  if zstyle -t ':kickstart.zsh:feature:homebrew' 'use-cache'; then
+  if zstyle -t ':zdotdir:feature:homebrew' 'use-cache'; then
     cached-eval 'brew_shellenv' $_brewcmd[1] shellenv
   else
     source <($_brewcmd[1] shellenv)
@@ -74,3 +81,6 @@ path=(
   $HOME/.local/share/gem/bin(N)
   $path
 )
+
+# Load .zshrc.pre file.
+[[ -r ${ZDOTDIR:-$HOME}/.zshrc.pre ]] && source ${ZDOTDIR:-$HOME}/.zshrc.pre
