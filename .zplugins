@@ -52,6 +52,7 @@ romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
 # unixorn/fzf-zsh-plugin kind:fpath path:bin
+unixorn/fzf-zsh-plugin kind:defer
 
 ### Editor
 mattmc3/zephyr path:plugins/editor
