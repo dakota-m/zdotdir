@@ -7,7 +7,7 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-ZSH_THEME=(p10k mmc)
+ZSH_THEME=(starship starship)
 
 # Load .zstyles file with customizations.
 [[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
