@@ -4,6 +4,7 @@
 #
 
 export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+export SHELL_SESSIONS_DISABLE=1
 
 # TODO: figure out where to put these
 fpath=(/home/dakota/.granted/zsh_autocomplete/assume/ $fpath)
