@@ -4,12 +4,12 @@
 
 ### Init
 
+mattmc3/zshrc1
 $ZSH_CUSTOM/plugins/xdg
 
 ### Completions
 
 zsh-users/zsh-completions kind:fpath path:src
-mattmc3/zephyr path:plugins/completion
 
 ### Prompts
 
@@ -17,19 +17,6 @@ $ZDOTDIR/themes kind:fpath
 romkatv/powerlevel10k kind:fpath
 # sindresorhus/pure kind:fpath
 # miekg/lean kind:fpath
-mattmc3/zephyr path:plugins/prompt
-
-### Core
-
-# Zephyr
-mattmc3/zephyr path:plugins/helper
-mattmc3/zephyr path:plugins/environment
-mattmc3/zephyr path:plugins/color
-mattmc3/zephyr path:plugins/directory
-mattmc3/zephyr path:plugins/history
-mattmc3/zephyr path:plugins/utility
-mattmc3/zephyr path:plugins/zfunctions
-mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 ### Custom
 #$ZSH_CUSTOM/plugins/abbreviations
@@ -41,35 +28,32 @@ $ZSH_CUSTOM/plugins/python
 $ZSH_CUSTOM path:plugins/asdf
 $ZSH_CUSTOM path:plugins/fzf
 # $ZSH_CUSTOM path:plugins/dirtools
-# $ZSH_CUSTOM path:plugins/otp
 # $ZSH_CUSTOM path:plugins/skim
-$ZSH_CUSTOM path:plugins/wezterm
+# $ZSH_CUSTOM path:plugins/wezterm
 # $ZSH_CUSTOM path:plugins/aur
-$ZSH_CUSTOM path:plugins/xdg
+# $ZSH_CUSTOM path:plugins/xdg
 
 ### Utils
 romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
-# unixorn/fzf-zsh-plugin kind:fpath path:bin
 unixorn/fzf-zsh-plugin kind:defer
 
 ### Editor
-mattmc3/zephyr path:plugins/editor
 jeffreytse/zsh-vi-mode
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 romkatv/zsh-no-ps2
 
 ### macOS
+zshzoo/macos conditional:is-macos
 ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 
 ### Fish-like
-#zdharma-continuum/fast-syntax-highlighting
-zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
+#zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zdharma-continuum/history-search-multi-word kind:defer
-mattmc3/zephyr path:plugins/confd
 
 # vi: ft=properties
