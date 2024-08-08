@@ -2,24 +2,42 @@
 # .zplugins.txt - antidote plugins file
 #
 
-### Init
+#
+# Init
+#
 
+<<<<<<< HEAD
 mattmc3/zshrc1
+=======
+$ZSH_CUSTOM/plugins/p10k-instaprompt conditional:is-theme-p10k
+mattmc3/zephyr
+>>>>>>> fork
 $ZSH_CUSTOM/plugins/xdg
 
-### Completions
+#
+# Completions
+#
 
 zsh-users/zsh-completions kind:fpath path:src
 
-### Prompts
+#
+# Prompts
+#
 
 $ZDOTDIR/themes kind:fpath
 romkatv/powerlevel10k kind:fpath
 # sindresorhus/pure kind:fpath
 # miekg/lean kind:fpath
 
+<<<<<<< HEAD
 ### Custom
 #$ZSH_CUSTOM/plugins/abbreviations
+=======
+#
+# Custom
+#
+
+>>>>>>> fork
 $ZSH_CUSTOM/plugins/git
 # $ZSH_CUSTOM path:plugins/gh
 $ZSH_CUSTOM/plugins/golang
@@ -33,18 +51,27 @@ $ZSH_CUSTOM path:plugins/fzf
 # $ZSH_CUSTOM path:plugins/aur
 # $ZSH_CUSTOM path:plugins/xdg
 
-### Utils
+#
+# Utils
+#
+
 romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
 unixorn/fzf-zsh-plugin kind:defer
 
+<<<<<<< HEAD
 ### Editor
+=======
+#
+# Editor
+#
+
+>>>>>>> fork
 jeffreytse/zsh-vi-mode
-ohmyzsh/ohmyzsh path:plugins/magic-enter
-ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 romkatv/zsh-no-ps2
 
+<<<<<<< HEAD
 ### macOS
 zshzoo/macos conditional:is-macos
 ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
@@ -55,5 +82,20 @@ zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zdharma-continuum/history-search-multi-word kind:defer
+=======
+#
+# macOS
+#
+
+ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
+
+#
+# Fish-like
+#
+
+zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search post:keybind-hss
+>>>>>>> fork
 
 # vi: ft=properties
