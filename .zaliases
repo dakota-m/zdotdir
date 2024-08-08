@@ -26,14 +26,10 @@ alias colors='nvim ~/scripts/colors.zsh'
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
-<<<<<<< HEAD
-alias grep="command grep --exclude-dir={.git,.vscode}"
 alias visudo='sudo EDITOR=nvim visudo'
-=======
 alias vi=vim
 alias nv=nvim
 alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.vscode}"
->>>>>>> fork
 
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"

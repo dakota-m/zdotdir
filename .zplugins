@@ -6,12 +6,8 @@
 # Init
 #
 
-<<<<<<< HEAD
-mattmc3/zshrc1
-=======
 $ZSH_CUSTOM/plugins/p10k-instaprompt conditional:is-theme-p10k
 mattmc3/zephyr
->>>>>>> fork
 $ZSH_CUSTOM/plugins/xdg
 
 #
@@ -29,15 +25,10 @@ romkatv/powerlevel10k kind:fpath
 # sindresorhus/pure kind:fpath
 # miekg/lean kind:fpath
 
-<<<<<<< HEAD
-### Custom
-#$ZSH_CUSTOM/plugins/abbreviations
-=======
 #
 # Custom
 #
 
->>>>>>> fork
 $ZSH_CUSTOM/plugins/git
 # $ZSH_CUSTOM path:plugins/gh
 $ZSH_CUSTOM/plugins/golang
@@ -60,29 +51,13 @@ ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
 unixorn/fzf-zsh-plugin kind:defer
 
-<<<<<<< HEAD
-### Editor
-=======
 #
 # Editor
 #
 
->>>>>>> fork
 jeffreytse/zsh-vi-mode
 romkatv/zsh-no-ps2
 
-<<<<<<< HEAD
-### macOS
-zshzoo/macos conditional:is-macos
-ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
-
-### Fish-like
-zdharma-continuum/fast-syntax-highlighting
-#zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
-zdharma-continuum/history-search-multi-word kind:defer
-=======
 #
 # macOS
 #
@@ -93,9 +68,10 @@ ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 # Fish-like
 #
 
+#zsh-users/zsh-syntax-highlighting
 zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search post:keybind-hss
->>>>>>> fork
+zdharma-continuum/history-search-multi-word kind:defer
 
 # vi: ft=properties

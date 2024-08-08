@@ -10,13 +10,9 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-<<<<<<< HEAD
-ZSH_THEME=(starship starship)
-=======
 #
 # Zstyles
 #
->>>>>>> fork
 
 # Load .zstyles file with customizations.
 [[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
@@ -26,7 +22,8 @@ ZSH_THEME=(starship starship)
 #
 
 # Set prompt theme
-ZSH_THEME=(starship zephyr)
+ZSH_THEME=(starship starship)
+# ZSH_THEME=(starship zephyr)
 #ZSH_THEME=(p10k mmc)
 
 function is-theme-p10k {
@@ -41,7 +38,6 @@ function is-theme-p10k {
 for zlib in $ZDOTDIR/lib/*.zsh; source $zlib
 unset zlib
 
-<<<<<<< HEAD
 # Add more zsh config here, or in conf.d...
 # ...
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -57,12 +53,10 @@ elif [[ "$(uname)" == "Linux" ]]; then
   source /home/dakota/.config/broot/launcher/bash/br
   # source $ZDOTDIR/functions/zet
 fi
-=======
+
 #
 # Aliases
 #
->>>>>>> fork
-
 [[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
 
 #
