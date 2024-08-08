@@ -26,8 +26,14 @@ alias colors='nvim ~/scripts/colors.zsh'
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
+<<<<<<< HEAD
 alias grep="command grep --exclude-dir={.git,.vscode}"
 alias visudo='sudo EDITOR=nvim visudo'
+=======
+alias vi=vim
+alias nv=nvim
+alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.vscode}"
+>>>>>>> fork
 
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"
@@ -50,8 +56,8 @@ alias utc="date -u +%Y-%m-%dT%H:%M:%SZ"
 alias unixepoch="date +%s"
 
 # homebrew
-alias brewup="brew update && brew upgrade && brew cleanup"
-alias brewinfo="brew leaves | xargs brew desc --eval-all"
+#alias brewup="brew update && brew upgrade && brew cleanup"
+#alias brewinfo="brew leaves | xargs brew desc --eval-all"
 
 # disk usage
 alias biggest='du -s ./* | sort -nr | awk '\''{print $2}'\'' | xargs du -sh'
