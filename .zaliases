@@ -556,6 +556,7 @@ alias grccw='granted console --container-name="$AWS_PROFILE" --service cloudwatc
 alias grcctr='granted console --container-name="$AWS_PROFILE" --service cloudtrail'
 alias grce2='granted console --container-name="$AWS_PROFILE" --service ec2'
 alias grcecs='granted console --container-name="$AWS_PROFILE" --service ecs'
+alias grcv='granted console --container-name="$AWS_PROFILE" --service vpc'
 
 #NOTE: Terraform
 alias tfaa='terraform apply --auto-approve'
