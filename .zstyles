@@ -72,4 +72,10 @@ zstyle ':zephyr:plugin:completion' compstyle 'zephyr'
 #
 
 # Set prompt
-zstyle ':zephyr:plugin:prompt' theme starship starship
+zstyle ':zephyr:plugin:prompt' theme starship zephyr
+
+#
+# Completions
+#
+
+zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
