@@ -50,7 +50,6 @@ $ZSH_CUSTOM path:plugins/fzf
 # Utils
 #
 
-
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/history
