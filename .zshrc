@@ -22,9 +22,11 @@ alias zprofrc="ZPROFRC=1 zsh"
 #
 
 # Set prompt theme
-#ZSH_THEME=(starship zephyr)
-ZSH_THEME=(p10k mmc)
+typeset -ga ZSH_THEME
+zstyle -a ':zephyr:plugin:prompt' theme ZSH_THEME ||
+ZSH_THEME=(starship mmc)
 
+# Set helpers for antidote.
 is-theme-p10k()     { [[ "$ZSH_THEME" == (p10k|powerlevel10k)* ]] }
 is-theme-starship() { [[ "$ZSH_THEME" == starship* ]] }
 
@@ -59,7 +61,7 @@ unset zlib
 # Uncomment to manually set your prompt, or let Zephyr do it automatically in the
 # zshrc-post hook. Note that some prompts like powerlevel10k may not work well
 # with post_zshrc.
-setopt prompt_subst
+setopt prompt_subst transient_rprompt
 autoload -Uz promptinit && promptinit
 prompt "$ZSH_THEME[@]"
 
