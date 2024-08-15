@@ -31,6 +31,7 @@ path=(
   /opt/*(N)
   /opt/*/bin(N)
   /home/dakota/.asdf/shims(N)
+  /Applications/WezTerm.app/Contents/MacOS
 
   # keg only brew apps
   $HOMEBREW_PREFIX/opt/curl/bin(N)
