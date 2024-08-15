@@ -20,6 +20,10 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 
 export ZEPHYR_HOME=${ZEPHYR_HOME:-$HOME/Projects/dakota-m/zsh-zephyr}
 
+if [[ "$(uname)" == "Darwin" ]]; then
+  export TERMINFO=/usr/share/terminfo
+fi
+
 if command -v aocc-clang > /dev/null 2>&1; then
   export CC="aocc-clang"
   export CXX="aocc-clang++"
