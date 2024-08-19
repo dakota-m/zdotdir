@@ -64,7 +64,7 @@ unixorn/fzf-zsh-plugin kind:defer
 #
 
 mattmc3/zephyr path:plugins/editor
-jeffreytse/zsh-vi-mode
+jeffreytse/zsh-vi-mode kind:defer
 romkatv/zsh-no-ps2
 
 #
@@ -83,7 +83,7 @@ mattmc3/zephyr path:plugins/confd
 #zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search post:keybind-hss
+#zsh-users/zsh-history-substring-search post:keybind-hss
 zdharma-continuum/history-search-multi-word kind:defer
 
 # vi: ft=properties
