@@ -18,7 +18,11 @@ export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 # export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg:-/run/user/1000}
 # export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 
-export ZEPHYR_HOME=${ZEPHYR_HOME:-$HOME/Projects/dakota-m/zsh-zephyr}
+# export ZEPHYR_HOME=${ZEPHYR_HOME:-$HOME/Projects/dakota-m/zsh-zephyr}
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  export TERMINFO=/usr/share/terminfo
+fi
 
 if command -v aocc-clang > /dev/null 2>&1; then
   export CC="aocc-clang"
@@ -51,9 +55,14 @@ export MAKEFLAGS="-j$(nproc --ignore=2)"
 # export FZF_PATH=${XDG_CACHE_HOME:-$HOME/.cache}/repos/unixorn/fzf-zsh-plugin
 
 # Ensure Zsh directories exist.
-# () {
-#   local zdir
-#   for zdir in $@; do
-#     [[ -d "${(P)zdir}" ]] || mkdir -p -- "${(P)zdir}"
-#   done
-# } __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_PROJECTS_DIR
+() {
+  local zdir
+  for zdir in $@; do
+    [[ -d "${(P)zdir}" ]] || mkdir -p -- "${(P)zdir}"
+  done
+} __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_{RUNTIME,PROJECTS}_DIR
+
+# Make Terminal.app behave.
+if [[ "$OSTYPE" == darwin* ]]; then
+  export SHELL_SESSIONS_DISABLE=1
+fi

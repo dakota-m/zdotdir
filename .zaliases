@@ -26,8 +26,10 @@ alias colors='nvim ~/scripts/colors.zsh'
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
-alias grep="command grep --exclude-dir={.git,.vscode}"
 alias visudo='sudo EDITOR=nvim visudo'
+alias vi=vim
+alias nv=nvim
+alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.vscode}"
 
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"
@@ -50,8 +52,8 @@ alias utc="date -u +%Y-%m-%dT%H:%M:%SZ"
 alias unixepoch="date +%s"
 
 # homebrew
-alias brewup="brew update && brew upgrade && brew cleanup"
-alias brewinfo="brew leaves | xargs brew desc --eval-all"
+#alias brewup="brew update && brew upgrade && brew cleanup"
+#alias brewinfo="brew leaves | xargs brew desc --eval-all"
 
 # disk usage
 alias biggest='du -s ./* | sort -nr | awk '\''{print $2}'\'' | xargs du -sh'
@@ -324,6 +326,10 @@ alias paci="pacman -Qq | $FZF_TOOL --preview 'pacman -Qil {}' --layout=reverse -
 alias mkpkg='makepkg'
 alias mkpkgi='makepkg -si'
 
+#NOTE: Aura Aliases
+alias aurfz="aura -Aaq | $FZF_TOOL --ansi -m --preview 'aura -Ai {1}' | aura -A --search {} | xargs -ro aura -A"
+# alias aurfz="$FZF_TOOL --ansi -m | aura -A --search {1} | $FZF_TOOL --ansi -m --preview 'aura -Ai {1}' | xargs -ro aura -A"
+
 #NOTE: PARU AUR Aliases
 # alias pars='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /installed/d" | $FZF_TOOL  --ansi --preview "paru -Si {1}" | xargs -ro paru -S'
 alias pars='paru -S'
@@ -558,6 +564,7 @@ alias grccw='granted console --container-name="$AWS_PROFILE" --service cloudwatc
 alias grcctr='granted console --container-name="$AWS_PROFILE" --service cloudtrail'
 alias grce2='granted console --container-name="$AWS_PROFILE" --service ec2'
 alias grcecs='granted console --container-name="$AWS_PROFILE" --service ecs'
+alias grcv='granted console --container-name="$AWS_PROFILE" --service vpc'
 
 #NOTE: Terraform
 alias tfaa='terraform apply --auto-approve'
