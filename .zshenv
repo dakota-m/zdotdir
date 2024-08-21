@@ -22,6 +22,10 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 
 if [[ "$(uname)" == "Darwin" ]]; then
   export TERMINFO=/usr/share/terminfo
+  export GOPATH=$HOME/go
+  export GOROOT=/opt/homebrew/bin/go/libexec
+  # export GOBIN=/opt/homebrew/bin/go
+  export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
 if command -v aocc-clang > /dev/null 2>&1; then
