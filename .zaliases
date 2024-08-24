@@ -326,6 +326,7 @@ alias mkpkgi='makepkg -si'
 
 #NOTE: Aura Aliases
 alias aurfz="aura -Aaq | $FZF_TOOL --ansi -m --preview 'aura -Ai {1}' | aura -A --search {} | xargs -ro aura -A"
+alias aa="aura -A"
 # alias aurfz="$FZF_TOOL --ansi -m | aura -A --search {1} | $FZF_TOOL --ansi -m --preview 'aura -Ai {1}' | xargs -ro aura -A"
 
 #NOTE: PARU AUR Aliases
@@ -380,7 +381,7 @@ if command -v eza &> /dev/null; then
   alias ll='eza -lh --no-permissions --group-directories-first'
   alias ls='eza --no-permissions --group-directories-first'
   alias lsa='eza -lah --no-permissions --group-directories-first'
-  alias ld='eza -D --no-permissions'
+  alias ld='eza -D -G --no-permissions'
   alias ldh='eza -Dh --no-permissions'
   alias lm='eza -ls modified --no-permissions --group-directories-first'
   alias lp='eza -algn@ --group-directories-first'
