@@ -358,6 +358,12 @@ alias yayi="yay -Qe | cut -f 1 -d ' ' | $FZF_TOOL  --ansi --preview 'yay -Qi {1}
 alias yayfz='yay -Slaq | sed -e "/installed/d" | $FZF_TOOL --ansi --preview "bat \
    | paru -Si {}" --preview-window "top,50%" | xargs -ro paru -S'
 
+#NOTE: APT Aliases
+alias sai='sudo apt install'
+alias sau='sudo apt update'
+alias sag='sudo apt upgrade'
+alias sagy='sudo apt upgrade -y'
+
 #NOTE: Systemctl Aliases
 alias sc='sudo systemctl'
 alias scfz='sudo systemctl list-unit-files | $FZF_TOOL --ansi --preview "systemctl status {1}" | xargs -ro sudo systemctl show'
