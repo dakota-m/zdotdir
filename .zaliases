@@ -365,7 +365,8 @@ alias scst='sudo systemctl status'
 alias scs='sudo systemctl start'
 alias scls='sudo systemctl list-unit-files'
 alias scen='sudo systemctl enable'
-#INFO: Netowrk Aliases
+
+#INFO: Network Aliases
 alias netst='systemctl status systemd-networkd.service'
 alias netrs='sudo systemctl restart systemd-networkd.service'
 alias nmsta='sudo systemctl start NetworkManager'
