@@ -51,7 +51,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-elif [[ "$(uname)" == "Linux" && "$(whoami)" == "dakota" ]]; then
+elif [[ "$(uname)" == "Linux" && "$(lsb_release -is)" == "Arch" ]]; then
   source $ZDOTDIR/functions/ghsrc
   source /home/dakota/scripts/rsync.zsh
   source /opt/aocc/setenv_AOCC.sh
