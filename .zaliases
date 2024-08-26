@@ -22,7 +22,7 @@ alias exterm='export TERM=xterm-256color'
 
 # better defaults
 alias mkdir='mkdir -p'
-alias colors='nvim ~/scripts/colors.zsh'
+# alias colors='nvim ~/scripts/colors.zsh'
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
@@ -101,6 +101,8 @@ alias dotfl="cd \$DOTFILES/local"
 alias fdot='cd ${XDG_CONFIG_HOME:-~/.config}/fish'
 alias fconf=fdot
 alias zdot='cd $ZDOTDIR'
+alias dotwz='cd $HOME/.config/wezterm'
+alias wzdot='cd $HOME/.config/wezterm'
 
 # NOTE: Wezterm Aliases
 alias wz='wezterm'
