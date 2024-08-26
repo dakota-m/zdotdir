@@ -363,6 +363,7 @@ alias sai='sudo apt install'
 alias sau='sudo apt update'
 alias sag='sudo apt upgrade'
 alias sagy='sudo apt upgrade -y'
+alias sasr='sudo apt search'
 
 #NOTE: Systemctl Aliases
 alias sc='sudo systemctl'
