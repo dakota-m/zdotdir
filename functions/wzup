@@ -1,6 +1,8 @@
 #!/bin/zsh
 
-PWD=$(pwd)
+set -e
+
+pushd $(pwd)
 
 if [[ $(uname) == "Darwin" ]]; then
   if ! command -v brew &> /dev/null; then
@@ -14,12 +16,12 @@ if [[ $(uname) == "Darwin" ]]; then
   else
     brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
   fi
-elif [[ $(uname) == "Linux" ]]; then
+elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
   if ! command -v wezterm &> /dev/null; then
     echo "wezterm is not installed!"
   else
     if [[ -d ${XDG_PROJECTS_DIR}/wezterm && $(command -v cargo) ]]; then
-      cd ${XDG_PROJECTS_DIR}/wezterm
+      pushd ${XDG_PROJECTS_DIR}/wezterm
       if [[ -d target ]]; then
         rm -rf target
       fi
@@ -42,8 +44,7 @@ elif [[ $(uname) == "Linux" ]]; then
       # if [[ $(command -v xdotool) ]]; then
       #   xdotool 1 Return
       # fi
+      popd
     fi
   fi
 fi
-
-cd $PWD
