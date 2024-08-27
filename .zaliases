@@ -306,7 +306,7 @@ alias du='gdu -x -g'
 # fi
 
 #NOTE: Update Neovim from Github
-alias nvup='/home/dakota/scripts/zsh/update_neovim.zsh'
+# alias nvup='/home/dakota/scripts/zsh/update_neovim.zsh'
 
 #NOTE: Packages script
 alias pack='nvim ~/linux_tools/packages.zsh'
