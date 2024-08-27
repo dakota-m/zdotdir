@@ -517,7 +517,7 @@ alias ecf='$EDITOR ~/.config/*electron*.conf*'
 #NOTE: Docker Aliases
 alias dk='docker'
 alias dkc='docker compose'
-alias dkcp='docker compose pull'
+alias dkcpl='docker compose pull'
 alias dkps='docker compose ps'
 alias dkrs='docker compose restart'
 alias dkcub='docker compose up -d --build'
