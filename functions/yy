@@ -4,7 +4,7 @@
 if ! command -v yazi &> /dev/null; then
   echo "yazi not found. Please install it."
   exit 1
-end
+fi
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
