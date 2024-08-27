@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+
+if ! command -v yazi &> /dev/null; then
+  echo "yazi not found. Please install it."
+  exit 1
+end
+
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
