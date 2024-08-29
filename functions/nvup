@@ -23,11 +23,19 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
   else
     if [[ -d ${XDG_PROJECTS_DIR}/neovim ]]; then
       pushd ${XDG_PROJECTS_DIR}/neovim
-      if [[ -d build ]]; then
-        git reset --hard && git clean --force -dfx && git pull
+      git fetch
+      if [[ $(git rev-list HEAD...origin/master --count) != 0 ]]; then
+        if [[ -d build ]]; then
+          git reset --hard && git clean --force -dfx && git pull
+        fi
+        if command -v make &> /dev/null; then
+          make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/usr
+          sudo make install
+        else
+          echo "make is not installed"
+          exit 1
+        fi
       fi
-      make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/usr
-      sudo make install
       popd
     fi
   fi
