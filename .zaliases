@@ -290,6 +290,12 @@ alias nasep='export NASP="/mnt/NAS/Media/New folder/Porn/"'
 alias nasem='export NASMV="/mnt/NAS/Media/Movies/"'
 alias nasems='export NASMS="/mnt/NAS/Media/Music"'
 
+#NOTE: Rsync Aliases
+alias rsrmmv='rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files root@10.12.32.15:/mnt/media/movies'
+alias rsrmtv='rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files root@10.12.32.15:/mnt/media/tv'
+alias rsrmms='rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files root@10.12.32.15:/mnt/media/music'
+alias rsrmbk='rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files root@10.12.32.15:/mnt/media/books'
+
 #NOTE: MPV alias
 alias mpvcf='nvim ~/.config/mpv/mpv.conf'
 
