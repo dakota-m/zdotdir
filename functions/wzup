@@ -22,29 +22,32 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
   else
     if [[ -d ${XDG_PROJECTS_DIR}/wezterm && $(command -v cargo) ]]; then
       pushd ${XDG_PROJECTS_DIR}/wezterm
-      if [[ -d target ]]; then
-        rm -rf target
-      fi
-      git pull && cargo fetch --locked --target "x86_64-unknown-linux-gnu"
-      cargo build --jobs $(nproc) --release
-      tic -x -o target/release/terminfo termwiz/data/wezterm.terminfo
-      sudo install -Dm755 target/release/wezterm "/bin/wezterm"
-      sudo install -Dm755 target/release/wezterm-gui "/bin/wezter-gui"
-      sudo install -Dm755 target/release/wezterm-mux-server "/bin/wezterm-mux-server"
-      sudo install -Dm755 target/release/strip-ansi-escapes "/bin/strip-ansi-escapes"
-      sudo install -Dm644 target/release/terminfo/w/wezterm "/usr/share/terminfo/w/wezterm"
-      sudo install -Dm644 assets/shell-completion/zsh "/usr/share/zsh/site-functions/_wezterm"
-      sudo install -Dm644 assets/shell-completion/fish "/usr/share/fish/completions/wezterm.fish"
-      sudo install -Dm644 assets/shell-completion/bash "/usr/share/bash-completion/completions/wezterm"
-      sudo install -Dm644 assets/wezterm-nautilus.py "/usr/share/nautilus-python/extensions/wezterm-nautilus.py"
-      sudo install -Dm644 assets/wezterm.appdata.xml "/usr/share/metainfo/org.wezfurlong.wezterm.appdata.xml"
-      sudo install -Dm644 assets/icon/terminal.png "/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png"
-      sudo install -Dm644 assets/shell-integration/wezterm.sh "/etc/profile.d/wezterm.sh"
-      sudo install -Dm644 LICENSE.md -t "/usr/share/licenses/wezterm"
-      # if [[ $(command -v xdotool) ]]; then
-      #   xdotool 1 Return
-      # fi
-      popd
+      git fetch
+      if [[ $(git rev-list HEAD...origin/main --count) != 0 ]]; then
+        if [[ -d target ]]; then
+          rm -rf target
+        fi
+        git pull && cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+        cargo build --jobs $(nproc) --release
+        tic -x -o target/release/terminfo termwiz/data/wezterm.terminfo
+        sudo install -Dm755 target/release/wezterm "/bin/wezterm"
+        sudo install -Dm755 target/release/wezterm-gui "/bin/wezter-gui"
+        sudo install -Dm755 target/release/wezterm-mux-server "/bin/wezterm-mux-server"
+        sudo install -Dm755 target/release/strip-ansi-escapes "/bin/strip-ansi-escapes"
+        sudo install -Dm644 target/release/terminfo/w/wezterm "/usr/share/terminfo/w/wezterm"
+        sudo install -Dm644 assets/shell-completion/zsh "/usr/share/zsh/site-functions/_wezterm"
+        sudo install -Dm644 assets/shell-completion/fish "/usr/share/fish/completions/wezterm.fish"
+        sudo install -Dm644 assets/shell-completion/bash "/usr/share/bash-completion/completions/wezterm"
+        sudo install -Dm644 assets/wezterm-nautilus.py "/usr/share/nautilus-python/extensions/wezterm-nautilus.py"
+        sudo install -Dm644 assets/wezterm.appdata.xml "/usr/share/metainfo/org.wezfurlong.wezterm.appdata.xml"
+        sudo install -Dm644 assets/icon/terminal.png "/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png"
+        sudo install -Dm644 assets/shell-integration/wezterm.sh "/etc/profile.d/wezterm.sh"
+        sudo install -Dm644 LICENSE.md -t "/usr/share/licenses/wezterm"
+        # if [[ $(command -v xdotool) ]]; then
+        #   xdotool 1 Return
+        # fi
+        popd
+    fi
     fi
   fi
 fi
