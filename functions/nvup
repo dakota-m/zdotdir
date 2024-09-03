@@ -1,0 +1,43 @@
+#!/bin/zsh
+
+set -e
+
+pushd $(pwd)
+
+if [[ $(uname) == "Darwin" ]]; then
+  if ! command -v brew &> /dev/null; then
+    echo "brew is not installed"
+    exit 1
+  elif ! command -v nvim &> /dev/null; then
+    echo "neovim is not installed!"
+    #echo "installing neovim..."
+    #brew install --cask wezterm@nightly
+    exit 1
+  else
+    #brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
+    exit 1
+  fi
+elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
+  if ! command -v nvim &> /dev/null; then
+    echo "neovim is not installed!"
+  else
+    if [[ -d ${XDG_PROJECTS_DIR}/neovim ]]; then
+      pushd ${XDG_PROJECTS_DIR}/neovim
+      git fetch
+      if [[ $(git rev-list HEAD...origin/master --count) != 0 ]]; then
+        if [[ -d build ]]; then
+          git reset --hard && git clean --force -dfx && git pull
+        fi
+        if command -v make &> /dev/null; then
+          make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/usr
+          sudo make install
+        else
+          echo "make is not installed"
+          exit 1
+        fi
+      fi
+      popd
+    fi
+  fi
+fi
+
