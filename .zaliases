@@ -350,7 +350,7 @@ alias parpkg='$FZF_TOOL --ansi -m -i -c "paru -Slaq {}" --color=always --preview
 alias pari="paru --color always -Qe | $FZF_TOOL  --ansi --preview 'paru -Qi {1}'"
 alias parg="paru --color always -Sla | $FZF_TOOL  --ansi --preview 'paru -Sia {1}'"
 alias parupdb='paru -Sy'
-alias parup='paru -Syyu'
+alias parup='paru -Syu'
 alias pardb='paru --gendb'
 alias aurup='paru -Sua'
 alias parc='cd ~/.cache/paru/clone'
