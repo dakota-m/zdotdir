@@ -484,6 +484,9 @@ alias tfg='terraform get' #NOTE: Download modules but not initalize
 alias tfgu='terraform get -update' #NOTE: Check for modules updates
 alias tfwl='terraform workspace list'
 alias tfws='terraform workspace select'
+alias tff='terraform fmt'
+alias tfvd='terraform validate'
+alias tfvs='terraform version'
 
 #NOTE: Terraform Switch
 alias tfsw='tfswitch'
