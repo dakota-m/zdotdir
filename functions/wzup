@@ -31,7 +31,7 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
         cargo build --jobs $(nproc) --release
         tic -x -o target/release/terminfo termwiz/data/wezterm.terminfo
         sudo install -Dm755 target/release/wezterm "/bin/wezterm"
-        sudo install -Dm755 target/release/wezterm-gui "/bin/wezter-gui"
+        sudo install -Dm755 target/release/wezterm-gui "/bin/wezterm-gui"
         sudo install -Dm755 target/release/wezterm-mux-server "/bin/wezterm-mux-server"
         sudo install -Dm755 target/release/strip-ansi-escapes "/bin/strip-ansi-escapes"
         sudo install -Dm644 target/release/terminfo/w/wezterm "/usr/share/terminfo/w/wezterm"
