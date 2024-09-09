@@ -577,6 +577,8 @@ alias npmip='npm install --omit=dev && zip -qr lambda-coupons-manager.zip node_m
 alias npmi='npm install -f --omit=dev'
 alias npmp='zip -qr'
 
+alias 7zip='7za'
+
 #NOTE: AWS Alias
 awsup='$EDITOR ~/linux_tools/aws_install.sh'
 afs='$FZF_TOOL --ansi -i -c "aws s3 ls" --color=always'
