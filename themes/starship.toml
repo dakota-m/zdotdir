@@ -263,7 +263,7 @@ symbol = " "
 
 [terraform]
 symbol = "󱁢 "
-format = '[$symbol\[$version\]]($style) '
+format = '[$symbol\[$version\]\[$workspace\]]($style) '
 #TODO: Figure out a conditional workspace for non-default
 # format = '[$symbol $version $workspace]($style) '
 
