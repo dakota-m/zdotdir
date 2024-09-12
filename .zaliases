@@ -312,7 +312,7 @@ alias du='gdu -x -g'
 # fi
 
 #NOTE: wget Aliases
-wgdir="wget -r -np"
+alias wgdir='wget -r -np'
 
 #NOTE: Update Neovim from Github
 # alias nvup='/home/dakota/scripts/zsh/update_neovim.zsh'
