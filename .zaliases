@@ -12,6 +12,8 @@
 FZF_TOOL='fzf' # NOTE: {fzf, sk, fzy}
 # FZF_TOOL='sk' # NOTE: {fzf, sk, fzy}
 
+SCRIPTS="$HOME/Projects/dakota-m/scripts"
+
 # NOTE: Reload Zsh
 alias rl='exec zsh'
 
@@ -22,7 +24,7 @@ alias exterm='export TERM=xterm-256color'
 
 # better defaults
 alias mkdir='mkdir -p'
-# alias colors='nvim ~/scripts/colors.zsh'
+# alias colors='nvim $SCRIPTS/colors.zsh'
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
@@ -72,8 +74,8 @@ alias please=sudo
 alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 alias cls="clear && printf '\e[3J'"
-alias zet='$HOME/scripts/zet.sh'
-alias obp='$HOME/scripts/obp.zsh'
+alias zet='$SCRIPTS/zet.sh'
+alias obp='$SCRITPS/obp.zsh'
 
 # print things
 alias print-fpath='for fp in $fpath; do echo $fp; done; unset fp'
@@ -263,7 +265,7 @@ alias tdcf='nvim ~/.config/tridactyl/tridactylrc'
 #NOTE: Quick Dir cd
 alias personal='cd ~/personal'
 alias work='cd ~/work'
-alias scripts='cd ~/scripts'
+alias scripts='cd $SCRIPTS'
 alias tools='cd ~/tools'
 alias dl='~/Downloads'
 alias cdl='cd ~/Downloads'
@@ -315,7 +317,7 @@ alias du='gdu -x -g'
 alias wgdir='wget -r -np'
 
 #NOTE: Update Neovim from Github
-# alias nvup='/home/dakota/scripts/zsh/update_neovim.zsh'
+# alias nvup='$SCRIPTS/zsh/update_neovim.zsh'
 
 #NOTE: Packages script
 alias pack='nvim ~/linux_tools/packages.zsh'
