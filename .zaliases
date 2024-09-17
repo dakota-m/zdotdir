@@ -17,6 +17,9 @@ SCRIPTS="$HOME/Projects/dakota-m/scripts"
 # NOTE: Reload Zsh
 alias rl='exec zsh'
 
+#NOTE: Superuser aliases
+alias su='su -'
+
 # NOTE: ZLE
 alias zleal='zle -al' # list all zle widgets available
 
