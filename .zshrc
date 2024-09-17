@@ -53,11 +53,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 elif [[ "$(uname)" == "Linux" && "$(lsb_release -is)" == "Arch" ]]; then
   source $ZDOTDIR/functions/ghsrc
-  source /home/dakota/scripts/rsync.zsh
-  source /opt/aocc/setenv_AOCC.sh
-  source /usr/bin/aws_zsh_completer.sh
-  source /usr/share/clang/bash-autocomplete.sh
-  source /home/dakota/.config/broot/launcher/bash/br
+  # source /home/dakota/scripts/rsync.zsh
+  # source /opt/aocc/setenv_AOCC.sh
+  # source /usr/bin/aws_zsh_completer.sh
+  # source /usr/share/clang/bash-autocomplete.sh
+  # source /home/dakota/.config/broot/launcher/bash/br
   # source $ZDOTDIR/functions/zet
 fi
 
