@@ -53,18 +53,18 @@ export LESSHISTFILE="${LESSHISTFILE:-$XDG_CACHE_HOME/less/history}"
 # alias gpg="${aliases[gpg]:-gpg} --homedir \"\$GNUPGHOME\""
 
 # asdf
-if (( $+commands[asdf] )); then
-  if [[ ! -d $XDG_CONFIG_HOME/asdf ]]; then
-    mkdir -p $XDG_CONFIG_HOME/asdf
-  elif [[ ! -d $XDG_DATA_HOME/asdf ]]; then
-    mkdir -p $XDG_DATA_HOME/asdf
-  fi
-  export ASDF_CONFIG_FILE="${ASDF_CONFIG_FILE:-$XDG_CONFIG_HOME/asdf/.asdfrc}"
-  export ASDF_DIR="${ASDF_DIR:-$XDG_CONFIG_HOME/asdf}"
+# if (( $+commands[asdf] )); then
+#   if [[ ! -d $XDG_CONFIG_HOME/asdf ]]; then
+#     mkdir -p $XDG_CONFIG_HOME/asdf
+#   elif [[ ! -d $XDG_DATA_HOME/asdf ]]; then
+#     mkdir -p $XDG_DATA_HOME/asdf
+#   fi
+  # export ASDF_CONFIG_FILE="${ASDF_CONFIG_FILE:-$XDG_CONFIG_HOME/asdf/.asdfrc}"
+  # export ASDF_DIR="${ASDF_DIR:-$XDG_CONFIG_HOME/asdf}"
   # export ASDF_DIR="${ASDF_DIR:-/opt/asdf-vm}"
-  export ASDF_DATA_DIR="${ASDF_DATA_DIR:-$XDG_DATA_HOME/asdf}"
-  export ASDF_CONCURRENCY="${ASDF_CONCURRENCY:-$(nproc --ignore=2)}"
-fi
+  # export ASDF_DATA_DIR="${ASDF_DATA_DIR:-$XDG_DATA_HOME/asdf}"
+  # export ASDF_CONCURRENCY="${ASDF_CONCURRENCY:-$(nproc --ignore=2)}"
+# fi
 
 # groovy
 if [[ "$OSTYPE" == darwin* ]]; then
