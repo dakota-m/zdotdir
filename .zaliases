@@ -40,6 +40,9 @@ alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.vscode}"
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"
 
+alias sdmg='sudo dmesg | grep'
+alias sjctl='sudo journalctl'
+
 # fix typos
 alias get=git
 alias quit='exit'
