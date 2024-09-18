@@ -105,7 +105,7 @@ export CARGO_HOME="${CARGO_HOME:-$XDG_DATA_HOME/cargo}"
 export RUSTUP_HOME="${RUSTUP_HOME:-$XDG_DATA_HOME/rustup}"
 
 # skim
-export SKIM_DEFAULT_COMMAND="fd --color=auto --type file --exclude={.git,.idea,.vscode,pkg,node_modules,vendor,bin,build} --hidden --follow . $HOME"
+# export SKIM_DEFAULT_COMMAND="fd --color=auto --type file --exclude={.git,.idea,.vscode,pkg,node_modules,vendor,bin,build} --hidden --follow . $HOME"
 
 # fzf
 # unset FZF_DEFAULT_OPTS

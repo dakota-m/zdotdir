@@ -1,3 +1,6 @@
+#!/bin/zsh
+#INFO: https://github.com/zsh-users/zsh-history-substring-search
+
 for keymap in 'emacs' 'viins'; do
   bindkey -M "$keymap" "$terminfo[kcuu1]" history-substring-search-up
   bindkey -M "$keymap" "$terminfo[kcud1]" history-substring-search-down
@@ -12,3 +15,5 @@ if [[ -n "$key_info" ]]; then
   bindkey -M emacs "$key_info[Control]P" history-substring-search-up
   bindkey -M emacs "$key_info[Control]N" history-substring-search-down
 fi
+
+# vim: ft=sh sw=2 ts=2 et
