@@ -46,7 +46,9 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
           git reset --hard && git clean --force -dfx && git pull
         fi
         if command -v make &>/dev/null; then
-          make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local
+          make CC=clang CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local CFLAGS="-march=znver3 \
+            -mtune=znver3 -O3 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security \
+            -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
           make install
         else
           echo "make is not installed"

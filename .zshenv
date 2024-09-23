@@ -29,16 +29,17 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 if command -v aocc-clang > /dev/null 2>&1; then
-  export CC="aocc-clang"
-  export CXX="aocc-clang++"
-  export OMP_NUM_THREADS=22
-  export GOMP_CPU_AFFINITY="0-23"
+  # export CC="aocc-clang"
+  # export CXX="aocc-clang++"
+  # export OMP_NUM_THREADS=22
+  # export GOMP_CPU_AFFINITY="0-23"
   # AOCC Compiler Libraries
-  export AOCL_ROOT=/opt/aocl/aocc;
-  export C_INCLUDE_PATH=/opt/aocl/aocc/include:$C_INCLUDE_PATH
-  export CPLUS_INCLUDE_PATH=/opt/aocl/aocc/include:$CPLUS_INCLUDE_PATH
-  export LD_LIBRARY_PATH=/opt/aocl/aocc/lib:$LD_LIBRARY_PATH
-  export LIBRARY_PATH=/opt/aocl/aocc/lib:$LIBRARY_PATH
+  # export AOCL_ROOT=/opt/aocl/aocc;
+  # export AOCL_ROOT=$XDG_PROJECTS_DIR/aocl-linux-aocc-4.2.0//aocl/aocc;
+  # export C_INCLUDE_PATH=/opt/aocl/aocc/include:$C_INCLUDE_PATH
+  # export CPLUS_INCLUDE_PATH=/opt/aocl/aocc/include:$CPLUS_INCLUDE_PATH
+  # export LD_LIBRARY_PATH=/opt/aocl/aocc/lib:$LD_LIBRARY_PATH
+  # export LIBRARY_PATH=/opt/aocl/aocc/lib:$LIBRARY_PATH
 fi
 
 export LC_ALL=en_US.UTF-8
