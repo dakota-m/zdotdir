@@ -366,6 +366,7 @@ alias parup='paru -Syu'
 alias pardb='paru --gendb'
 alias aurup='paru -Sua'
 alias parc='cd ~/.cache/paru/clone'
+alias parr="paru -Qqm | $FZF_TOOL --ansi -m --preview 'paru -Qi {1}' | xargs -r paru -R --noconfirm"
 
 #NOTE: YAY AUR Aliases
 alias yayh='yay --help'
