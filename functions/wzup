@@ -28,7 +28,7 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
           rm -rf target
         fi
         git pull && cargo fetch --locked --target "x86_64-unknown-linux-gnu"
-        cargo build --jobs $(nproc) --frozen --release
+        cargo build +nightly --jobs $(nproc) --frozen --release
         tic -x -o target/release/terminfo termwiz/data/wezterm.terminfo
         sudo install -Dm755 target/release/wezterm "/usr/bin/wezterm"
         sudo install -Dm755 target/release/wezterm-gui "/usr/bin/wezterm-gui"
@@ -49,7 +49,7 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
       fi
       popd
     fi
-  # fi
+  fi
 fi
 
-# vim: set ft=sh ts=2 sw=2 et:
+# vim: set ft=sh ts=2 sw=2 et
