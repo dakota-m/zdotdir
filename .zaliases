@@ -12,6 +12,8 @@
 FZF_TOOL='fzf' # NOTE: {fzf, sk, fzy}
 # FZF_TOOL='sk' # NOTE: {fzf, sk, fzy}
 
+LS_TOOL='lsd' #NOTE: {lsd, eza, ls}
+
 SCRIPTS="$HOME/Projects/dakota-m/scripts"
 
 # NOTE: Reload Zsh
@@ -131,9 +133,9 @@ alias kit='kitten'
 alias kits='kitten ssh'
 
 # more ways to ls
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias ldot='ls -ld .*'
+# alias ll='ls -lh'
+# alias la='ls -lAh'
+# alias ldot='ls -ld .*'
 
 # fix common typos
 alias quit='exit'
@@ -405,25 +407,34 @@ alias nmst='sudo systemctl status NetworkManager'
 alias nmdis='sudo systemctl disable NetworkManager'
 alias nmm$FZF_TOOL='sudo systemctl ma$FZF_TOOL NetworkManager'
 
+#NOTE: ls replacement Aliases
+if [[ $LS_TOOL == "lsd" ]]; then
+  if command -v lsd &> /dev/null; then
+    alias lf='lsd -l'
+    alias lh='lsd -lh --group-directories-first .*'
+  fi
+fi
 #NOTE: Eza ls replacement Aliases
-if command -v eza &> /dev/null; then
-  alias eza='eza --color=always --icons=always -F -H --group-directories-first --git'
-  alias l='eza -ga --no-permissions --group-directories-first'
-  alias la='eza -lah --no-permissions --group-directories-first'
-  alias ll='eza -lh --no-permissions --group-directories-first'
-  alias ls='eza --no-permissions --group-directories-first'
-  alias lsa='eza -lah --no-permissions --group-directories-first'
-  alias ld='eza -D -G --no-permissions'
-  alias ldh='eza -Dh --no-permissions'
-  alias lm='eza -ls modified --no-permissions --group-directories-first'
-  alias lp='eza -algn@ --group-directories-first'
-  alias lmnt='eza -M --no-permissions'
-  alias lf='eza -fa'
-  alias lh='eza -dx .* --group-directories-first'
-  alias lt='eza -T -L 4'
-  # alias ls='eza -alF — color=always — sort=size | grep -v /'
-  alias lrg='eza -a | rg'
-  alias lr='eza --long --sort=modified'
+if [[ $LS_TOOL == "eza" ]]; then
+  if command -v eza &> /dev/null; then
+    alias eza='eza --color=always --icons=always -F -H --group-directories-first --git'
+    alias l='eza -ga --no-permissions --group-directories-first'
+    alias la='eza -lah --no-permissions --group-directories-first'
+    alias ll='eza -lh --no-permissions --group-directories-first'
+    alias ls='eza --no-permissions --group-directories-first'
+    alias lsa='eza -lah --no-permissions --group-directories-first'
+    alias ld='eza -D -G --no-permissions'
+    alias ldh='eza -Dh --no-permissions'
+    alias lm='eza -ls modified --no-permissions --group-directories-first'
+    alias lp='eza -algn@ --group-directories-first'
+    alias lmnt='eza -M --no-permissions'
+    alias lf='eza -fa'
+    alias lh='eza -dx .* --group-directories-first'
+    alias lt='eza -T -L 4'
+    # alias ls='eza -alF — color=always — sort=size | grep -v /'
+    alias lrg='eza -a | rg'
+    alias lr='eza --long --sort=modified'
+  fi
 fi
 
 #NOTE: tldr aliases
@@ -706,4 +717,4 @@ alias ksh='keeper shell'
 alias sraws='source ~/.config/zsh/completions/aws_zsh_completer.sh'
 alias srclang='source ~/.config/zsh/completions/bash-autocomplete.sh'
 
-# vim: ft=zsh sw=2 ts=2 et
+# vim: ft=sh sw=2 ts=2 et
