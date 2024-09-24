@@ -311,7 +311,11 @@ alias mpvcf='nvim ~/.config/mpv/mpv.conf'
 alias cat='bat --style full'
 # alias wget='aria2c'
 #alias vim='nvim'
-alias du='gdu -x -g'
+if [[ $(uname) == "Darwin" ]]; then
+  alias du='dua i'
+else
+  alias du='gdu -x -g'
+fi
 # alias du='ncdu -x'
 # alias mdcd='mkdir -p $1 && cd $1'
 # if [ "$USE_ALT_ALIAS" = true ]; then
