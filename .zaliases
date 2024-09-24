@@ -410,8 +410,13 @@ alias nmm$FZF_TOOL='sudo systemctl ma$FZF_TOOL NetworkManager'
 #NOTE: ls replacement Aliases
 if [[ $LS_TOOL == "lsd" ]]; then
   if command -v lsd &> /dev/null; then
+    alias ls='lsd'
+    alias l='lsd'
+    alias ll='lsd -la --group-directories-first'
     alias lf='lsd -l'
     alias lh='lsd -lh --group-directories-first .*'
+    alias lt='lsd -lt'
+    alias ltr='lsd -l --tree'
   fi
 fi
 #NOTE: Eza ls replacement Aliases
