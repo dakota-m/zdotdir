@@ -7,30 +7,39 @@ elif [[ "$(uname)" == "Linux" ]]; then
     export FZF_PATH=$XDG_PROJECTS_DIR/fzf
   fi
 fi
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --highlight-line \
-  --info=inline-right \
-  --ansi \
-  --layout=reverse \
-  --border=none
-  --color=bg+:#283457 \
-  --color=border:#27a1b9 \
-  --color=fg:#c0caf5 \
-  --color=gutter:#16161e \
-  --color=header:#ff9e64 \
-  --color=hl+:#2ac3de \
-  --color=hl:#2ac3de \
-  --color=info:#545c7e \
-  --color=marker:#ff007c \
-  --color=pointer:#ff007c \
-  --color=prompt:#2ac3de \
-  --color=query:#c0caf5:regular \
-  --color=scrollbar:#27a1b9 \
-  --color=separator:#ff9e64 \
-  --color=spinner:#ff007c \
-  --pointer=' ' \
-  --marker='󰓒 ' \
-"
+
+# export FZF_DEFAULT_OPTS=$(echo "$FZF_DEFAULT_OPTS" | sed \
+#   -e "s/--color='\([^']*\)'/--color='\1,border:#27a1b9'/")
+# echo $FZF_DEFAULT_OPTS
+
+# export FZF_COLOR_SCHEME=$(echo "$FZF_DEFAULT_OPTS" | sed \
+#   -e "s/--color='\([^']*\)'/--color='\1,border:#27a1b9'/")
+# echo $FZF_DEFAULT_OPTS
+
+# export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+#   --highlight-line \
+#   --info=inline-right \
+#   --ansi \
+#   --layout=reverse \
+#   --border=none
+#   --color=bg+:#283457 \
+#   --color=border:#27a1b9 \
+#   --color=fg:#c0caf5 \
+#   --color=gutter:#16161e \
+#   --color=header:#ff9e64 \
+#   --color=hl+:#2ac3de \
+#   --color=hl:#2ac3de \
+#   --color=info:#545c7e \
+#   --color=marker:#ff007c \
+#   --color=pointer:#ff007c \
+#   --color=prompt:#2ac3de \
+#   --color=query:#c0caf5:regular \
+#   --color=scrollbar:#27a1b9 \
+#   --color=separator:#ff9e64 \
+#   --color=spinner:#ff007c \
+#   --pointer=' ' \
+#   --marker='󰓒 ' \
+# "
 #
 # if [[ -d $XDG_PROJECTS_DIR/fzf ]]; then
 #   # export FZF_DEFAULT_OPTS="--height 40% --reverse --border --ansi --multi --cycle"
