@@ -312,11 +312,15 @@ alias cat='bat --style full'
 # alias wget='aria2c'
 #alias vim='nvim'
 if [[ $(uname) == "Darwin" ]]; then
-  alias du='dua'
+  alias du='dust'
   alias dui='dua i'
 else
-  alias du='gdu -x'
-  alias dui='gdu -x -g'
+  #NOTE: dust and dua-cli rust implementation of du
+  alias du='dust'
+  alias dui='dua i'
+  #NOTE: gdu go implementation of du
+  # alias du='gdu -x'
+  # alias dui='gdu -x -g'
 fi
 # alias du='ncdu -x'
 # alias mdcd='mkdir -p $1 && cd $1'
