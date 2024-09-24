@@ -2,6 +2,11 @@
 # zsh-vi-mode: Snippet to config jeffreytse/zsh-vi-mode
 #
 
+#--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+# export FZF_DEFAULT_OPTS=$(echo "$FZF_DEFAULT_OPTS" | sed \
+#   -e "s/--color='\([^']*\)'/--color='\1,border:#27a1b9'/")
+# echo $FZF_DEFAULT_OPTS
+
 # if [[ -f /usr/share/fzf/completion.zsh && -f /usr/share/fzf/key-bindings.zsh ]]; then
 #   source /usr/share/fzf/completion.zsh
 #   source /usr/share/fzf/key-bindings.zsh
