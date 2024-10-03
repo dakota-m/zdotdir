@@ -214,6 +214,7 @@ alias pic='cd ~/Pictures'
 alias desk='cd ~/Desktop'
 alias dl='cd ~/Downloads'
 alias notes='cd ~/Documents/obsidian/notes'
+alias vid='cd ~/Videos'
 
 #NOTE: Hypr Alias's
 # alias hycf='chezmoi edit ~/.config/hypr/hypr.conf'
@@ -458,6 +459,7 @@ tldru='tldr -u'
 
 #NOTE: Git Aliases
 alias gi='git init'
+alias gu='gitui'
 alias lg='lazygit'
 alias gdnv='git difftool'
 alias ghbw='gh browse'
