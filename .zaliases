@@ -67,7 +67,7 @@ alias unixepoch="date +%s"
 #alias brewinfo="brew leaves | xargs brew desc --eval-all"
 
 # disk usage
-alias biggest='du -s ./* | sort -nr | awk '\''{print $2}'\'' | xargs du -sh'
+# alias biggest='du -s ./* | sort -nr | awk '\''{print $2}'\'' | xargs du -sh'
 alias dux='du -x --max-depth=1 | sort -n'
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
@@ -417,9 +417,10 @@ if [[ $LS_TOOL == "lsd" ]]; then
     alias ls='lsd -lS'
     alias ll='lsd -la --group-directories-first'
     alias lf='lsd -l'
+    alias ld='lsd -lAd'
     alias lh='lsd -lh --group-directories-first .*'
-    alias lt='lsd -lt'
-    alias ltr='lsd -l --tree'
+    alias lm='lsd -ltr'
+    alias lt='lsd -lr --tree --depth 3'
   fi
 fi
 #NOTE: Eza ls replacement Aliases
