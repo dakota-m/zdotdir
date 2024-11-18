@@ -51,13 +51,27 @@ function zvm_after_lazy_keybindings() {
 
 # Override default vi functions to use wl-copy and wl-paste for wayland support
 for f in zvm_backward_kill_region zvm_yank zvm_replace_selection zvm_change_surround_text_object zvm_vi_delete zvm_vi_change zvm_vi_change_eol; do
-  eval "$(echo "_$f() {"; declare -f $f | tail -n +2)"
-  eval "$f() { _$f; echo -en \$CUTBUFFER | wl-copy }"
+  eval "$(
+    echo "_$f() {"
+    declare -f $f | tail -n +2
+  )"
+  if command -v wl-copy >/dev/null 2>&1; then
+    eval "$f() { _$f; echo -en \$CUTBUFFER | wl-copy }"
+  elif command -v pbcopy >/dev/null 2>&1; then
+    eval "$f() { _$f; echo -en \$CUTBUFFER | pbcopy }"
+  fi
 done
 
 for f in zvm_vi_put_after zvm_vi_put_before; do
-  eval "$(echo "_$f() {"; declare -f $f | tail -n +2)"
-  eval "$f() { CUTBUFFER=\$(wl-paste); _$f; zvm_highlight clear }"
+  eval "$(
+    echo "_$f() {"
+    declare -f $f | tail -n +2
+  )"
+  if command -v wl-copy >/dev/null 2>&1; then
+    eval "$f() { CUTBUFFER=\$(wl-paste); _$f; zvm_highlight clear }"
+  elif command -v pbcopy >/dev/null 2>&1; then
+    eval "$f() { CUTBUFFER=\$(pbcopy); _$f; zvm_highlight clear }"
+  fi
 done
 
 # vim: ft=sh ts=2 sw=2 et
