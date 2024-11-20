@@ -421,6 +421,7 @@ if [[ $LS_TOOL == "lsd" ]]; then
     alias lh='lsd -lh --group-directories-first .*'
     alias lm='lsd -ltr'
     alias lt='lsd -lr --tree --depth 3'
+    alias lrg='lsd -a | rg'
   fi
 fi
 #NOTE: Eza ls replacement Aliases
