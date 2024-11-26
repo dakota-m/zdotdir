@@ -47,7 +47,7 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
         fi
         if command -v make &>/dev/null; then
           make CC=clang CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local CFLAGS="-march=znver5 \
-            -mtune=znver5 -Ofast -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security \
+            -mtune=znver5 -Ofast -L/opt/aocl/aocc/lib -lamdlibm -lm -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security \
             -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
           make install
         else
