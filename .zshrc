@@ -54,7 +54,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(uname)" == "Linux" && "$(lsb_release -is)" == "Arch" ]]; then
   source $ZDOTDIR/functions/ghsrc
   # source /home/dakota/scripts/rsync.zsh
-  # source /opt/aocc/setenv_AOCC.sh
+  source /opt/aocc/setenv_AOCC.sh
   # source /usr/bin/aws_zsh_completer.sh
   # source /usr/share/clang/bash-autocomplete.sh
   # source /home/dakota/.config/broot/launcher/bash/br
