@@ -66,6 +66,9 @@ alias unixepoch="date +%s"
 #alias brewup="brew update && brew upgrade && brew cleanup"
 #alias brewinfo="brew leaves | xargs brew desc --eval-all"
 
+# Linux Specific Aliases
+alias choh='sudo chown -R $USER:$USER $HOME'
+
 # disk usage
 # alias biggest='du -s ./* | sort -nr | awk '\''{print $2}'\'' | xargs du -sh'
 alias dux='du -x --max-depth=1 | sort -n'
@@ -93,10 +96,10 @@ alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 
 # mask built-ins with better defaults
 #NOTE: prefer neovim over vim
-if command -v nvim &> /dev/null ;then
-    # alias vi='nvim'
-    alias vim='nvim'
-    alias nv='nvim'
+if command -v nvim &>/dev/null; then
+  # alias vi='nvim'
+  alias vim='nvim'
+  alias nv='nvim'
 fi
 alias vi=vim
 alias tch='touch'
@@ -412,7 +415,7 @@ alias nmm$FZF_TOOL='sudo systemctl ma$FZF_TOOL NetworkManager'
 
 #NOTE: ls replacement Aliases
 if [[ $LS_TOOL == "lsd" ]]; then
-  if command -v lsd &> /dev/null; then
+  if command -v lsd &>/dev/null; then
     alias l='lsd'
     alias ls='lsd -lS'
     alias ll='lsd -la --group-directories-first'
@@ -426,7 +429,7 @@ if [[ $LS_TOOL == "lsd" ]]; then
 fi
 #NOTE: Eza ls replacement Aliases
 if [[ $LS_TOOL == "eza" ]]; then
-  if command -v eza &> /dev/null; then
+  if command -v eza &>/dev/null; then
     # alias eza='eza --color=always --icons=always -F -H --group-directories-first --git'
     # alias l='eza -ga --no-permissions --group-directories-first'
     # alias la='eza -lah --no-permissions --group-directories-first'
@@ -534,7 +537,7 @@ alias tfim="terraform import"
 alias tfinb="terraform init -backend=false"
 alias tfgr="terraform graph"
 alias tfsp='terraform state pull'
-alias tfg='terraform get' #NOTE: Download modules but not initalize
+alias tfg='terraform get'          #NOTE: Download modules but not initalize
 alias tfgu='terraform get -update' #NOTE: Check for modules updates
 alias tfwl='terraform workspace list'
 alias tfws='terraform workspace select'
@@ -604,8 +607,6 @@ alias dksv='docker save'
 alias dkst='docker stats'
 alias dktp='docker top'
 alias dkup='docker update'
-
-
 
 # NOTE: Config Aliases
 if [ -e $ZDOTDIR/.zshrc ]; then
