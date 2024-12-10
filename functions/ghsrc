@@ -7,8 +7,17 @@ ghsrc ()
 
   # Check if the output is not empty
   if [ -n "$repo_url" ]; then
-    # Clone the repository using gh repo clone
-    gh repo clone "$repo_url"
+    # Extract the repository owner from the URL
+    repo_owner=$(echo "$repo_url" | awk -F'/' '{print $(NF-1)}')
+
+    # Check if the repository owner folder exists
+    if [ ! -d "$repo_owner" ]; then
+      # Create the repository owner folder if it doesn't exist
+      mkdir -p "$repo_owner"
+    fi
+
+    # Clone the repository into the repository owner folder
+    gh repo clone "$repo_url" "$repo_owner/$(basename "$repo_url" .git)"
   else
     echo "No repository found for the query: $1"
   fi
