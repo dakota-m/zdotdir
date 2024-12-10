@@ -17,7 +17,8 @@ $ZSH_CUSTOM/plugins/xdg
 # Completions
 #
 
-mattmc3/ez-compinit
+aloxaf/fzf-tab
+#mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 
 #
