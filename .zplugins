@@ -1,6 +1,7 @@
-#
-# .zplugins.txt - antidote plugins file
-#
+#!/bin/zsh
+# If you use Oh-My-Zsh with antidote, load this plugin FIRST to set things up so you
+# don't have to worry about whether OMZ will work correctly.
+getantidote/use-omz
 
 #
 # Init
@@ -71,8 +72,12 @@ romkatv/zsh-no-ps2
 # macOS
 #
 
-mattmc3/zephyr path:plugins/macos conditional:is-macos
-ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
+#mattmc3/zephyr path:plugins/macos conditional:is-macos
+#ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
+
+# Add macOS specific plugins
+ohmyzsh/ohmyzsh path:plugins/brew conditional:is-macos
+ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
 
 #
 # Fish-like
