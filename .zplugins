@@ -7,6 +7,9 @@ getantidote/use-omz
 # Init
 #
 
+# Make functions available
+mattmc3/zfunctions
+
 $ZSH_CUSTOM/plugins/p10k-instaprompt conditional:is-theme-p10k
 $ZSH_CUSTOM/plugins/starship-ftl conditional:is-theme-starship
 mattmc3/zephyr path:plugins/environment
@@ -18,7 +21,7 @@ $ZSH_CUSTOM/plugins/xdg
 #
 
 aloxaf/fzf-tab
-#mattmc3/ez-compinit
+mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 
 #
