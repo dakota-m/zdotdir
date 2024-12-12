@@ -1,7 +1,7 @@
 #!/bin/zsh
 # If you use Oh-My-Zsh with antidote, load this plugin FIRST to set things up so you
 # don't have to worry about whether OMZ will work correctly.
-getantidote/use-omz
+#getantidote/use-omz
 
 #
 # Init
@@ -20,7 +20,7 @@ $ZSH_CUSTOM/plugins/xdg
 # Completions
 #
 
-aloxaf/fzf-tab
+#aloxaf/fzf-tab
 mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 
@@ -95,4 +95,4 @@ zsh-users/zsh-autosuggestions post:post-autosuggestions
 zsh-users/zsh-history-substring-search post:post-history-substring-search
 zdharma-continuum/history-search-multi-word kind:defer
 
-# vi: ft=properties
+# vim: ft=sh ts=2 sw=2 et
