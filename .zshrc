@@ -101,13 +101,13 @@ prompt "$ZSH_THEME[@]"
 [[ "$ZPROFRC" -eq 1 ]] && zprof
 [[ -v ZPROFRC ]] && unset ZPROFRC
 
-gitui-ssh() {
-  key="${1:-$HOME/.ssh/id_ed25519}"
-  eval "$(ssh-agent)" \
-    && ssh-add "$key" \
-    && command gitui "${@:2}" \
-    && eval "$(ssh-agent -k)"
-}
+# gitui-ssh() {
+#   key="${1:-$HOME/.ssh/id_ed25519}"
+#   eval "$(ssh-agent)" \
+#     && ssh-add "$key" \
+#     && command gitui "${@:2}" \
+#     && eval "$(ssh-agent -k)"
+# }
 
 # -----------------------------------------------------
 # Fastfetch
