@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+set -e
+
+if [[ -f /etc/vmware/netowrking ]]; then
+  sudo rm -rf /etc/vmware/networking
+fi
+sudo systemctl start vmware-networks-configuration.service
+sudo systemctl start vmware-networks.service
+modprobe -a vmw_vmci vmmon
+
+# vim: set ft=sh ts=2 sw=2 et:

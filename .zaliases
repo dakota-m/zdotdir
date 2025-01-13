@@ -417,6 +417,7 @@ alias nmm$FZF_TOOL='sudo systemctl ma$FZF_TOOL NetworkManager'
 if [[ $LS_TOOL == "lsd" ]]; then
   if command -v lsd &>/dev/null; then
     alias l='lsd'
+    alias la='lsd -a --group-directories-first'
     alias ls='lsd -lS'
     alias ll='lsd -la --group-directories-first'
     alias lf='lsd -l'
@@ -450,12 +451,14 @@ if [[ $LS_TOOL == "eza" ]]; then
 
     #INFO: https://denisrasulev.medium.com/eza-the-best-ls-command-replacement-9621252323e
     alias eza='eza --color=always --icons=always'
+    alias la='eza -la --group-directories-first'
     alias ld='eza -lD'
     alias lf='eza -lf --color=always | grep -v /'
     alias lh='eza -dl .* --group-directories-first'
     alias ll='eza -al --group-directories-first'
     alias ls='eza -alf --color=always --sort=size | grep -v /'
-    alias lt='eza -al --sort=modified'
+    alias lm='eza -al --sort=modified'
+    alias lt='eza -aT'
   fi
 fi
 
