@@ -557,6 +557,7 @@ alias tfpq='terraform plan -var-file=environment/qa/terraform-qa.tfvars'
 alias tfps='terraform plan -var-file=environment/stage/terraform-stage.tfvars'
 alias tfpsb='terraform plan -var-file=environment/sandbox/terraform-sandbox.tfvars'
 alias tfpp='terraform plan -var-file=environment/prod/terraform-prod.tfvars'
+alias tfcl='rm -rf .terraform && rm .terraform.lock.hcl'
 
 #NOTE: Terraform Switch
 alias tfsw='tfswitch'
