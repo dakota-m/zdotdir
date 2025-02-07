@@ -30,17 +30,17 @@ path=(
   /usr/sbin(N)
   /opt/*(N)
   /opt/*/bin(N)
-  /home/dakota/.asdf/shims(N)
+  # /home/dakota/.asdf/shims(N)
   # $XDG_PROJECTS_DIR/aocc-compiler-4.2.0/bin(N)
-  /Applications/WezTerm.app/Contents/MacOS
+  # /Applications/WezTerm.app/Contents/MacOS
 
   # keg only brew apps
-  $HOMEBREW_PREFIX/opt/curl/bin(N)
-  $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
-  $HOMEBREW_PREFIX/share/npm/bin(N)
-  $HOMEBREW_PREFIX/opt/ruby/bin(N)
-  $HOMEBREW_PREFIX/lib/ruby/gems/*/bin(N)
-  $HOME/.gem/ruby/*/bin(N)
+  # $HOMEBREW_PREFIX/opt/curl/bin(N)
+  # $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
+  # $HOMEBREW_PREFIX/share/npm/bin(N)
+  # $HOMEBREW_PREFIX/opt/ruby/bin(N)
+  # $HOMEBREW_PREFIX/lib/ruby/gems/*/bin(N)
+  # $HOME/.gem/ruby/*/bin(N)
 )
 
 # vim: ft=sh ts=2 sw=2 et
