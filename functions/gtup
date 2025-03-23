@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+set -e
+
+pushd $(pwd)
+
+if [[ $(uname) == "Darwin" ]]; then
+  if ! command -v brew &>/dev/null; then
+    echo "brew is not installed"
+    exit 1
+  elif ! command -v ghostty &>/dev/null; then
+    echo "ghostty is not installed!"
+    # echo "installing ghostty..."
+    # brew install --cask ghostty@nightly
+    exit 1
+  # else
+  #   brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
+  fi
+elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
+  if ! command -v ghostty &>/dev/null; then
+    echo "ghostty is not installed!"
+  else
+    if [[ -d ${XDG_PROJECTS_DIR}/ghostty-org/ghostty && $(command -v zig) ]]; then
+      pushd ${XDG_PROJECTS_DIR}/ghostty-org/ghostty
+      git fetch
+      if [[ $(git rev-list HEAD...origin/main --count) != 0 ]]; then
+        if [[ -d zig-out ]]; then
+          git reset --hard && git clean --force -dfx
+        fi
+        git pull
+	      sed -i '/const target = b\.standardTargetOptions(.{}/a \
+          if (target.cpu.arch == .x86_64) {\
+            target.cpu_features_add |= std.Target.x86.featureSet(&.{\
+                .@"64bit", .adx, .aes, .avx, .avx2, .avx512bf16, .avx512bitalg,\
+                .avx512bw, .avx512cd, .avx512dq, .avx512f, .avx512ifma,\
+                .avx512vbmi, .avx512vbmi2, .avx512vl, .avx512vnni,\
+                .avx512vp2intersect, .avx512vpopcntdq, .bmi, .bmi2, .clflushopt,\
+                .clwb, .clzero, .cmov, .cx16, .cx8, .f16c, .fma, .fsgsbase,\
+                .fxsr, .gfni, .idivq_to_divl, .invpcid, .lzcnt, .macrofusion,\
+                .mmx, .movbe, .movdir64b, .movdiri, .mwaitx, .nopl, .pclmul,\
+                .pku, .popcnt, .prfchw, .rdpid, .rdrnd, .rdseed, .sahf, .sha,\
+                .shstk, .slow_3ops_lea, .slow_incdec, .sse, .sse2, .sse3,\
+                .sse4_1, .sse4_2, .sse4a, .ssse3, .vaes, .vpclmulqdq,\
+                .vzeroupper, .wbnoinvd, .x87, .xsave, .xsavec, .xsaveopt,\
+                .xsaves,\
+            });\
+          }' build.zig
+
+        zig build -Dgtk-wayland=true -Dgtk-x11=true -Dpie=true -Doptimize=ReleaseFast -Demit-docs
+      fi
+      popd
+    fi
+  fi
+fi
+
+# vim: set ft=sh ts=2 sw=2 et
