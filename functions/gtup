@@ -46,7 +46,7 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
             });\
           }' build.zig
 
-        zig build -Dgtk-wayland=true -Dgtk-x11=true -Dpie=true -Doptimize=ReleaseFast -Demit-docs
+        sudo zig build -p /usr -Dgtk-wayland=true -Dgtk-x11=true -Dpie=true -Doptimize=ReleaseFast -Demit-docs
       fi
       popd
     fi
