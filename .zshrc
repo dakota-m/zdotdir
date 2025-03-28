@@ -238,6 +238,8 @@ function globalias {
 }
 zle -N globalias
 
+source /usr/share/zsh/plugins/history-search-multi-word/history-search-multi-word.plugin.zsh
+
 #
 # Keybindings
 #
@@ -245,8 +247,7 @@ zle -N globalias
 # space expands all aliases, including global
 # bindkey -M emacs " " globalias
 bindkey -M viins " " globalias
-
-source /usr/share/zsh/plugins/history-search-multi-word/history-search-multi-word.plugin.zsh
+bindkey "^R" history-search-multi-word
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
