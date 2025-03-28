@@ -134,6 +134,7 @@ plugins=(
   # direnv
   dotnet
   extract
+  fzf
   git
   gitignore
   jupyter
