@@ -246,6 +246,8 @@ zle -N globalias
 # bindkey -M emacs " " globalias
 bindkey -M viins " " globalias
 
+source /usr/share/zsh/plugins/history-search-multi-word/history-search-multi-word.plugin.zsh
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
