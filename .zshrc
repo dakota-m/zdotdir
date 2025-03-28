@@ -93,8 +93,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 ZSH_CUSTOM=$__zsh_config_dir/custom
-[ -d "$ZSH_CUSTOM" ] || git clone --quiet git@github.com:mattmc3/zsh_custom "$ZSH_CUSTOM" && \
-  git clone --quiet https://github.com/jeffreytse/zsh-vi-mode "$ZSH_CUSTOM"
+[ -d "$ZSH_CUSTOM" ] || git clone --quiet git@github.com:mattmc3/zsh_custom "$ZSH_CUSTOM"
+[ -d "$ZSH_CUSTOM/plugins/zsh-vi-mode" || git clone https://github.com/jeffreytse/zsh-vi-mode \
+  $ZSH_CUSTOM/plugins/zsh-vi-mode]
 
 # Set completions variables
 ZSH_DISABLE_COMPFIX=true
