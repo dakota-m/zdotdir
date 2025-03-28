@@ -30,7 +30,7 @@ unset _zdir
 export ZSH="$__zsh_config_dir/.oh-my-zsh"
 [ -d "$ZSH" ] || git clone --quiet https://github.com/ohmyzsh/ohmyzsh "$ZSH"
 
-export STARSHIP_CONFIG=~/.config/starship.toml
+export STARSHIP_CONFIG=~/.config/zsh/themes/starship.toml
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
