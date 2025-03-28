@@ -30,12 +30,14 @@ unset _zdir
 export ZSH="$__zsh_config_dir/.oh-my-zsh"
 [ -d "$ZSH" ] || git clone --quiet https://github.com/ohmyzsh/ohmyzsh "$ZSH"
 
+export STARSHIP_CONFIG=~/.config/starship.toml
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="starship"
+# ZSH_THEME="starship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -213,3 +215,4 @@ cdpath=(
 
 # To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
 # [[ ! -f ${ZDOTDIR:-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR:-$HOME}/.p10k.zsh
+eval "$(starship init zsh)"
