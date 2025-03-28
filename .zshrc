@@ -32,6 +32,16 @@ export ZSH="$__zsh_config_dir/.oh-my-zsh"
 
 export STARSHIP_CONFIG=~/.config/zsh/themes/starship.toml
 
+if [[ "$(uname)" == "Darwin" ]]; then
+  if [[ -d $XDG_PROJECTS_DIR/fzf ]]; then
+    export FZF_PATH=$XDG_PROJECTS_DIR/fzf
+  fi
+elif [[ "$(uname)" == "Linux" ]]; then
+  if [[ -d $XDG_PROJECTS_DIR/fzf ]]; then
+    export FZF_PATH=$XDG_PROJECTS_DIR/fzf
+  fi
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -95,9 +105,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 ZSH_CUSTOM=$__zsh_config_dir/custom
-[ -d "$ZSH_CUSTOM" ] || git clone --quiet git@github.com:mattmc3/zsh_custom "$ZSH_CUSTOM"
-[ -d "$ZSH_CUSTOM/plugins/zsh-vi-mode" || git clone https://github.com/jeffreytse/zsh-vi-mode \
-  $ZSH_CUSTOM/plugins/zsh-vi-mode]
+# [ -d "$ZSH_CUSTOM" ] || git clone --quiet git@github.com:mattmc3/zsh_custom "$ZSH_CUSTOM"
+[ -d "$ZSH_CUSTOM/plugins/zsh-vi-mode" || git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode]
 
 # Set completions variables
 ZSH_DISABLE_COMPFIX=true
@@ -210,6 +219,31 @@ for f in zvm_vi_put_after zvm_vi_put_before; do
     eval "$f() { CUTBUFFER=\$(pbcopy); _$f; zvm_highlight clear }"
   fi
 done
+
+function globalias {
+  local -a noexpand_aliases
+  zstyle -a ':zsh_custom:plugin:abbreviations' 'noexpand' 'noexpand_aliases' \
+    || noexpand_aliases=()
+
+  # Get last word to the left of the cursor:
+  # (A) makes it an array even if there's only one element
+  # (z) splits into words using shell parsing
+  local word=${${(Az)LBUFFER}[-1]}
+  if [[ $noexpand_aliases[(Ie)$word] -eq 0 ]]; then
+    zle _expand_alias
+    # zle expand-word
+  fi
+  zle self-insert
+}
+zle -N globalias
+
+#
+# Keybindings
+#
+
+# space expands all aliases, including global
+# bindkey -M emacs " " globalias
+bindkey -M viins " " globalias
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
