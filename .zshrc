@@ -120,7 +120,7 @@ plugins=(
   colored-man-pages
 
   # Utils
-  direnv
+  # direnv
   dotnet
   extract
   git
