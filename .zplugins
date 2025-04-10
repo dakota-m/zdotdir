@@ -42,7 +42,7 @@ $ZSH_CUSTOM/plugins/git
 # $ZSH_CUSTOM path:plugins/gh
 $ZSH_CUSTOM/plugins/golang
 # $ZSH_CUSTOM/plugins/otp
-$ZSH_CUSTOM/plugins/python
+# $ZSH_CUSTOM/plugins/python
 # $ZSH_CUSTOM path:plugins/asdf
 $ZSH_CUSTOM path:plugins/fzf
 # $ZSH_CUSTOM path:plugins/dirtools
@@ -63,6 +63,11 @@ romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
 unixorn/fzf-zsh-plugin kind:defer
+fourdim/zsh-archlinux
+# wintermi/zsh-golang
+dbz/kube-aliases
+# plutowang/zsh-ollama-command
+breakingpitt/zsh-packer
 
 #
 # Editor
@@ -80,8 +85,8 @@ romkatv/zsh-no-ps2
 #ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 
 # Add macOS specific plugins
-ohmyzsh/ohmyzsh path:plugins/brew conditional:is-macos
-ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
+# ohmyzsh/ohmyzsh path:plugins/brew conditional:is-macos
+# ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
 
 #
 # Fish-like
