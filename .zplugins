@@ -63,7 +63,7 @@ romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
 unixorn/fzf-zsh-plugin kind:defer
-fourdim/zsh-archlinux
+# fourdim/zsh-archlinux
 # wintermi/zsh-golang
 dbz/kube-aliases
 # plutowang/zsh-ollama-command
