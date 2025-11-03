@@ -45,7 +45,7 @@ fi
 export LC_ALL=en_US.UTF-8
 export SECOND_BRAIN=$HOME/Documents/obsidian/notes
 export OBSIDIAN_REST_API_KEY=f66f902ac15d8773ff8f8fde96ac2fb983216a1d6fc9ee35d84732393d83b993
-export MAKEFLAGS="-j$(nproc --ignore=2)"
+# export MAKEFLAGS="-j$(nproc --ignore=2)"
 
 # export CC="gcc"
 # export CXX="gcc++"
@@ -65,7 +65,7 @@ export MAKEFLAGS="-j$(nproc --ignore=2)"
   for zdir in $@; do
     [[ -d "${(P)zdir}" ]] || mkdir -p -- "${(P)zdir}"
   done
-} __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_{RUNTIME,PROJECTS}_DIR
+} __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_PROJECTS_DIR
 
 # Make Terminal.app behave.
 if [[ "$OSTYPE" == darwin* ]]; then

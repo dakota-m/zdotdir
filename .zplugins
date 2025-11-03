@@ -99,5 +99,6 @@ zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions post:post-autosuggestions
 zsh-users/zsh-history-substring-search post:post-history-substring-search
 zdharma-continuum/history-search-multi-word kind:defer
+wazum/zsh-directory-dot-expansion
 
 # vim: ft=sh ts=2 sw=2 et
