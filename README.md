@@ -8,12 +8,12 @@ My `$ZDOTDIR` [dotfiles] directory, which contains my zsh configuration.
 
 ## My setup
 
-I like my Zsh to behave like [Fish][fish], so there's a lot of features that will be very familiar to other Fish users.
+I like my Zsh to behave like [Fish][fish], so there's a lot of features that will be very familiar to other Fish users. I also like the basic plugin structure of [Oh-My-Zsh][oh-my-zsh], even if I'm not as big of a fan of OMZ itself. My Zsh has things like:
 
 - A functions directory for my custom functions
-- A completions directory for my custom functions
+- A completions directory for my custom completions
 - A conf.d directory so that .zshrc isn't a cluttered mess
-- A plugins directory similar to [oh-my-zsh] for adding/removing shell features
+- My custom plugins in a separate `$ZSH_CUSTOM` project similar to how OMZ works
 
 ## Installation
 
