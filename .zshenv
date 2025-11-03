@@ -21,7 +21,7 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 # export ZEPHYR_HOME=${ZEPHYR_HOME:-$HOME/Projects/dakota-m/zsh-zephyr}
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  export TERMINFO=/usr/share/terminfo
+  # export TERMINFO=/usr/share/terminfo
   export GOPATH=$HOME/go
   export GOROOT=/opt/homebrew/bin/go/libexec
   # export GOBIN=/opt/homebrew/bin/go
@@ -45,7 +45,19 @@ fi
 export LC_ALL=en_US.UTF-8
 export SECOND_BRAIN=$HOME/Documents/obsidian/notes
 export OBSIDIAN_REST_API_KEY=***REMOVED***
-export MAKEFLAGS="-j$(nproc --ignore=2)"
+# export MAKEFLAGS="-j$(nproc --ignore=2)"
+
+# Apothesource ENV Vars
+#
+# BitBucket
+export VA_BITBT_USER=mccormickc
+export VA_BITBT_PW=***REMOVED***
+# Sandbox DTR
+export DTR_USER=***REMOVED***
+export DTR_PWD=***REMOVED***
+# VA Nexus
+export VA_NEXUS_USER=***REMOVED***
+export VA_NEXUS_PWD=***REMOVED***
 
 # export CC="gcc"
 # export CXX="gcc++"

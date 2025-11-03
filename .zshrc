@@ -91,6 +91,9 @@ prompt "$ZSH_THEME[@]"
 # Wrap up
 #
 
+# Create an amazing Zsh config using antidote plugins.
+source $ZSH_CONFIG_DIR/lib/antidote.zsh
+
 # Never start in the root file system. Looking at you, Zed.
 [[ "$PWD" != "/" ]] || cd
 
@@ -117,3 +120,9 @@ if [[ $(tty) == *"pts"* ]]; then
 fi
 # Always return success
 true
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
