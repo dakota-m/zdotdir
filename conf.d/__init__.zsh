@@ -32,9 +32,11 @@ path=(
   /opt/*/bin(N)
   # /home/dakota/.asdf/shims(N)
   # $XDG_PROJECTS_DIR/aocc-compiler-4.2.0/bin(N)
-  # /Applications/WezTerm.app/Contents/MacOS
+  /Applications/WezTerm.app/Contents/MacOS
+  /Users/dakotamartin/.sdkman/candidates/java/current/bin/java
 
   # keg only brew apps
+  # $HOMEBREW_PREFIX/opt/openjdk/bin(N)
   # $HOMEBREW_PREFIX/opt/curl/bin(N)
   # $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
   # $HOMEBREW_PREFIX/share/npm/bin(N)

@@ -1,27 +1,25 @@
 #
-# antidote: The fastest Zsh plugin manager.
+# Antidote
 #
 
-# Setup antidote.
-export ZSH_CUSTOM=${ZSH_CUSTOM:-$ZDOTDIR}
-export ANTIDOTE_HOME=${ANTIDOTE_HOME:-${XDG_CACHE_HOME:-$HOME/.cache}/repos}
-zstyle -s ':antidote:repo' path antidote_path \
-  || antidote_path=$ANTIDOTE_HOME/mattmc3/antidote
+: ${ANTIDOTE_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
 
-# Clone antidote if missing.
-[[ -d $antidote_path ]] \
-  || git clone --depth 1 --quiet https://github.com/mattmc3/antidote $antidote_path
+# Keep all 3 for different test scenarios.
+ANTIDOTE_REPO=$ANTIDOTE_HOME/mattmc3/antidote
+# ANTIDOTE_REPO=~/Projects/mattmc3/antidote
+# ANTIDOTE_REPO=${HOMEBREW_PREFIX:-/opt/homebrew}/opt/antidote/share/antidote
 
-# Lazy-load antidote from its functions directory.
-fpath=($antidote_path/functions $fpath)
-autoload -Uz antidote
+zstyle ':antidote:home' path $ANTIDOTE_HOME
+zstyle ':antidote:repo' path $ANTIDOTE_REPO
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+zstyle ':antidote:plugin:*' defer-options '-p'
+zstyle ':antidote:*' zcompile 'yes'
 
-# Generate static file in a subshell whenever .zplugins is updated.
-zplugins=${ZDOTDIR:-~}/.zplugins
-if [[ ! ${zplugins}.zsh -nt ${zplugins} ]] || [[ ! -e $ANTIDOTE_HOME/.lastupdated ]]; then
-  antidote bundle <${zplugins} >|${zplugins}.zsh
-  date +%Y-%m-%dT%H:%M:%S%z >| $ANTIDOTE_HOME/.lastupdated
+# Clone antidote if necessary.
+if [[ ! -d $ANTIDOTE_REPO ]]; then
+  git clone https://github.com/mattmc3/antidote $ANTIDOTE_REPO
 fi
 
-# Source the static file.
-source ${zplugins}.zsh
+# Load antidote
+source $ANTIDOTE_REPO/antidote.zsh
+antidote load
