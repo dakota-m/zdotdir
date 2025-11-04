@@ -37,9 +37,18 @@ ZSH_THEME=(starship starship)
 is-theme-p10k()     { [[ "$ZSH_THEME" == (p10k|powerlevel10k)* ]] }
 is-theme-starship() { [[ "$ZSH_THEME" == starship* ]] }
 
+ZSH_CONFIG_DIR="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
+
 #
 # Libs
 #
+
+# Lazy-load (autoload) Zsh function files from a directory.
+for _fndir in $ZSH_CONFIG_DIR/functions(/FN) $ZSH_CONFIG_DIR/functions/*(/FN); do
+  fpath=($_fndir $fpath)
+  autoload -Uz $_fndir/*~*/_*(N.:t)
+done
+unset _fndir
 
 # Load things from lib.
 for zlib in $ZDOTDIR/lib/*.zsh; source $zlib
@@ -48,9 +57,9 @@ unset zlib
 # Add more zsh config here, or in conf.d...
 # ...
 if [[ "$(uname)" == "Darwin" ]]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+  # export NVM_DIR="$HOME/.nvm"
+  # [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 elif [[ "$(uname)" == "Linux" && "$(lsb_release -is)" == "Arch" ]]; then
   source $ZDOTDIR/functions/ghsrc
   # source /home/dakota/scripts/rsync.zsh
@@ -83,9 +92,9 @@ fi
 # Uncomment to manually set your prompt, or let Zephyr do it automatically in the
 # zshrc-post hook. Note that some prompts like powerlevel10k may not work well
 # with post_zshrc.
-setopt prompt_subst transient_rprompt
-autoload -Uz promptinit && promptinit
-prompt "$ZSH_THEME[@]"
+# setopt prompt_subst transient_rprompt
+# autoload -Uz promptinit && promptinit
+# prompt "$ZSH_THEME[@]"
 
 #
 # Wrap up
@@ -94,11 +103,19 @@ prompt "$ZSH_THEME[@]"
 # Create an amazing Zsh config using antidote plugins.
 source $ZSH_CONFIG_DIR/lib/antidote.zsh
 
+# Source conf.d.
+for _rc in $ZDOTDIR/conf.d/*.zsh; do
+  # ignore files that begin with ~
+  [[ "${_rc:t}" != '~'* ]] || continue
+  source "$_rc"
+done
+unset _rc
+
 # Never start in the root file system. Looking at you, Zed.
 [[ "$PWD" != "/" ]] || cd
 
 # Manually call post_zshrc to bypass the hook
-(( $+functions[run_post_zshrc] )) && run_post_zshrc
+# (( $+functions[run_post_zshrc] )) && run_post_zshrc
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof

@@ -5,19 +5,19 @@
 # References
 # - https://www.oliverspryn.com/blog/adding-git-completion-to-zsh
 
-function update_git_completions {
-  # Download the git scripts
-  local giturl=https://raw.githubusercontent.com/git/git/master/contrib/completion
-  local dest=${1:-${XDG_DATA_HOME:-~/.local/share}/zsh/completions}
-  [[ -d $dest ]] || mkdir -p $dest
-  curl -fsSL $giturl/git-completion.bash -o $dest/git-completion.bash
-  curl -fsSL $giturl/git-completion.zsh -o $dest/_git
-}
-
-# Add completions
-fpath=(${XDG_DATA_HOME:-~/.local/share}/zsh/completions $fpath)
-[[ -f ${fpath[1]}/_git ]] || update_git_completions
-zstyle ':completion:*:*:git:*' script ${fpath[1]}/git-completion.bash
+# function update_git_completions {
+#   # Download the git scripts
+#   local giturl=https://raw.githubusercontent.com/git/git/master/contrib/completion
+#   local dest=${1:-${XDG_DATA_HOME:-~/.local/share}/zsh/completions}
+#   [[ -d $dest ]] || mkdir -p $dest
+#   curl -fsSL $giturl/git-completion.bash -o $dest/git-completion.bash
+#   curl -fsSL $giturl/git-completion.zsh -o $dest/_git
+# }
+#
+# # Add completions
+# fpath=(${XDG_DATA_HOME:-~/.local/share}/zsh/completions $fpath)
+# [[ -f ${fpath[1]}/_git ]] || update_git_completions
+# zstyle ':completion:*:*:git:*' script ${fpath[1]}/git-completion.bash
 
 # Aliases
 # alias gad="git add"
@@ -42,8 +42,8 @@ zstyle ':completion:*:*:git:*' script ${fpath[1]}/git-completion.bash
 # alias gst="git status -sb"
 
 # Git version checking
-autoload -Uz is-at-least
-git_version="${${(As: :)$(git version 2>/dev/null)}[3]}"
+# autoload -Uz is-at-least
+# git_version="${${(As: :)$(git version 2>/dev/null)}[3]}"
 
 #
 # Functions Current
@@ -134,14 +134,14 @@ function work_in_progress() {
 
 alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
 
-function ggpnp() {
-  if [[ "$#" == 0 ]]; then
-    ggl && ggp
-  else
-    ggl "${*}" && ggp "${*}"
-  fi
-}
-compdef _git ggpnp=git-checkout
+# function ggpnp() {
+#   if [[ "$#" == 0 ]]; then
+#     ggl && ggp
+#   else
+#     ggl "${*}" && ggp "${*}"
+#   fi
+# }
+# compdef _git ggpnp=git-checkout
 
 alias ggpur='ggu'
 alias g='git'
