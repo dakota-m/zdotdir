@@ -77,7 +77,7 @@ export VA_NEXUS_PWD=IvoHDb_Y-waQdaBVVcj4uFk_5kE_5W7r0v3jz0SeRaQk
   for zdir in $@; do
     [[ -d "${(P)zdir}" ]] || mkdir -p -- "${(P)zdir}"
   done
-} __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_{RUNTIME,PROJECTS}_DIR
+} __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_PROJECTS_DIR # {RUNTIME,PROJECTS}_DIR
 
 # Make Terminal.app behave.
 if [[ "$OSTYPE" == darwin* ]]; then

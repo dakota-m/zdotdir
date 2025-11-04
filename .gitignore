@@ -24,3 +24,5 @@
 .zephyr/
 .zlocal
 .kickstart/
+.DS_Store
+zsh_startup.log
