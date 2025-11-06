@@ -11,7 +11,6 @@ export PAGER=nvimpager
 cdpath=(
   $XDG_PROJECTS_DIR(N/)
   $XDG_PROJECTS_DIR/dakota-m(N/)
-  # $XDG_PROJECTS_DIR/mattmc3(N/)
   $cdpath
 )
 
@@ -22,20 +21,19 @@ path=(
   $path
 
   # apps
-  /bin(N)
-  /{usr/local,opt}/opt/ruby/bin(N)
-  /{usr/local,opt}/lib/ruby/gems/*/bin(N)
-  /{usr/local,opt}/bin(N)
-  /{usr/local,opt}/sbin(N)
-  /usr/sbin(N)
-  /opt/*(N)
-  /opt/*/bin(N)
+  # /bin(N)
+  # /{usr/local,opt}/bin(N)
+  # /{usr/local,opt}/sbin(N)
+  # /usr/sbin(N)
+  # /opt/*(N)
+  # /opt/*/bin(N)
   # /home/dakota/.asdf/shims(N)
-  # $XDG_PROJECTS_DIR/aocc-compiler-4.2.0/bin(N)
-  /Applications/WezTerm.app/Contents/MacOS
-  /Users/dakotamartin/.sdkman/candidates/java/current/bin/java
+  # /Applications/WezTerm.app/Contents/MacOS
+  # /Users/dakotamartin/.sdkman/candidates/java/current/bin/java
 
   # keg only brew apps
+  # $HOMEBREW_PREFIX/bin(N)
+  # $HOMEBREW_PREFIX/opt/*/bin(N)
   # $HOMEBREW_PREFIX/opt/openjdk/bin(N)
   # $HOMEBREW_PREFIX/opt/curl/bin(N)
   # $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
