@@ -11,7 +11,7 @@ zstyle ':zephyr:plugin:*' 'use-cache' yes
 #
 
 zstyle ':zsh_custom:plugin:*' 'use-cache' no
-zstyle ':zsh_custom:plugin:completion' compstyle zshzoo
+# zstyle ':zsh_custom:plugin:completion' compstyle zshzoo
 
 #
 # Antidote
@@ -81,8 +81,9 @@ zstyle ':zsh_custom:plugin:editor:*' 'enabled' 'yes'
 # option -u, and to make compinit silently ignore all insecure files and directories
 # use the option -i. This security check is skipped entirely when the -C option is
 # given, provided the dumpfile exists.
-# zstyle ':zephyr:plugin:completion' 'disable-compfix' yes
+zstyle ':zephyr:plugin:completion' 'disable-compfix' yes
 # zstyle ':zephyr:plugin:completion' compstyle 'zephyr'
+zstyle ':zephyr:plugin:completion' compstyle 'zshzoo'
 
 #
 # ZSH_CUSTOM features
