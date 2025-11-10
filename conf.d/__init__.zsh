@@ -29,11 +29,14 @@ path=(
   # /opt/*/bin(N)
   # /home/dakota/.asdf/shims(N)
   # /Applications/WezTerm.app/Contents/MacOS
-  # /Users/dakotamartin/.sdkman/candidates/java/current/bin/java
+  /Users/dakotamartin/.sdkman/candidates/gradle/*/bin(N)
+  /Users/dakotamartin/.sdkman/candidates/java/*/bin(N)
+  /Users/dakotamartin/.sdkman/candidates/maven/*/bin(N)
 
   # keg only brew apps
-  # $HOMEBREW_PREFIX/bin(N)
-  # $HOMEBREW_PREFIX/opt/*/bin(N)
+  $HOMEBREW_PREFIX/bin(N)
+  $HOMEBREW_PREFIX/opt/*/bin(N)
+  $HOMEBREW_PREFIX/opt(N)
   # $HOMEBREW_PREFIX/opt/openjdk/bin(N)
   # $HOMEBREW_PREFIX/opt/curl/bin(N)
   # $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
