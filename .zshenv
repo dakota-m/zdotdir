@@ -58,6 +58,7 @@ export VA_BITBT_PW=BBDC-NzY2NjI4ODY2NjYyOtad8BheC3um61NmYiBWwPcHB++Y
 # Sandbox DTR
 export DTR_USER=W3LXoqqA
 export DTR_PWD=3EglA6pB_U8kLjyTjv9D2KaB8sUAmhLNirNZm5O3lZ1_
+export DTR_URL=dtr.mapsandbox.net
 # VA Nexus
 export VA_NEXUS_USER=FVfC74mb
 export VA_NEXUS_PWD=IvoHDb_Y-waQdaBVVcj4uFk_5kE_5W7r0v3jz0SeRaQk
