@@ -62,6 +62,9 @@ export DTR_PWD=***REMOVED***
 export VA_NEXUS_USER=***REMOVED***
 export VA_NEXUS_PWD=***REMOVED***
 
+export SKAFFOLD_PUSH=false
+export SKAFFOLD_RPC_PORT=50051
+
 # export CC="gcc"
 # export CXX="gcc++"
 
