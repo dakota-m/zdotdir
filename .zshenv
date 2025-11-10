@@ -62,6 +62,9 @@ export DTR_PWD=3EglA6pB_U8kLjyTjv9D2KaB8sUAmhLNirNZm5O3lZ1_
 export VA_NEXUS_USER=FVfC74mb
 export VA_NEXUS_PWD=IvoHDb_Y-waQdaBVVcj4uFk_5kE_5W7r0v3jz0SeRaQk
 
+export SKAFFOLD_PUSH=false
+export SKAFFOLD_RPC_PORT=50051
+
 # export CC="gcc"
 # export CXX="gcc++"
 
