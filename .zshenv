@@ -58,6 +58,7 @@ export VA_BITBT_PW=***REMOVED***
 # Sandbox DTR
 export DTR_USER=***REMOVED***
 export DTR_PWD=***REMOVED***
+export DTR_URL=dtr.mapsandbox.net
 # VA Nexus
 export VA_NEXUS_USER=***REMOVED***
 export VA_NEXUS_PWD=***REMOVED***
