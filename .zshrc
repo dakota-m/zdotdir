@@ -7,7 +7,7 @@
 # Options
 #
 
-# setopt auto_cd # If a command isn't valid, but is a directory, cd to that dir.
+setopt auto_cd # If a command isn't valid, but is a directory, cd to that dir.
 
 #
 # Profiling

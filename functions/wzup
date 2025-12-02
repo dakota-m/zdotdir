@@ -14,7 +14,7 @@ if [[ $(uname) == "Darwin" ]]; then
     brew install --cask wezterm@nightly
     exit 1
   else
-    brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest
+    brew upgrade --cask wezterm@nightly --no-quarantine --greedy-latest
   fi
 elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
   if ! command -v wezterm &>/dev/null; then

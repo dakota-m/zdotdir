@@ -53,18 +53,28 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 # Apothesource ENV Vars
 #
 # BitBucket
-export VA_BITBT_USER=mccormickc
-export VA_BITBT_PW=***REMOVED***
+export VA_BITBT_USER="mccormickc"
+export VA_BITBT_PWD="***REMOVED***"
 # Sandbox DTR
-export DTR_USER=***REMOVED***
-export DTR_PWD=***REMOVED***
-export DTR_URL=dtr.mapsandbox.net
+export DTR_USER="***REMOVED***"
+export DTR_PWD="***REMOVED***"
+export DTR_URL="dtr.mapsandbox.net"
 # VA Nexus
-export VA_NEXUS_USER=***REMOVED***
-export VA_NEXUS_PWD=***REMOVED***
+export VA_NEXUS_USER="***REMOVED***"
+export VA_NEXUS_PWD="***REMOVED***"
 
 export SKAFFOLD_PUSH=false
 export SKAFFOLD_RPC_PORT=50051
+
+# export JWT_PUBLIC_KEY='-----BEGIN PUBLIC KEY-----
+# MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5hSzxXodbmPdnpZKutoI
+# SB8UJENemLaYpBNXb0yMr9uM29gKvXHHLCpOTZtyeUEeD0pShVN+At5jm2zv9S+V
+# A0fmkDwlVLp2FbCEbOJ1zjChLOeNA66elECD7j28V/5P710dumK5Xuncb6Vnodw8
+# LzOgaZpllYZHuPDwnhf9ehFcHNqtknTSF8IFw/FHo9HPdF9dq83xLtA9NvBBXz70
+# HsWzFGtHOlTzb9omA6kqIYIBq6CBvutsoZlAMqDoaXsOoAjU59g+OGuCV3hx0ZCC
+# 2ur9OYEAn6bSek1fsXdDMsjwnr1upt7quUiPQf5wdkVVr5lCbuYQsxNWR5dzxzsR
+# twIDAQAB
+# -----END PUBLIC KEY-----'
 
 # export CC="gcc"
 # export CXX="gcc++"

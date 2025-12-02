@@ -63,8 +63,10 @@ alias utc="date -u +%Y-%m-%dT%H:%M:%SZ"
 alias unixepoch="date +%s"
 
 # homebrew
-#alias brewup="brew update && brew upgrade && brew cleanup"
-#alias brewinfo="brew leaves | xargs brew desc --eval-all"
+alias brup="brew update && brew upgrade && brew cleanup"
+alias brinf="brew leaves | xargs brew desc --eval-all"
+alias brin="brew install"
+alias brsr="brew search"
 
 # Linux Specific Aliases
 alias choh='sudo chown -R $USER:$USER $HOME'
@@ -621,6 +623,14 @@ alias dksv='docker save'
 alias dkst='docker stats'
 alias dktp='docker top'
 alias dkup='docker update'
+
+# NOTE: Kubernetes Aliases
+# alias k='kubectl'
+# alias kgs='kubectl get services'
+# alias kgpa='kubectl get pods --all-namespaces'
+# alias kgp='kubectl get pods'
+# alias kep='kubectl explain pods'
+alias kgsn='kubectl get svc -n '
 
 # NOTE: Config Aliases
 if [ -e $ZDOTDIR/.zshrc ]; then
