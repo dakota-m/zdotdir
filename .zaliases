@@ -220,6 +220,7 @@ alias desk='cd ~/Desktop'
 alias dl='cd ~/Downloads'
 alias notes='cd ~/Documents/obsidian/notes'
 alias vid='cd ~/Videos'
+alias proj='cd ~/Projects'
 
 #NOTE: Hypr Alias's
 # alias hycf='chezmoi edit ~/.config/hypr/hypr.conf'

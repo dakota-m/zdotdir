@@ -57,7 +57,7 @@ mattmc3/zephyr path:plugins/utility
 #mattmc3/zephyr path:plugins/zfunctions
 $ZDOTDIR/plugins/git
 $ZDOTDIR/plugins/abbreviations
-#$ZDOTDIR/plugins/fzf
+$ZDOTDIR/plugins/fzf
 matthieusb/zsh-sdkman
 
 #
@@ -67,6 +67,7 @@ matthieusb/zsh-sdkman
 ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/kubectl
+ohmyzsh/ohmyzsh path:plugins/skaffold
 
 #
 # Utils
