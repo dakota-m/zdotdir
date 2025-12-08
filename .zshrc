@@ -58,6 +58,13 @@ ZSH_THEME=(starship starship)
 # [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
 # autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
 
+# if type brew &>/dev/null; then
+#     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+#
+#     autoload -Uz compinit
+#     compinit
+# fi
+
 #
 # Wrap up
 #
