@@ -30,6 +30,8 @@ path=(
   /usr/sbin(N)
   /opt/*(N)
   /opt/*/bin(N)
+
+  /home/linuxbrew/.linuxbrew/bin(N)
   # /home/dakota/.asdf/shims(N)
   # $XDG_PROJECTS_DIR/aocc-compiler-4.2.0/bin(N)
   # /Applications/WezTerm.app/Contents/MacOS

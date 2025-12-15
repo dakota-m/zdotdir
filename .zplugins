@@ -63,6 +63,8 @@ romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
 unixorn/fzf-zsh-plugin kind:defer
+wazum/zsh-directory-dot-expansion
+matthieusb/zsh-sdkman
 # fourdim/zsh-archlinux
 # wintermi/zsh-golang
 dbz/kube-aliases

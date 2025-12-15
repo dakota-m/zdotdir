@@ -54,7 +54,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(uname)" == "Linux" && "$(lsb_release -is)" == "Arch" ]]; then
   source $ZDOTDIR/functions/ghsrc
   # source /home/dakota/scripts/rsync.zsh
-  source /opt/aocc/setenv_AOCC.sh
+  # source /opt/aocc/setenv_AOCC.sh
   # source /usr/bin/aws_zsh_completer.sh
   # source /usr/share/clang/bash-autocomplete.sh
   # source /home/dakota/.config/broot/launcher/bash/br
@@ -65,6 +65,8 @@ fi
 # Aliases
 #
 [[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
+
+ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 #
 # Completions
@@ -117,3 +119,7 @@ if [[ $(tty) == *"pts"* ]]; then
 fi
 # Always return success
 true
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

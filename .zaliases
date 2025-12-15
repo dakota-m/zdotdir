@@ -390,8 +390,8 @@ alias yayh='yay --help'
 alias yays='yay -S'
 alias yaysr='yay -Slq | $FZF_TOOL --ansi --preview "yay -Si {1}" --preview-window "right,75" | xargs -ro yay -S'
 alias yayi="yay -Qe | cut -f 1 -d ' ' | $FZF_TOOL  --ansi --preview 'yay -Qi {1}'"
-alias yayfz='yay -Slaq | sed -e "/installed/d" | $FZF_TOOL --ansi --preview "bat \
-   | paru -Si {}" --preview-window "top,50%" | xargs -ro paru -S'
+alias yfz='yay -Slaq | sed -e "/installed/d" | $FZF_TOOL --ansi --preview "bat \
+   | yay -Si {}" --preview-window "top,50%" | xargs -ro yay -S'
 
 #NOTE: Systemctl Aliases
 alias sc='sudo systemctl'
