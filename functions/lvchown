@@ -1,0 +1,3 @@
+#!/bin/zsh
+sudo chown -R 1000:1000 $HOME/.cache/nvim/luac
+sudo chown -R 1000:1000 $HOME/.local/share/nvim
