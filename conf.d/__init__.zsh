@@ -28,7 +28,7 @@ path=(
   # /opt/*(N)
   # /opt/*/bin(N)
   # /home/dakota/.asdf/shims(N)
-  # /Applications/WezTerm.app/Contents/MacOS
+  /Applications/WezTerm.app/Contents/MacOS
   /Users/dakotamartin/.sdkman/candidates/gradle/*/bin(N)
   /Users/dakotamartin/.sdkman/candidates/java/*/bin(N)
   /Users/dakotamartin/.sdkman/candidates/maven/*/bin(N)
