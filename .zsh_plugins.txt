@@ -67,7 +67,7 @@ matthieusb/zsh-sdkman
 ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/kubectl
-ohmyzsh/ohmyzsh path:plugins/skaffold
+#ohmyzsh/ohmyzsh path:plugins/skaffold
 
 #
 # Utils
