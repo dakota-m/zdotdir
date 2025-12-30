@@ -100,3 +100,4 @@ export SKAFFOLD_RPC_PORT=50051
 if [[ "$OSTYPE" == darwin* ]]; then
   export SHELL_SESSIONS_DISABLE=1
 fi
+. "$HOME/.cargo/env"

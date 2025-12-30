@@ -66,7 +66,7 @@ alias unixepoch="date +%s"
 alias brup="brew update && brew upgrade && brew cleanup"
 alias brinf="brew leaves | xargs brew desc --eval-all"
 alias brin="brew install"
-alias brsr="brew search"
+alias brsr="brew search | fzf"
 
 # Linux Specific Aliases
 alias choh='sudo chown -R $USER:$USER $HOME'

@@ -82,6 +82,7 @@ mattmc3/zman
 #
 
 mattmc3/zephyr path:plugins/macos conditional:is-macos
+thirteen37/fzf-brew
 
 #
 # Final
