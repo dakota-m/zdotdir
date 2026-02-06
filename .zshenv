@@ -53,8 +53,11 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 # Apothesource ENV Vars
 #
 # BitBucket
-export VA_BITBT_USER="mccormickc"
-export VA_BITBT_PWD="***REMOVED***"
+export VA_BITBT_USER=***REMOVED***
+export VA_BITBT_PW=***REMOVED***
+# export VA_BITBT_USER="mccormickc"
+# export VA_BITBT_PWD="***REMOVED***"
+
 # Sandbox DTR
 export DTR_USER="***REMOVED***"
 export DTR_PWD="***REMOVED***"
