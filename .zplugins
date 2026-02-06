@@ -20,7 +20,7 @@ $ZSH_CUSTOM/plugins/xdg
 # Completions
 #
 
-#aloxaf/fzf-tab
+aloxaf/fzf-tab
 mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 
@@ -41,6 +41,7 @@ $ZDOTDIR/themes kind:fpath
 $ZSH_CUSTOM/plugins/git
 # $ZSH_CUSTOM path:plugins/gh
 $ZSH_CUSTOM/plugins/golang
+$ZSH_CUSTOM/plugins/abbreviations
 # $ZSH_CUSTOM/plugins/otp
 # $ZSH_CUSTOM/plugins/python
 # $ZSH_CUSTOM path:plugins/asdf
@@ -64,12 +65,12 @@ ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
 unixorn/fzf-zsh-plugin kind:defer
 wazum/zsh-directory-dot-expansion
-matthieusb/zsh-sdkman
+matthieusb/zsh-sdkman kind:defer
 # fourdim/zsh-archlinux
 # wintermi/zsh-golang
-dbz/kube-aliases
+dbz/kube-aliases kind:defer
 # plutowang/zsh-ollama-command
-breakingpitt/zsh-packer
+breakingpitt/zsh-packer kind:defer
 
 #
 # Editor
@@ -96,11 +97,10 @@ romkatv/zsh-no-ps2
 
 mattmc3/zephyr path:plugins/zfunctions
 mattmc3/zephyr path:plugins/confd
-#zdharma-continuum/fast-syntax-highlighting
-zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
+# zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions post:post-autosuggestions
 zsh-users/zsh-history-substring-search post:post-history-substring-search
 zdharma-continuum/history-search-multi-word kind:defer
-wazum/zsh-directory-dot-expansion
 
 # vim: ft=sh ts=2 sw=2 et

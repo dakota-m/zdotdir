@@ -25,6 +25,13 @@ function zvm_config() {
   # ZVM_VI_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
 }
 
+# Restore keybindings overridden by zsh-vi-mode's lazy init
+function zvm_after_init() {
+  # Re-bind space to globalias for alias auto-expansion
+  bindkey -M viins " " globalias
+  bindkey -M viins "^ " magic-space
+}
+
 # The plugin will auto execute this zvm_after_lazy_keybindings function
 function zvm_after_lazy_keybindings() {
   # zvm_bindkey visual 'y' zvm_vi_yank

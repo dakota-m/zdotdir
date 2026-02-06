@@ -18,18 +18,8 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 # export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg:-/run/user/1000}
 export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 
-# Token from nexus.mobilehealth.va.gov
-export VA_NEXUS_USER=FVfC74mb
-export VA_NEXUS_PWD=IvoHDb_Y-waQdaBVVcj4uFk_5kE_5W7r0v3jz0SeRaQk
-
-# crowd.mobilehealth.va.gov, if you have a Crowd account
-export VA_BITBT_USER=mccormickc
-export VA_BITBT_PWD=BBDC-NzY2NjI4ODY2NjYyOtad8BheC3um61NmYiBWwPcHB++Y
-
-# dtr.mapsandbox.net
-export DTR_USER=W3LXoqqA
-export DTR_PWD=3EglA6pB_U8kLjyTjv9D2KaB8sUAmhLNirNZm5O3lZ1_
-export DTR_URL=dtr.mapsandbox.net
+# Secrets loaded from .zlocal (gitignored)
+[[ -r ${ZDOTDIR:-$HOME}/.zlocal ]] && source ${ZDOTDIR:-$HOME}/.zlocal
 
 export SKAFFOLD_PUSH=false
 export SKAFFOLD_RPC_PORT=50051
@@ -60,20 +50,7 @@ fi
 
 export LC_ALL=en_US.UTF-8
 export SECOND_BRAIN=$HOME/Documents/obsidian/notes
-export OBSIDIAN_REST_API_KEY=f66f902ac15d8773ff8f8fde96ac2fb983216a1d6fc9ee35d84732393d83b993
 # export MAKEFLAGS="-j$(nproc --ignore=2)"
-
-# Apothesource ENV Vars
-#
-# BitBucket
-export VA_BITBT_USER=mccormickc
-export VA_BITBT_PW=BBDC-NzY2NjI4ODY2NjYyOtad8BheC3um61NmYiBWwPcHB++Y
-# Sandbox DTR
-export DTR_USER=W3LXoqqA
-export DTR_PWD=3EglA6pB_U8kLjyTjv9D2KaB8sUAmhLNirNZm5O3lZ1_
-# VA Nexus
-export VA_NEXUS_USER=FVfC74mb
-export VA_NEXUS_PWD=IvoHDb_Y-waQdaBVVcj4uFk_5kE_5W7r0v3jz0SeRaQk
 
 # export CC="gcc"
 # export CXX="gcc++"
