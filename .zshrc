@@ -50,6 +50,10 @@ unset _rc
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
 
+# Local settings
+[ -r $HOME/.local/config/zsh/.zshrc.local ] \
+&& . $HOME/.local/config/zsh/.zshrc.local
+
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof
 [[ -v ZPROFRC ]] && unset ZPROFRC
