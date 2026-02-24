@@ -74,7 +74,8 @@ ohmyzsh/ohmyzsh path:plugins/kubectl
 #
 
 romkatv/zsh-bench kind:path
-# aloxaf/fzf-tab
+unixorn/fzf-zsh-plugin kind:defer
+aloxaf/fzf-tab kind:defer
 mattmc3/zman
 
 #
