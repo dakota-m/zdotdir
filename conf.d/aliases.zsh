@@ -1,5 +1,5 @@
 #
-# aliases - Zsh and bash aliases
+# aliases
 #
 
 # References
