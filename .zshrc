@@ -1,141 +1,62 @@
 #!/bin/zsh
 #
-# .zshrc - Run on interactive Zsh session.
+# .zshrc - Zsh file loaded on interactive shell sessions.
 #
 
-#
-# Options
-#
-
-setopt auto_cd # If a command isn't valid, but is a directory, cd to that dir.
-
-#
 # Profiling
-#
-
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-#
-# Zstyles
-#
-
-# Load .zstyles file with customizations.
-[[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
-
-#
-# Theme
-#
-
-# Set prompt theme
-typeset -ga ZSH_THEME
-zstyle -a ':zephyr:plugin:prompt' theme ZSH_THEME ||
-ZSH_THEME=(starship starship)
-# ZSH_THEME=(starship mmc)
-
-# Set helpers for antidote.
-is-theme-p10k()     { [[ "$ZSH_THEME" == (p10k|powerlevel10k)* ]] }
-is-theme-starship() { [[ "$ZSH_THEME" == starship* ]] }
-
-#
-# Libs
-#
-
-# Load things from lib.
-for zlib in $ZDOTDIR/lib/*.zsh; source $zlib
-unset zlib
-
-# Add more zsh config here, or in conf.d...
-# ...
-if [[ "$(uname)" == "Darwin" ]]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-elif [[ "$(uname)" == "Linux" && "$(lsb_release -is)" == "Arch" ]]; then
-  source $ZDOTDIR/functions/ghsrc
-  # source /home/dakota/scripts/rsync.zsh
-  # source /opt/aocc/setenv_AOCC.sh
-  # source /usr/bin/aws_zsh_completer.sh
-  # source /usr/share/clang/bash-autocomplete.sh
-  # source /home/dakota/.config/broot/launcher/bash/br
-  # source $ZDOTDIR/functions/zet
+# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Emit an OSC 1337 sequence to set vars your terminal app (WezTerm) can use.
-function set_terminal_var() {
-  hash base64 2>/dev/null || return 1
-  local val
-  val="$(echo -n "$2" | base64)"
+# Set Zsh location vars.
+ZSH_CONFIG_DIR="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
+ZSH_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p $ZSH_CONFIG_DIR $ZSH_DATA_DIR $ZSH_CACHE_DIR
 
-  # https://github.com/tmux/tmux/wiki/FAQ#what-is-the-passthrough-escape-sequence-and-how-do-i-use-it
-  # Note that you ALSO need to add "set -g allow-passthrough on" to your tmux.conf
-  if [[ -n "${TMUX}" ]] ; then
-    printf "\033Ptmux;\033\033]1337;SetUserVar=%s=%s\007\033\\" "$1" "$val"
-  else
-    printf "\033]1337;SetUserVar=%s=%s\007" "$1" "$val"
-  fi
-}
-set_terminal_var "TERM_CURRENT_SHELL" "zsh ${ZSH_PATCHLEVEL:-$ZSH_VERSION}"
+# Set essential options
+setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
 
-#
-# Aliases
-#
-[[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
+# Add custom completions
+fpath=($ZSH_CONFIG_DIR/completions $fpath)
 
- # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Lazy-load (autoload) Zsh function files from a directory.
+for _fndir in $ZSH_CONFIG_DIR/functions(/FN) $ZSH_CONFIG_DIR/functions/*(/FN); do
+  fpath=($_fndir $fpath)
+  autoload -Uz $_fndir/*~*/_*(N.:t)
+done
+unset _fndir
 
-#
-# Completions
-#
+# Set any zstyles you might use for configuration.
+[[ -r $ZSH_CONFIG_DIR/.zstyles ]] && source $ZSH_CONFIG_DIR/.zstyles
 
-# Uncomment to manually initialize completion system, or let Zephyr
-# do it automatically in the zshrc-post hook.
-# ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
-# [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
-# autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
+# Create an amazing Zsh config using antidote plugins.
+source $ZSH_CONFIG_DIR/lib/antidote.zsh
 
-#
-# Prompt
-#
+# Source conf.d.
+for _rc in $ZDOTDIR/conf.d/*.zsh; do
+  # ignore files that begin with ~
+  [[ "${_rc:t}" != '~'* ]] || continue
+  source "$_rc"
+done
+unset _rc
 
-# Uncomment to manually set your prompt, or let Zephyr do it automatically in the
-# zshrc-post hook. Note that some prompts like powerlevel10k may not work well
-# with post_zshrc.
-setopt prompt_subst transient_rprompt
-autoload -Uz promptinit && promptinit
-prompt "$ZSH_THEME[@]"
-
-#
-# Wrap up
-#
-
-# Never start in the root file system. Looking at you, Zed.
+# Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
 
-# Manually call post_zshrc to bypass the hook
-(( $+functions[run_post_zshrc] )) && run_post_zshrc
+# Local settings
+# [ -r $HOME/.local/config/zsh/.zshrc.local ] \
+# && . $HOME/.local/config/zsh/.zshrc.local
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof
 [[ -v ZPROFRC ]] && unset ZPROFRC
 
-# gitui-ssh() {
-#   key="${1:-$HOME/.ssh/id_ed25519}"
-#   eval "$(ssh-agent)" \
-#     && ssh-add "$key" \
-#     && command gitui "${@:2}" \
-#     && eval "$(ssh-agent -k)"
-# }
-
-# -----------------------------------------------------
-# Fastfetch
-# -----------------------------------------------------
-if [[ $(tty) == *"pts"* ]]; then
-    fastfetch --config examples/13
-fi
 # Always return success
 true
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
