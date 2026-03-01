@@ -8,7 +8,7 @@ setopt prompt_subst transient_rprompt
 # prompt p10k mmc
 # source $ZDOTDIR/.p10k.zsh
 source $ZDOTDIR/lib/rapid-prompt.zsh
-rapid-prompt starship
+rapid-prompt starship minimal
 
 
 #   source /path/to/rapid-prompt.zsh
