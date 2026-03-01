@@ -20,10 +20,6 @@ path=(
   $prepath
   $path
 
-  # emacs
-  $HOME/.emacs.d/bin(N)
-  $XDG_CONFIG_HOME/emacs/bin(N)
-
   # keg only brew apps
   $HOMEBREW_PREFIX/opt/curl/bin(N)
   $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
