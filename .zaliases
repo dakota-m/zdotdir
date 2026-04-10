@@ -38,6 +38,7 @@ alias vi=vim
 alias nv=nvim
 alias nvim="$HOME/.local/bin/nvim"
 alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.vscode}"
+alias cl=clear
 
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"
