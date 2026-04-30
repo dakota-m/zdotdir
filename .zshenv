@@ -31,20 +31,6 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 #   # export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 # fi
 
-# if command -v aocc-clang > /dev/null 2>&1; then
-#   # export CC="aocc-clang"
-#   # export CXX="aocc-clang++"
-#   # export OMP_NUM_THREADS=22
-#   # export GOMP_CPU_AFFINITY="0-23"
-#   # AOCC Compiler Libraries
-#   # export AOCL_ROOT=/opt/aocl/aocc;
-#   # export AOCL_ROOT=$XDG_PROJECTS_DIR/aocl-linux-aocc-4.2.0//aocl/aocc;
-#   # export C_INCLUDE_PATH=/opt/aocl/aocc/include:$C_INCLUDE_PATH
-#   # export CPLUS_INCLUDE_PATH=/opt/aocl/aocc/include:$CPLUS_INCLUDE_PATH
-#   # export LD_LIBRARY_PATH=/opt/aocl/aocc/lib:$LD_LIBRARY_PATH
-#   # export LIBRARY_PATH=/opt/aocl/aocc/lib:$LIBRARY_PATH
-# fi
-
 # export LC_ALL=en_US.UTF-8
 # export SECOND_BRAIN=$HOME/Documents/obsidian/notes
 # export OBSIDIAN_REST_API_KEY=***REMOVED***
@@ -54,30 +40,30 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 #
 # BitBucket
 export VA_BITBT_USER=***REMOVED***
-export VA_BITBT_PW=***REMOVED***
-# export VA_BITBT_USER="mccormickc"
-# export VA_BITBT_PWD="***REMOVED***"
+# export VA_BITBT_PWD=***REMOVED***
+# HTTP Token
+export VA_BITBT_PWD=***REMOVED***
+export BKT_TOKEN=***REMOVED***
+export BKT_HOST=https://coderepo.mobilehealth.va.gov
 
 # Sandbox DTR
-export DTR_USER="***REMOVED***"
-export DTR_PWD="***REMOVED***"
-export DTR_URL="dtr.mapsandbox.net"
+export DTR_USER=***REMOVED***
+export DTR_PWD=***REMOVED***
+export DTR_URL=dtr.mapsandbox.net
 # VA Nexus
-export VA_NEXUS_USER="***REMOVED***"
-export VA_NEXUS_PWD="***REMOVED***"
+export VA_NEXUS_USER=***REMOVED***
+# export VA_NEXUS_USER="***REMOVED***"
+export VA_NEXUS_PWD=***REMOVED***
+# export VA_NEXUS_PWD="***REMOVED***"
 
 export SKAFFOLD_PUSH=false
 export SKAFFOLD_RPC_PORT=50051
 
-# export JWT_PUBLIC_KEY='-----BEGIN PUBLIC KEY-----
-# MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5hSzxXodbmPdnpZKutoI
-# SB8UJENemLaYpBNXb0yMr9uM29gKvXHHLCpOTZtyeUEeD0pShVN+At5jm2zv9S+V
-# A0fmkDwlVLp2FbCEbOJ1zjChLOeNA66elECD7j28V/5P710dumK5Xuncb6Vnodw8
-# LzOgaZpllYZHuPDwnhf9ehFcHNqtknTSF8IFw/FHo9HPdF9dq83xLtA9NvBBXz70
-# HsWzFGtHOlTzb9omA6kqIYIBq6CBvutsoZlAMqDoaXsOoAjU59g+OGuCV3hx0ZCC
-# 2ur9OYEAn6bSek1fsXdDMsjwnr1upt7quUiPQf5wdkVVr5lCbuYQsxNWR5dzxzsR
-# twIDAQAB
-# -----END PUBLIC KEY-----'
+# Github Tokens
+export COPILOT_GITHUB_TOKEN=***REMOVED***
+# export GH_TOKEN=***REMOVED***
+# export GITHUB_TOKEN=***REMOVED***
+export GH_HOST=va.ghe.com
 
 # export CC="gcc"
 # export CXX="gcc++"
