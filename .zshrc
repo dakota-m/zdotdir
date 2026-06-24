@@ -103,6 +103,8 @@ unset _rc
 # -----------------------------------------------------
 if [[ $(tty) == *"pts"* ]]; then
     fastfetch --config examples/13
+elif [[ $(tty) == *"ttys"* ]]; then
+    fastfetch --config examples/6
 fi
 # Always return success
 true
