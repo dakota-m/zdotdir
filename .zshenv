@@ -33,36 +33,24 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # export LC_ALL=en_US.UTF-8
 # export SECOND_BRAIN=$HOME/Documents/obsidian/notes
-# export OBSIDIAN_REST_API_KEY=***REMOVED***
 # export MAKEFLAGS="-j$(nproc --ignore=2)"
 
 # Apothesource ENV Vars
 #
+# NOTE: Secrets (usernames/passwords/tokens) moved to an encrypted store:
+#   $ZDOTDIR/.secrets.zsh.asc  (decrypted + loaded by conf.d/secrets.zsh)
+# Only non-sensitive hosts/config remain below.
+#
 # BitBucket
-export VA_BITBT_USER=***REMOVED***
-# export VA_BITBT_PWD=***REMOVED***
-# HTTP Token
-export VA_BITBT_PWD=***REMOVED***
-export BKT_TOKEN=***REMOVED***
 export BKT_HOST=https://coderepo.mobilehealth.va.gov
 
 # Sandbox DTR
-export DTR_USER=***REMOVED***
-export DTR_PWD=***REMOVED***
 export DTR_URL=dtr.mapsandbox.net
-# VA Nexus
-export VA_NEXUS_USER=***REMOVED***
-# export VA_NEXUS_USER="***REMOVED***"
-export VA_NEXUS_PWD=***REMOVED***
-# export VA_NEXUS_PWD="***REMOVED***"
 
 export SKAFFOLD_PUSH=false
 export SKAFFOLD_RPC_PORT=50051
 
-# Github Tokens
-export COPILOT_GITHUB_TOKEN=***REMOVED***
-# export GH_TOKEN=***REMOVED***
-# export GITHUB_TOKEN=***REMOVED***
+# Github
 export GH_HOST=va.ghe.com
 
 # export CC="gcc"
