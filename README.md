@@ -61,49 +61,50 @@ A snappy shell is very important. I regularly run [zsh-bench](https://github.com
 The latest benchmark run shows that we load a new shell pretty fast.
 
 ```zsh
-% # MacBook Air (M3, 2024): starship prompt
+% # MacBook Pro (M5, 2026): starship prompt
 % zsh-bench
 ==> benchmarking login shell of user matt ...
 creates_tty=0
 has_compsys=1
-has_syntax_highlighting=1
+has_syntax_highlighting=0
 has_autosuggestions=1
 has_git_prompt=1
-first_prompt_lag_ms=130.800
-first_command_lag_ms=139.313
-command_lag_ms=126.693
-input_lag_ms=11.314
-exit_time_ms=65.501
+first_prompt_lag_ms=22.875
+first_command_lag_ms=135.147
+command_lag_ms=107.168
+input_lag_ms=3.223
+exit_time_ms=44.896
 
-% # MacBook Air (M3, 2024): p10k prompt
+% # MacBook Pro (M5, 2026): p10k prompt
+% zsh-bench
 ==> benchmarking login shell of user matt ...
 creates_tty=0
 has_compsys=1
-has_syntax_highlighting=1
+has_syntax_highlighting=0
 has_autosuggestions=1
 has_git_prompt=1
-first_prompt_lag_ms=13.365
-first_command_lag_ms=125.555
-command_lag_ms=47.757
-input_lag_ms=8.953
-exit_time_ms=70.038
+first_prompt_lag_ms=15.221
+first_command_lag_ms=199.816
+command_lag_ms=54.072
+input_lag_ms=3.795
+exit_time_ms=52.173
 ```
 
 If you prefer a naive, completely meaningless Zsh 'exit' benchmark, I include that too for legacy reasons.
 
 ```zsh
-% # MacBook Air (M3, 2024)
+% # MacBook Pro (M5, 2026)
 % for i in {1..10}; do; /usr/bin/time zsh -lic exit; done
-        0.09 real         0.03 user         0.02 sys
-        0.07 real         0.02 user         0.01 sys
-        0.06 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-        0.06 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-        0.06 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
+        0.07 real         0.03 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
 ```
 
 ## Look-and-feel

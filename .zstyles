@@ -1,66 +1,64 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 #
 # .zstyles - zstyle settings for features/plugins that need them.
 #
 
 #
-# Zephyr features
+# Z1
 #
 
-# Use caching.
-zstyle ':zephyr:plugin:*' 'use-cache' yes
+# Add skips so that I can do these things myself
+zstyle ':z1:homebrew' cache yes
+zstyle ':z1:zstyles' skip yes
+#zstyle ':z1:zfunctions' skip yes
+zstyle ':z1:confd' skip yes
+#zstyle ':z1:compinit' cache yes
+zstyle ':z1:compinit' skip yes
 
-#
-# Completions
-#
-
-zstyle ':zsh_custom:plugin:*' 'use-cache' no
-zstyle ':zsh_custom:plugin:completion' compstyle zshzoo
-
-#
-# History
-#
-
-zstyle ':zephyr:plugin:history:aux:sqlite' enable yes
-zstyle ':zephyr:plugin:history:aux:json' enable yes
-
-#
-# Editor
-#
-
-# Expand aliases to their actual command like Fish abbreviations.
-noexpand=(
-  ls
-  grep
-  gpg
-  vi
-  z
+# expand aliases
+zstyle ':z1:editor' expand-alias true
+zstyle ':z1:editor:expand-alias' exclude \
+  ls \
+  grep \
+  gpg \
+  vi \
+  z \
   0 1 2 3 4 5 6 7 8 9
-)
-zstyle ':zsh_custom:plugin:editor:auto-expand-aliases' noexpand $noexpand
 
-# Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':zsh_custom:plugin:editor' key-bindings 'vi'
+# default command
+zstyle ':z1:editor:default-command' command 'ls'
+zstyle ':z1:editor:default-command' git-command 'git status -sb'
 
-# Enable all the editor extensions.
-zstyle ':zsh_custom:plugin:editor:*' 'enabled' 'yes'
+# enter doesn't create PS2, but instead inserts newlines until the command is runnable
+zstyle ':z1:editor' accept-line-or-newline true
 
-#
-# ZSH_CUSTOM features
-#
-
-# git
-zstyle ':zsh_custom:plugin:git' default-user mattmc3
-
-# zshrc.d location
-zstyle ':zsh_custom:plugin:zshrcd' directory $ZDOTDIR/conf.d
-
-# zfunctions location
-zstyle ':zsh_custom:plugin:zfunctions' directory $ZDOTDIR/functions
+# If we use the Z1 prompt, uncomment this
+# zstyle ':z1:prompt' transient 'yes'
 
 #
-# Prompt
+# XDG base dirs
 #
 
-# Set prompt
-zstyle ':zephyr:plugin:prompt' theme p10k mmc
+# Apps are opt-in. Run xdgbasedir to see what is on, what is available, and
+# what is still waiting on a move.
+zstyle ':use-xdg-basedirs:(az|bundle|cargo|dotnet|duckdb|go|gpg|jupyter)' enabled yes
+zstyle ':use-xdg-basedirs:(less|node|npm|python3|readline|rg|screen|sqlite3)' enabled yes
+zstyle ':use-xdg-basedirs:(irb|psql|ruff|rustup|starship)' enabled yes
+
+#
+# Antidote
+#
+
+# zcompile everything: static file + all bundles + dynamic cache
+zstyle ':antidote:*' zcompile 'yes'
+
+# or, set individually
+# zstyle ':antidote:static'   zcompile 'yes'  # the static file
+# zstyle ':antidote:bundle:*' zcompile 'yes'  # all bundles
+# zstyle ':antidote:dynamic'  zcompile 'yes'  # dynamic-mode cache files
+
+# wait 14 days to apply updates
+zstyle ':antidote:bundle:*'              min-age 14
+zstyle ':antidote:bundle:mattmc3/*'      min-age 0
+zstyle ':antidote:bundle:zshzoo/*'       min-age 0
+zstyle ':antidote:bundle:getantidote/*'  min-age 0
