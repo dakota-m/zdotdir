@@ -54,7 +54,8 @@ ohmyzsh/ohmyzsh path:plugins/copyfile
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/utility
-#mattmc3/zephyr path:plugins/zfunctions
+ohmyzsh/ohmyzsh path:lib/functions.zsh
+ohmyzsh/ohmyzsh path:lib/misc.zsh
 $ZDOTDIR/plugins/git
 $ZDOTDIR/plugins/abbreviations
 $ZDOTDIR/plugins/fzf

@@ -70,7 +70,7 @@ ZSH_THEME=(starship starship)
 #
 
 # Create an amazing Zsh config using antidote plugins.
-source $ZSH_CONFIG_DIR/lib/antidote.zsh
+source $ZSH_CONFIG_DIR/lib/antidote-fast.zsh
 
 # Source conf.d.
 for _rc in $ZDOTDIR/conf.d/*.zsh; do
