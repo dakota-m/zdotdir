@@ -2,6 +2,9 @@
 
 set -e
 
+force=false
+[[ "$1" == "--force" || "$1" == "-f" ]] && force=true
+
 pushd $(pwd)
 
 if [[ $(uname) == "Darwin" ]]; then
@@ -18,12 +21,19 @@ if [[ $(uname) == "Darwin" ]]; then
     if [[ -d ${XDG_PROJECTS_DIR}/neovim ]]; then
       pushd ${XDG_PROJECTS_DIR}/neovim
       git fetch
-      if [[ $(git rev-list HEAD...origin/master --count) != 0 ]]; then
+      local has_changes=$(git rev-list HEAD...origin/master --count)
+      if [[ $force == true ]] || [[ $has_changes != 0 ]]; then
+        [[ $force == true ]] && echo "Forcing rebuild..."
         if [[ -d build ]]; then
           git reset --hard && git clean --force -dfx && git pull
         fi
         if command -v make &>/dev/null; then
-          make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local
+          local nprocs=$(($(sysctl -n hw.logicalcpu) - 1))
+          make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$HOME/.local \
+            CC=clang CXX=clang++ \
+            CFLAGS="-O3 -mcpu=apple-m4 -ffast-math -flto=full -fstack-protector-strong -fno-plt" \
+            LDFLAGS="-flto=full" \
+            -j$nprocs
           make install
         else
           echo "make is not installed"
@@ -32,7 +42,6 @@ if [[ $(uname) == "Darwin" ]]; then
       fi
       popd
     fi
-    exit 1
   fi
 elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
   if ! command -v nvim &>/dev/null; then
@@ -41,7 +50,9 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
     if [[ -d ${XDG_PROJECTS_DIR}/neovim ]]; then
       pushd ${XDG_PROJECTS_DIR}/neovim
       git fetch
-      if [[ $(git rev-list HEAD...origin/master --count) != 0 ]]; then
+      local has_changes=$(git rev-list HEAD...origin/master --count)
+      if [[ $force == true ]] || [[ $has_changes != 0 ]]; then
+        [[ $force == true ]] && echo "Forcing rebuild..."
         if [[ -d build ]]; then
           git reset --hard && git clean --force -dfx && git pull
         fi
@@ -59,5 +70,7 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
     fi
   fi
 fi
+
+popd
 
 # vim: set ft=sh ts=2 sw=2 et:
