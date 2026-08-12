@@ -59,7 +59,7 @@ ohmyzsh/ohmyzsh path:lib/misc.zsh
 $ZDOTDIR/plugins/git
 $ZDOTDIR/plugins/abbreviations
 $ZDOTDIR/plugins/fzf
-matthieusb/zsh-sdkman
+# matthieusb/zsh-sdkman
 
 #
 # OMZ

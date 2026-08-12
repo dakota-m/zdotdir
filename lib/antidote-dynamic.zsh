@@ -49,7 +49,7 @@ antidote bundle "mattmc3/zephyr path:plugins/utility"
 antidote bundle "$ZDOTDIR/plugins/git"
 antidote bundle "$ZDOTDIR/plugins/abbreviations"
 antidote bundle "$ZDOTDIR/plugins/fzf"
-antidote bundle "matthieusb/zsh-sdkman"
+# antidote bundle "matthieusb/zsh-sdkman"
 
 # OMZ
 antidote bundle "ohmyzsh/ohmyzsh path:plugins/direnv"

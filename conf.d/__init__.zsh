@@ -31,9 +31,9 @@ path=(
   $HOME/.cargo/bin(N)
   $HOME/.rustup/bin(N)
   /Applications/WezTerm.app/Contents/MacOS
-  /Users/dakotamartin/.sdkman/candidates/gradle/*/bin(N)
-  /Users/dakotamartin/.sdkman/candidates/java/*/bin(N)
-  /Users/dakotamartin/.sdkman/candidates/maven/*/bin(N)
+  # /Users/dakotamartin/.sdkman/candidates/gradle/*/bin(N)
+  # /Users/dakotamartin/.sdkman/candidates/java/*/bin(N)
+  # /Users/dakotamartin/.sdkman/candidates/maven/*/bin(N)
   # /opt/homebrew/bin(N)
 
   # keg only brew apps
