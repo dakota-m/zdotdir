@@ -1,32 +1,103 @@
 #!/bin/zsh
 
-set -e
+force=false
+[[ "$1" == "--force" || "$1" == "-f" ]] && force=true
 
-pushd $(pwd)
+local start_dir=$PWD
+{
 
 if [[ $(uname) == "Darwin" ]]; then
-  if ! command -v brew &>/dev/null; then
-    echo "brew is not installed"
-    exit 1
-  elif ! command -v wezterm &>/dev/null; then
-    echo "wezterm is not installed!"
-    echo "installing wezterm..."
-    brew install --cask wezterm@nightly
-    exit 1
+  if [[ -d ${XDG_PROJECTS_DIR}/wezterm ]]; then
+    {
+    cd -- "${XDG_PROJECTS_DIR}/wezterm" || { echo "failed to cd into wezterm project dir"; return 1; }
+    git fetch || { echo "git fetch failed"; return 1; }
+    local has_changes=$(git rev-list HEAD...origin/main --count)
+    if [[ $force == true ]] || [[ $has_changes != 0 ]]; then
+      [[ $force == true ]] && echo "Forcing rebuild..."
+      git pull || { echo "git pull failed"; return 1; }
+      if command -v cargo &>/dev/null; then
+        local nprocs=$(($(sysctl -n hw.logicalcpu) - 1))
+        echo "Building wezterm with aggressive profile (nprocs=$nprocs)..."
+        RUSTFLAGS="-C target-cpu=native" \
+          CARGO_PROFILE_RELEASE_OPT_LEVEL="3" \
+          CARGO_PROFILE_RELEASE_LTO="thin" \
+          CARGO_PROFILE_RELEASE_CODEGEN_UNITS="8" \
+          CARGO_PROFILE_RELEASE_PANIC="abort" \
+          cargo build --release \
+            -j$nprocs \
+            -p wezterm \
+            -p wezterm-gui \
+            -p wezterm-mux-server \
+            -p strip-ansi-escapes || { echo "cargo build failed"; return 1; }
+
+        # Install terminfo into the real default ncurses search path (see `infocmp -D`;
+        # ~/.local/share/terminfo is not searched by default without TERMINFO_DIRS set)
+        mkdir -p ~/.terminfo
+        tic -x -o ~/.terminfo termwiz/data/wezterm.terminfo
+
+        # Assemble a full WezTerm.app (mirrors ci/deploy.sh): bundles terminfo, shell
+        # integration and shell completions into Contents/Resources alongside the 4
+        # binaries, then swaps it into /Applications. This also refreshes
+        # /opt/homebrew/bin/wezterm*, since those are symlinks into the bundle
+        # (from `brew install --cask wezterm@nightly`).
+        if [[ -w /Applications ]]; then
+          echo "Assembling WezTerm.app..."
+          local tmpdir=$(mktemp -d)
+          local staging="$tmpdir/WezTerm.app"
+          if ditto assets/macos/WezTerm.app "$staging"; then
+            rm -f "$staging"/*.dylib # prefer CGL over MetalANGLE, per ci/deploy.sh
+            mkdir -p "$staging/Contents/MacOS"
+            for bin in wezterm wezterm-gui wezterm-mux-server strip-ansi-escapes; do
+              cp target/release/$bin "$staging/Contents/MacOS/$bin"
+            done
+            cp -r assets/shell-integration/* "$staging/Contents/Resources/"
+            cp -r assets/shell-completion "$staging/Contents/Resources/"
+            tic -x -o "$staging/Contents/Resources/terminfo" termwiz/data/wezterm.terminfo
+
+            rm -rf /Applications/WezTerm.app
+            ditto "$staging" /Applications/WezTerm.app
+            xattr -dr com.apple.quarantine /Applications/WezTerm.app 2>/dev/null
+            codesign --force --deep --sign - /Applications/WezTerm.app || echo "warning: ad-hoc codesign failed"
+          else
+            echo "warning: failed to stage app bundle, skipping"
+          fi
+          rm -rf "$tmpdir"
+        else
+          echo "warning: /Applications not writable, skipping app bundle install"
+        fi
+
+        # Install zsh completions (already on fpath via $ZSH_CONFIG_DIR/completions)
+        mkdir -p ~/.config/zsh/completions
+        cp assets/shell-completion/zsh ~/.config/zsh/completions/_wezterm
+
+        # Refresh shell integration; conf.d/wezterm.zsh already sources this file
+        mkdir -p ~/.config/zsh/lib
+        cp assets/shell-integration/wezterm.sh ~/.config/zsh/lib/wezterm-shell-integration.sh
+
+        echo "wezterm installed: /Applications/WezTerm.app (+ /opt/homebrew/bin symlinks), terminfo, zsh completions + shell integration"
+      else
+        echo "cargo is not installed"
+        return 1
+      fi
+    fi
+    } always {
+      cd -- "$start_dir"
+    }
   else
-    brew upgrade --cask wezterm@nightly --greedy-latest
+    echo "wezterm repo not found at ${XDG_PROJECTS_DIR}/wezterm"
+    echo "clone it first: git clone https://github.com/wez/wezterm.git ${XDG_PROJECTS_DIR}/wezterm"
   fi
 elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
   if ! command -v wezterm &>/dev/null; then
     echo "wezterm is not installed!"
   else
     if [[ -d ${XDG_PROJECTS_DIR}/wezterm && $(command -v cargo) ]]; then
-      pushd ${XDG_PROJECTS_DIR}/wezterm
-      git fetch
-      if [[ $(git rev-list HEAD...origin/main --count) != 0 ]]; then
-        if [[ -d target ]]; then
-          rm -rf target
-        fi
+      {
+      cd -- "${XDG_PROJECTS_DIR}/wezterm" || { echo "failed to cd into wezterm project dir"; return 1; }
+      git fetch || { echo "git fetch failed"; return 1; }
+      local has_changes=$(git rev-list HEAD...origin/main --count)
+      if [[ $force == true ]] || [[ $has_changes != 0 ]]; then
+        [[ $force == true ]] && echo "Forcing rebuild..."
         git pull && cargo fetch --locked --target "x86_64-unknown-linux-gnu"
         cargo +nightly build --jobs $(nproc) --frozen --release
         tic -x -o target/release/terminfo termwiz/data/wezterm.terminfo
@@ -43,13 +114,15 @@ elif [[ $(lsb_release -is) == "Arch" && $(whoami) == "dakota" ]]; then
         sudo install -Dm644 assets/icon/terminal.png "/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png"
         sudo install -Dm644 assets/shell-integration/wezterm.sh "/etc/profile.d/wezterm.sh"
         sudo install -Dm644 LICENSE.md -t "/usr/share/licenses/wezterm"
-        # if [[ $(command -v xdotool) ]]; then
-        #   xdotool 1 Return
-        # fi
       fi
-      popd
+      } always {
+        cd -- "$start_dir"
+      }
     fi
   fi
 fi
+} always {
+  cd -- "$start_dir"
+}
 
-# vim: set ft=sh ts=2 sw=2 et
+# vim: set ft=sh ts=2 sw=2 et:
